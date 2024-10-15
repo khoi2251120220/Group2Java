@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1A1A1A;
+}
+/* mở header */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2E2E2E;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.tieude a {
+    color: #FF3366;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+}
+
+.nav li {
+    margin: 0 10px;
+    position: relative;
+}
+
+.nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    height: 100%;
+
+}
+.nav li a.active {
+    background-color: #337AB7;
+    color: #fff;
+}
+.nav li .active:hover{
+    background-color: #56aaff;
+}
+.nav li a:hover,
+.taikhoan .login:hover{
+    background-color: #4c4c4c;
+    color: #fff;
+}
+.koi-menu {
+    display: none;
+    position: absolute;
+    background-color: #333333;
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 8px;
+    left: 0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+.koi-menu li {
+    margin: 0;
+}
+.koi-menu li a {
+    color: white;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.koi-menu li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.koi:hover .koi-menu {
+    display: block;
+}
+.taikhoan {
+    display: flex;
+    align-items: center;
+}
+
+.taikhoan .login {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    border-radius: 20px;
+    padding: 8px 15px;
+}
+
+.taikhoan .register {
+    background-color: #FF3366;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: background-color 0.3s;
+}
+
+.taikhoan .register:hover {
+    background-color: #D32F2F;
+}
+/* kết header */
+
+/* mở slider */
+#slider{
+    margin-top: 52px;
+    padding-top: 50%;
+    background: url('/static/image/slider1.png') top center / contain no-repeat;
+
+}
+/* kết slider */
+
+/* mở koi_section */
+.koi_section {
+    background-color: #fff;
+    padding: 20px 20px;
+    font-family: 'Arial', sans-serif;
+    margin-top: -5px;
+
+}
+
+.koi_section .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.auction-title{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+.auction-nhom {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+
+}
+
+.section-noidung {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 100%;
+    text-align: justify;
+    margin: 0 auto;
+}
+/* kết koi_section */
+
+/* mở phần dịch vụ */
+.auction-service{
+    background-color: #f5f5f5;
+    margin-top: -20px;
+
+}
+.auction-dichvu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+.dichvu {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dichvu img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dichvu h3 {
+    font-size: 20px;
+    margin: 16px 0;
+    color: #333;
+}
+
+.dichvu p {
+    font-size: 14px;
+    color: #666;
+    padding: 0 16px 16px;
+}
+
+.dichvu:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* kết dịch vụ */
+
+/* .auction-contact */
+.contact-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.contact-form {
+    flex: 2;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    color: #00b300;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    background-color: #00b300;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.contact-form button:hover {
+    background-color: #008f00;
+}
+
+.contact-form .checkbox {
+    display: flex;
+    align-items:first baseline;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.contact-form .checkbox input {
+    margin-right: 10px;
+}
+
+.contact-info {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-info p, .contact-info ul {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.contact-info ul {
+    list-style: none;
+}
+
+.contact-info ul li {
+    margin-bottom: 5px;
+}
+/* kết */
+.map-picture{
+    width: 100%;
+}
+#footer {
+    background-color: #1a2b23;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 80px;
+
+}
+
+.footer-menu {
+    margin-bottom: 15px;
+}
+
+.footer-menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer-menu a:hover {
+    text-decoration: underline;
+}
+
+.footer-design a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-design a:hover {
+    text-decoration: underline;
+}
+
+
