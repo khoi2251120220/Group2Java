@@ -120,8 +120,8 @@ body {
 
 /* mở slider */
 #slider{
-    margin-top: 52px;
-    padding-top: 50%;
+    margin-top: 6%;
+    padding-top: 30%;
     background: url('/static/image/slider1.png') top center / contain no-repeat;
 
 }
