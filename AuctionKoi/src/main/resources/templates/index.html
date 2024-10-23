@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="../static/css/styles2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/font_icon/themify-icons-font/themify-icons/themify-icons.css">
+    <script  src="jquery-3.7.1.min.js"> </script>
 </head>
 <body>
-<div id="main">
+<div id="main_1">
     <!-- mở đầu header -->
     <div id="header">
         <div class="tieude">
@@ -17,10 +18,10 @@
         </div>
         <ul class="nav">
             <li><a href="#" class="active"><i class="mau"></i> Home</a></li>
-            <li><a href="#"><i class="Auctions"></i> Auctions</a></li>
-            <li><a href="#"><i class="Blogs"></i> Blogs</a></li>
-            <li><a href="#"><i class="Contact"></i> Contact</a></li>
-            <li class="koi">
+            <li><a href="#" class="auction"> Auctions</a></li>
+            <li><a href="#" class="blogs"> Blogs</a></li>
+            <li><a href="#" class="contact"> Contact</a></li>
+            <li class="product">
                 <a href="#">Product</a>
                 <ul class="koi-menu">
                     <li><a href="#">Koi Kohaku</a></li>
@@ -32,7 +33,7 @@
                     <li><a href="#">Koi Ginrin</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="About"></i> About</a></li>
+            <li><a href="#" class="about"> About</a></li>
         </ul>
         <div class="taikhoan">
             <a href="#" class="login">Log in</a>
@@ -72,17 +73,17 @@
             </div>
             <div class="auction-dichvu">
                 <div class="dichvu">
-                    <img src="/static/image/thanhtoan.jpg" alt="Thiết kế giao diện thanh toán">
+                    <img src="/assets/image/thanhtoan.jpg" alt="Thiết kế giao diện thanh toán">
                     <h3>Thiết kế giao diện thanh toán</h3>
                     <p>Giải pháp thanh toán tùy chỉnh cho người thắng đấu giá.</p>
                 </div>
                 <div class="dichvu">
-                    <img src="/static/image/anh2_auction_section.webp" alt="Quản lý logistics cá Koi">
+                    <img src="/assets/image/anh2_auction_section.webp" alt="Quản lý logistics cá Koi">
                     <h3>Quản lý logistics cá Koi</h3>
                     <p>Quản lý hiệu quả quá trình giao nhận cá Koi.</p>
                 </div>
                 <div class="dichvu">
-                    <img src="/static/image/anh_auction_section.webp" alt="Bảng điều khiển phân tích bán hàng">
+                    <img src="/assets/image/anh_auction_section.webp" alt="Bảng điều khiển phân tích bán hàng">
                     <h3>Bảng điều khiển phân tích bán hàng</h3>
                     <p>Bảng điều khiển toàn diện để theo dõi hiệu suất bán hàng.</p>
                 </div>
@@ -116,7 +117,7 @@
                         <textarea id="message" name="message" placeholder="Viết phản hồi của bạn ..." rows="4"></textarea>
 
                         <div class="checkbox">
-                            <input type="checkbox" id="consent" name="consent" required style="width: 18px">
+                            <input type="checkbox" id="consent" name="consent" required style="width: 20px;">
                             <label for="consent"> Tôi cho phép trang web này lưu trữ nội dung gửi của tôi để họ có thể trả lời câu hỏi của tôi.</label>
                         </div>
 
@@ -149,7 +150,7 @@
     <!-- end phần content -->
     <br><br><br><br>
     <div class="Hocakoi">
-        <img src="/static/image/anh_footer.jpg" alt="" class="map-picture">
+        <img src="/assets/image/anh_footer.jpg" alt="" class="map-picture">
     </div>
 
     <div id="footer">
@@ -163,7 +164,42 @@
             <a href="#">Web được thiết kế bởi nhóm 2</a>
         </div>
     </div>
+
 </div>
+<div id="main_2">
+    <!-- trang chủ blogs -->
+    <div id="blogs-section" style="background-color: #fff; text-align: center;display: none;">
+        <h1>Blogs</h1>
+    </div>
+    <!-- trang chủ About -->
+    <div id="about-section" style="display: none; background-color: #fff;text-align: center ">
+        <div class="container">
+            <h1 >About</h1>
+        </div>
+    </div>
+    <!-- trang chủ Contact -->
+    <div id="contact-section" style="display: none; background-color: #fff; ">
+        <div class="container">
+            <h1 >Contact</h1>
+        </div>
+    </div>
+    <!-- trang chủ Product -->
+    <div id="product-section" style="display: none; background-color: #fff; ">
+        <div class="container">
+            <h1 >Product</h1>
+        </div>
+    </div>
+    <!-- trang chủ Auction -->
+    <div id="auction-section" style="display: none; background-color: #fff; ">
+        <div class="container">
+            <h1 >Auction</h1>
+        </div>
+    </div>
+
+    <script src="javascript.js"></script>
+    <script  src="jquery-3.7.1.min.js"> </script>
+</div>
+
 
 </body>
 </html>
