@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .tieude a {
@@ -147,7 +149,7 @@ body {
     margin-bottom: 10px;
     color: #333;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-align: center;
 }
 
@@ -218,7 +220,7 @@ body {
 /* kết dịch vụ */
 
 /* .auction-contact */
-.contact-section {
+#contact-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -319,12 +321,12 @@ body {
 .map-picture{
     width: 100%;
 }
+/*footer*/
 #footer {
     background-color: #1a2b23;
-    padding: 20px 0;
+    padding: 80px 20px 60px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 80px;
 
 }
 
@@ -353,5 +355,85 @@ body {
 .footer-design a:hover {
     text-decoration: underline;
 }
+/*login*/
+#tk_login {
+    display: none;
+    width: 450px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color:#1A1A1A ;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    color: white;
+    border-radius: 30px;
+    animation: fade-out ease 0.7s;
+}
+#mau_nen {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 255);
+    z-index: 999;
+}
+.login_btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 5px 10px;
+    height: 50px;
+    border: none;
+    margin-top: 10px;
+    color: #fff;
+    background-color: red;
+    border-radius: 20px;
+}
+.login_btn:hover{
+    opacity: 0.9;
+    color: #000;
+}
+#username,#password{
+    float: right;
+    height: 40px;
+    background-color: #2E2E2E;
+    margin: -3px;
+    line-height: 24px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    border-radius: 20px;
+    color: white;
+}
+.footer_login{
+    text-align: center;
+}
+.dang_ky{
+    cursor: pointer;
+    height: 25px;
+    width: 75px;
+    border-radius: 7px;
+    background-color: cadetblue;
+    border: none;
+}
+.dang_ky:hover{
+    opacity: 0.9;
+    color: #1a2b23;
+}
+@keyframes fade-out {
+    from{
+        transform: translate(-50%, -55%);
+    }
+    to{
+        transform: translate(-50%, -50%);
+    }
+}
+
+
 
 
