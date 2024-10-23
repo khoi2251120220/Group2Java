@@ -2,7 +2,7 @@
 $(document).ready(function() {
     $('.about').on('click', function(event) {
         event.preventDefault();
-        $('#content, #slider, #footer, .Hocakoi, #blogs-section, #auction-section, #product-section').hide();
+        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section').hide();
         $('#about-section').show();
     });
 
@@ -40,4 +40,10 @@ $(document).ready(function () {
         $('#tk_login').hide();
     });
 });
-
+// sự kiện click menu
+$(document).ready(function() {
+    $('.menu_item').click(function() {
+        $('.menu_item').removeClass('active');
+        $(this).addClass('active');
+    });
+});

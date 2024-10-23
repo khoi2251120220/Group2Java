@@ -49,12 +49,9 @@ body {
     height: 100%;
 
 }
-.nav li a.active {
+.active {
     background-color: #337AB7;
     color: #fff;
-}
-.nav li .active:hover{
-    background-color: #56aaff;
 }
 .nav li a:hover,
 .taikhoan .login:hover{
@@ -432,6 +429,40 @@ body {
     to{
         transform: translate(-50%, -50%);
     }
+}
+/*about*/
+#about-section{
+    display: none;
+}
+.about_text{
+    padding: 20px;
+    color: white;
+    border: 1px solid #1a2b23;
+    border-radius: 12px;
+    width: 98%;
+    margin-left: 14px;
+    line-height: 25px;
+    background-color: #35342f;
+}
+.about_question{
+    padding: 30px;
+    color: white;
+    line-height: 25px;
+}
+.p_question{
+    padding: 20px;
+}
+.p1,.p2,.p3,.p4{
+    height: 40px;
+    width: 1285px;
+
+    padding: 8px;
+}
+.p1:hover,.p2:hover,.p3:hover,.p4:hover{
+    background-color: #4c4c4c;
+    border: 1px solid #1a2b23;
+    border-radius: 15px;
+
 }
 
 
