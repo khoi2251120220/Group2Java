@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Buyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

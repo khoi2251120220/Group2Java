@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Entity
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

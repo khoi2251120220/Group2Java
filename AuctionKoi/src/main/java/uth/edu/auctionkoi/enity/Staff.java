@@ -1,7 +1,7 @@
 package uth.edu.auctionkoi.enity;
 
 import javax.persistence.*;
-
+@Entity
 public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

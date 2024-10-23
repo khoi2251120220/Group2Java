@@ -2,7 +2,7 @@ package uth.edu.auctionkoi.enity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@Entity
 public class Koi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
