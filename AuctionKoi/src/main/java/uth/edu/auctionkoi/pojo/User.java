@@ -3,6 +3,7 @@ package uth.edu.auctionkoi.pojo;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

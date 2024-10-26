@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "SELLERS")
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +16,7 @@ public class Seller {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;  // Đổi từ SecurityProperties.User thành User của bạn
+    private User user;
 
     @OneToMany(mappedBy = "seller")
     private List<Koi> koiList;

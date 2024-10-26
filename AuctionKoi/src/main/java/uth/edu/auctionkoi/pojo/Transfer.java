@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 @Entity
+@Table(name = "TRANSFERS")
 public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

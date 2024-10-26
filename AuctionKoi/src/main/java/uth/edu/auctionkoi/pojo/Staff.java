@@ -2,6 +2,7 @@ package uth.edu.auctionkoi.pojo;
 
 import javax.persistence.*;
 @Entity
+@Table(name = "STAFFS")
 public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

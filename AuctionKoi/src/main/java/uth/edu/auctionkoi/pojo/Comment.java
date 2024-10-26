@@ -3,6 +3,7 @@ package uth.edu.auctionkoi.pojo;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
+@Table(name = "COMMENTS")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
