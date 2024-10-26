@@ -1,31 +1,59 @@
-// sự kiện click vào các thẻ trên thanh menu
+// sự kiện click vào các thẻ trên thanh menu và thông tin tài khoản
 $(document).ready(function() {
-    $('.about').on('click', function(event) {
+    $('.about').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section').hide();
+        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
         $('#about-section,#footer').show();
     });
 
-    $('.blogs').on('click', function(event) {
+    $('.blogs').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, #footer, .Hocakoi, #about-section, #auction-section, #product-section').hide();
+        $('#content, #slider, .Hocakoi, #about-section, #auction-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
         $('#blogs-section').show();
     });
 
-    $('.auction').on('click', function(event) {
+    $('.auction').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, #footer, .Hocakoi, #about-section, #blogs-section, #product-section').hide();
+        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
         $('#auction-section').show();
     });
 
-    $('.product').on('click', function(event) {
+    $('.product').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, #footer, .Hocakoi, #about-section, #blogs-section,#auction-section').hide();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
         $('#product-section').show();
     });
+    $('.contact').click( function(event) {
+        event.preventDefault();
+        $('#product-section,#about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#content,#slider,.Hocakoi,#footer,#contact-section').show();
+        $('html, body').animate({
+            scrollTop: $('#contact-section').offset().top
+        });
+    });
+    $('.thanh_toan').click(function (event){
+        event.preventDefault();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#setting_section,#tk_section').hide();
+        $('#thtoan_section').show();
+    })
+    $('.thong_bao').click(function (event){
+        event.preventDefault();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#thbao_section').show();
+    })
+    $('.setting').click(function (event){
+        event.preventDefault();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#tk_section,#thtoan_section').hide();
+        $('#setting_section').show();
+    })
+    $('.tt_tai_khoan').click(function (event){
+        event.preventDefault();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#thtoan_section,#setting_section').hide();
+        $('#tk_section').show();
+    })
     $(document).ready(function() {
         $('.active,.tieude').click(function() {
-            $('#auction-section,#about-section,#blogs-section,#product-section').hide(); // Ẩn phần khác
+            $('#auction-section,#about-section,#blogs-section,#product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
             $('#slider,#content,.Hocakoi,#footer').show();
 
         });
@@ -73,8 +101,6 @@ $(document).ready(function (){
 $(document).ready(function (){
     $('.logout').click(function (event){
         event.preventDefault()
-        $('.user,.profile_menu').hide();
-        $('.login,.register').show();
         window.location.reload();
 
     })
@@ -106,4 +132,5 @@ $(document).ready(function (){
         $('.p2_2,.p3_3,.p4_4,.p1_1').hide();
     })
 })
+
 

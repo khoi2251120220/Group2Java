@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.mvn",
+    "\\src",
+    "\\src\\main",
+    "\\src\\test"
   ],
   "PreviewInSolutionExplorer": false
 }
