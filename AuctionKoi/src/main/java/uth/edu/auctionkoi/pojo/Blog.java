@@ -1,9 +1,9 @@
-package uth.edu.auctionkoi.enity;
+package uth.edu.auctionkoi.pojo;
 
 import javax.persistence.*;
-import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Entity
 public class Blog {
     @Id
@@ -18,7 +18,7 @@ public class Blog {
     private User user;
 
     @OneToMany(mappedBy = "blog")
-    private List<Comment> comments;
+    private List<Comment> comments;  // Sử dụng lớp Comment của bạn
 
     public long getId() {
         return id;

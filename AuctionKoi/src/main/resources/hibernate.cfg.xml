@@ -1,14 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306;DatabaseName=auction_db;encrypt=true;trustServerCertificate=true</property>
-        <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password">1234</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=auctionkoi;encrypt=true;trustServerCertificate=true;</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password">1234</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <mapping class="uth.edu.auctionkoi.pojo.Auction"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Blog"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Buyer"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Comment"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Koi"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Manager"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Seller"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Staff"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Transaction"/>
+        <mapping class="uth.edu.auctionkoi.pojo.Transfer"/>
+        <mapping class="uth.edu.auctionkoi.pojo.User"/>
     </session-factory>
 </hibernate-configuration>

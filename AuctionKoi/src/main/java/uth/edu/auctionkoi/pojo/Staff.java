@@ -1,4 +1,4 @@
-package uth.edu.auctionkoi.enity;
+package uth.edu.auctionkoi.pojo;
 
 import javax.persistence.*;
 @Entity

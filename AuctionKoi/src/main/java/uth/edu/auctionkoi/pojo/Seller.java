@@ -1,9 +1,8 @@
-package uth.edu.auctionkoi.enity;
-
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+package uth.edu.auctionkoi.pojo;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 public class Seller {
     @Id
@@ -16,16 +15,16 @@ public class Seller {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private SecurityProperties.User user;
+    private User user;  // Đổi từ SecurityProperties.User thành User của bạn
 
     @OneToMany(mappedBy = "seller")
     private List<Koi> koiList;
 
-    public SecurityProperties.User getUser() {
+    public User getUser() {  // Đổi kiểu trả về thành User
         return user;
     }
 
-    public void setUser(SecurityProperties.User user) {
+    public void setUser(User user) {  // Đổi tham số thành User
         this.user = user;
     }
 
