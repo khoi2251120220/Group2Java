@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Menu</title>
-    <link rel="stylesheet" href="../static/css/styles2.css">
-    <link rel="stylesheet" href="../static/font_icon/themify-icons/themify-icons.css">
-    <script  src="jquery-3.7.1.min.js"> </script>
-    <script src="javascript.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../font_icon/themify-icons/themify-icons.css}">
+    <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
 </head>
 <body>
     <div id="main">
@@ -18,12 +18,12 @@
                     <a href="#">AUCTIONKOI</a>
                 </div>
                 <ul class="nav">
-                    <li><a href="#" class="Home menu_item active"> Home</a></li>
-                    <li><a href="#" class="auction menu_item"> Auctions</a></li>
-                    <li><a href="#" class="blogs menu_item"> Blogs</a></li>
-                    <li><a href="#" class="contact menu_item"> Contact</a></li>
+                    <li><a th:href="@{#}" class="Home menu_item active"> Home</a></li>
+                    <li><a th:href="@{#}" class="auction menu_item"> Auctions</a></li>
+                    <li><a th:href="@{#}" class="blogs menu_item"> Blogs</a></li>
+                    <li><a th:href="@{#}" class="contact menu_item"> Contact</a></li>
                     <li class="product">
-                        <a href="#" class=" menu_item">Product</a>
+                        <a th:href="@{#}" class=" menu_item">Product</a>
                         <ul class="koi-menu">
                             <li><a href="#">Koi Kohaku</a></li>
                             <li><a href="#">Koi Ogon</a></li>
@@ -85,17 +85,17 @@
                         </div>
                         <div class="auction-dichvu">
                             <div class="dichvu">
-                                <img src="/static/image/thanhtoan.jpg" alt="Thiết kế giao diện thanh toán">
+                                <img th:src="@{../image/thanhtoan.jpg}" alt="Thiết kế giao diện thanh toán">
                                 <h3>Thiết kế giao diện thanh toán</h3>
                                 <p>Giải pháp thanh toán tùy chỉnh cho người thắng đấu giá.</p>
                             </div>
                             <div class="dichvu">
-                                <img src="/static/image/anh2_auction_section.webp" alt="Quản lý logistics cá Koi">
+                                <img th:src="@{../image/anh2_auction_section.webp}" alt="Quản lý logistics cá Koi">
                                 <h3>Quản lý logistics cá Koi</h3>
                                 <p>Quản lý hiệu quả quá trình giao nhận cá Koi.</p>
                             </div>
                             <div class="dichvu">
-                                <img src="/static/image/anh_auction_section.webp" alt="Bảng điều khiển phân tích bán hàng">
+                                <img th:src="@{../image/anh_auction_section.webp}" alt="Bảng điều khiển phân tích bán hàng">
                                 <h3>Bảng điều khiển phân tích bán hàng</h3>
                                 <p>Bảng điều khiển toàn diện để theo dõi hiệu suất bán hàng.</p>
                             </div>
@@ -162,7 +162,7 @@
                 <!-- end phần content -->
                 <br><br><br><br>
                 <div class="Hocakoi">
-                    <img src="/static/image/anh_footer.jpg" alt="" class="map-picture">
+                    <img th:src="@{../image/anh_footer.jpg}" alt="" class="map-picture">
                 </div>
             </div>
         </div>
