@@ -15,13 +15,16 @@ public class User {
     private String phoneNumber;
     private String address;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Seller seller;
-    @OneToOne(mappedBy = "user")
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Buyer buyer;
-    @OneToOne(mappedBy = "user")
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Staff staff;
 
+    // Getters and Setters
     public long getId() {
         return id;
     }
