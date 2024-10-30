@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div th:fragment="header" id="header">
+    <div class="tieude">
+      <a href="#">AUCTIONKOI</a>
+    </div>
+    <ul class="nav">
+      <li><a th:href="@{#}" class="Home menu_item active"> Home</a></li>
+      <li><a th:href="@{#}" class="blogs menu_item"> Blogs</a></li>
+      <li><a th:href="@{#}" class="contact menu_item"> Contact</a></li>
+      <li class="auction">
+        <a th:href="@{#}" class=" menu_item">Auction</a>
+        <ul class="koi-menu">
+          <li><a href="#">Koi Kohaku</a></li>
+          <li><a href="#">Koi Ogon</a></li>
+          <li><a href="#">Koi Showa</a></li>
+          <li><a href="#">Koi Tancho</a></li>
+          <li><a href="#">Koi Bekko</a></li>
+          <li><a href="#">Koi Doitsu</a></li>
+          <li><a href="#">Koi Ginrin</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="about menu_item"> About</a></li>
+    </ul>
+    <ul class="taikhoan">
+      <li class="menu_dang_nhap">
+        <i  class=" user ti-user"></i>
+        <ul class="profile_menu">
+          <li><a class="tt_tai_khoan">Tài khoản</a></li>
+          <li><a class="setting">Setting</a></li>
+          <li><a class="thong_bao">Thông báo</a></li>
+          <li><a class="thanh_toan">Thanh toán</a></li>
+          <li><a class="logout" >Đăng xuất</a></li>
+        </ul>
+      </li>
+      <li  class="login menu_item">Log in</li>
+      <li  class="register">Register</li>
+
+
+    </ul>
+  </div>
+</body>
+</html>
