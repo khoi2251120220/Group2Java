@@ -19,10 +19,12 @@ public class SellerDAO {
 
     public boolean addSeller(Seller seller) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(seller);
             transaction.commit();
+            logger.info("Seller successfully added");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -30,24 +32,31 @@ public class SellerDAO {
             }
             logger.error("Error adding seller", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public Seller getSeller(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Seller.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (Seller) session.get(Seller.class, id);
         } catch (Exception e) {
             logger.error("Error getting seller", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateSeller(Seller seller) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.update(seller);
             transaction.commit();
+            logger.info("Seller successfully updated");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -55,26 +64,34 @@ public class SellerDAO {
             }
             logger.error("Error updating seller", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteSeller(long id) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
-            Seller seller = session.get(Seller.class, id);
+            Seller seller = (Seller) session.get(Seller.class, id);
             if (seller != null) {
                 session.delete(seller);
                 transaction.commit();
+                logger.info("Seller successfully deleted");
                 return true;
+            } else {
+                logger.warn("Seller not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             logger.error("Error deleting seller", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }

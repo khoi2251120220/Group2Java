@@ -1,6 +1,7 @@
 package uth.edu.auctionkoi.pojo;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "STAFFS")
 public class Staff {
@@ -11,12 +12,17 @@ public class Staff {
     private String position;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    @OneToOne
-    @JoinColumn(name = "manager_id")
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
+    // Default constructor
+    public Staff() {}
+
+    // Getters and Setters
     public long getId() {
         return id;
     }

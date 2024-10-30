@@ -20,7 +20,7 @@ public class Auction {
     private Koi koi;
 
     @OneToMany(mappedBy = "auction")
-    private List<Transaction> transactions;
+    private List<Transactions> transactions;
 
     public LocalDateTime getAuctionEndTime() {
         return auctionEndTime;
@@ -62,11 +62,11 @@ public class Auction {
         this.koi = koi;
     }
 
-    public List<Transaction> getTransactions() {
+    public List<Transactions> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(List<Transactions> transactions) {
         this.transactions = transactions;
     }
 }

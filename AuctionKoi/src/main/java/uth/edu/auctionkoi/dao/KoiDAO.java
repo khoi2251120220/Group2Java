@@ -19,10 +19,12 @@ public class KoiDAO {
 
     public boolean addKoi(Koi koi) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(koi);
             transaction.commit();
+            logger.info("Koi successfully added");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -30,24 +32,31 @@ public class KoiDAO {
             }
             logger.error("Error adding koi", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public Koi getKoi(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Koi.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (Koi) session.get(Koi.class, id);
         } catch (Exception e) {
             logger.error("Error getting koi", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateKoi(Koi koi) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.update(koi);
             transaction.commit();
+            logger.info("Koi successfully updated");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -55,26 +64,34 @@ public class KoiDAO {
             }
             logger.error("Error updating koi", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteKoi(long id) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
-            Koi koi = session.get(Koi.class, id);
+            Koi koi = (Koi) session.get(Koi.class, id);
             if (koi != null) {
                 session.delete(koi);
                 transaction.commit();
+                logger.info("Koi successfully deleted");
                 return true;
+            } else {
+                logger.warn("Koi not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             logger.error("Error deleting koi", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }

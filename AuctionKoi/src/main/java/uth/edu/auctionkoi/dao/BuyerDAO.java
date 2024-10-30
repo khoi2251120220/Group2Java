@@ -13,68 +13,76 @@ public class BuyerDAO {
     private static final Logger logger = LoggerFactory.getLogger(BuyerDAO.class);
 
     public BuyerDAO(String persistenceName) {
-        Configuration config = new Configuration().configure(persistenceName);
-        sessionFactory = config.buildSessionFactory();
+        Configuration configuration = new Configuration().configure(persistenceName);
+        sessionFactory = configuration.buildSessionFactory();
     }
 
     public boolean addBuyer(Buyer buyer) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
             session.save(buyer);
             transaction.commit();
+            logger.info("Buyer successfully saved");
             return true;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error adding buyer", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public Buyer getBuyer(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Buyer.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (Buyer) session.get(Buyer.class, id);
         } catch (Exception e) {
             logger.error("Error getting buyer", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateBuyer(Buyer buyer) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
             session.update(buyer);
             transaction.commit();
+            logger.info("Buyer successfully updated");
             return true;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error updating buyer", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteBuyer(long id) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            Buyer buyer = session.get(Buyer.class, id);
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Buyer buyer = (Buyer) session.get(Buyer.class, id);
             if (buyer != null) {
                 session.delete(buyer);
                 transaction.commit();
+                logger.info("Buyer successfully deleted");
                 return true;
+            } else {
+                logger.warn("Buyer not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error deleting buyer", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }

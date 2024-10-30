@@ -19,10 +19,12 @@ public class ManagerDAO {
 
     public boolean addManager(Manager manager) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(manager);
             transaction.commit();
+            logger.info("Manager successfully added");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -30,24 +32,31 @@ public class ManagerDAO {
             }
             logger.error("Error adding manager", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public Manager getManager(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Manager.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (Manager) session.get(Manager.class, id);
         } catch (Exception e) {
             logger.error("Error getting manager", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateManager(Manager manager) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.update(manager);
             transaction.commit();
+            logger.info("Manager successfully updated");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -55,26 +64,34 @@ public class ManagerDAO {
             }
             logger.error("Error updating manager", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteManager(long id) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
-            Manager manager = session.get(Manager.class, id);
+            Manager manager = (Manager) session.get(Manager.class, id);
             if (manager != null) {
                 session.delete(manager);
                 transaction.commit();
+                logger.info("Manager successfully deleted");
                 return true;
+            } else {
+                logger.warn("Manager not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             logger.error("Error deleting manager", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }

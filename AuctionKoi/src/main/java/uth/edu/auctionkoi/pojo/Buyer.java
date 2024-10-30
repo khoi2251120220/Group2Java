@@ -15,7 +15,7 @@ public class Buyer {
     private User user;  // Đổi từ SecurityProperties.User thành User của bạn
 
     @OneToMany(mappedBy = "buyer")
-    private List<Transaction> transactions;
+    private List<Transactions> transactions;
 
     public long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Buyer {
         this.user = user;
     }
 
-    public List<Transaction> getTransactions() {
+    public List<Transactions> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(List<Transactions> transactions) {
         this.transactions = transactions;
     }
 }

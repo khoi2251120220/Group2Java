@@ -19,10 +19,12 @@ public class StaffDAO {
 
     public boolean addStaff(Staff staff) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(staff);
             transaction.commit();
+            logger.info("Staff successfully added");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -30,24 +32,31 @@ public class StaffDAO {
             }
             logger.error("Error adding staff", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public Staff getStaff(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Staff.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (Staff) session.get(Staff.class, id);
         } catch (Exception e) {
             logger.error("Error getting staff", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateStaff(Staff staff) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
             session.update(staff);
             transaction.commit();
+            logger.info("Staff successfully updated");
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -55,26 +64,34 @@ public class StaffDAO {
             }
             logger.error("Error updating staff", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteStaff(long id) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
+        Session session = sessionFactory.openSession();
+        try {
             transaction = session.beginTransaction();
-            Staff staff = session.get(Staff.class, id);
+            Staff staff = (Staff) session.get(Staff.class, id);
             if (staff != null) {
                 session.delete(staff);
                 transaction.commit();
+                logger.info("Staff successfully deleted");
                 return true;
+            } else {
+                logger.warn("Staff not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             logger.error("Error deleting staff", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }

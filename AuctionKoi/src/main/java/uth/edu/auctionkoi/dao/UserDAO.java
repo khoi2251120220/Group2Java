@@ -18,63 +18,71 @@ public class UserDAO {
     }
 
     public boolean addUser(User user) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
             session.save(user);
             transaction.commit();
+            logger.info("User successfully saved");
             return true;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error adding user", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public User getUser(long id) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(User.class, id);
+        Session session = sessionFactory.openSession();
+        try {
+            return (User) session.get(User.class, id);
         } catch (Exception e) {
             logger.error("Error getting user", e);
             return null;
+        } finally {
+            session.close();
         }
     }
 
     public boolean updateUser(User user) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
             session.update(user);
             transaction.commit();
+            logger.info("User successfully updated");
             return true;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error updating user", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 
     public boolean deleteUser(long id) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            User user = session.get(User.class, id);
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            User user = (User) session.get(User.class, id);
             if (user != null) {
                 session.delete(user);
                 transaction.commit();
+                logger.info("User successfully deleted");
                 return true;
+            } else {
+                logger.warn("User not found with ID: " + id);
+                return false;
             }
-            return false;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
             logger.error("Error deleting user", e);
             return false;
+        } finally {
+            session.close();
         }
     }
 }
