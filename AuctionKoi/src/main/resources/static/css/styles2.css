@@ -132,7 +132,7 @@ body {
     color: black;
 }
 
-.product:hover .koi-menu {
+.auction:hover .koi-menu {
     display: block;
 }
 .taikhoan {

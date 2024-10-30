@@ -17,12 +17,6 @@ $(document).ready(function() {
         $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
         $('#auction-section').show();
     });
-
-    $('.product').click( function(event) {
-        event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
-        $('#product-section').show();
-    });
     $('.contact').click( function(event) {
         event.preventDefault();
         $('#product-section,#about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
