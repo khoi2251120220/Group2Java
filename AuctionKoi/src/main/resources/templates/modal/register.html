@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="register" class="modal">
+    <div id="mau_nen"></div>
+    <div id="tk_register" style="transform: translate(-50%, -45%);">
+        <h1>Register</h1>
+        <form id="loginForm">
+            <div class="input-row">
+                <div class="input-group">
+                    <span></span><br>
+                    <label for="first-name">First Name *</label><br><br>
+                    <input type="text" id="first-name" name="first-name" placeholder="First Name">
+                </div>
+                <div class="input-group">
+                    <span></span><br>
+                    <label for="last-name">Last Name *</label><br><br>
+                    <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="phone-number">Phone Number *</label><br><br>
+                <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number"><br><br>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address *</label><br><br>
+                <input type="email" id="email_register" name="email" placeholder="Email Address"><br><br>
+            </div>
+            <div class="input-group">
+                <label for="password">Password *</label><br><br>
+                <input type="password" id="password" name="password" placeholder="Password"><br><br>
+                <button type="button" class="show-password"></button>
+            </div>
+            <button type="submit" class="login register_btn">Register</button><br><br>
+            <div class="footer_register" style="text-align: center">
+                <span class="text_dk">Already have an account?</span>
+                <button class="login dang_ky" type="button">Log In</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

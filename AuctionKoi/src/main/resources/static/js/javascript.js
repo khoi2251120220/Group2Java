@@ -2,30 +2,28 @@
 $(document).ready(function() {
     $('.about').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section,' +
+            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
         $('#about-section,#footer').show();
     });
 
     $('.blogs').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #about-section, #auction-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#content, #slider, .Hocakoi, #about-section, #auction-section, #product-section,' +
+            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
         $('#blogs-section').show();
     });
 
     $('.auction').click( function(event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #product-section,' +
+            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
         $('#auction-section').show();
-    });
-
-    $('.product').click( function(event) {
-        event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
-        $('#product-section').show();
     });
     $('.contact').click( function(event) {
         event.preventDefault();
-        $('#product-section,#about-section, #blogs-section,#auction-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+        $('#product-section,#about-section, #blogs-section,#auction-section,#thbao_section,' +
+            '#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
         $('#content,#slider,.Hocakoi,#footer,#contact-section').show();
         $('html, body').animate({
             scrollTop: $('#contact-section').offset().top
@@ -33,7 +31,8 @@ $(document).ready(function() {
     });
     $('.thanh_toan').click(function (event){
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#setting_section,#tk_section').hide();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
+            '.profile_menu,#thbao_section,#setting_section,#tk_section').hide();
         $('#thtoan_section').show();
     })
     $('.thong_bao').click(function (event){
@@ -43,35 +42,61 @@ $(document).ready(function() {
     })
     $('.setting').click(function (event){
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#tk_section,#thtoan_section').hide();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
+            '.profile_menu,#thbao_section,#tk_section,#thtoan_section').hide();
         $('#setting_section').show();
     })
     $('.tt_tai_khoan').click(function (event){
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thbao_section,#thtoan_section,#setting_section').hide();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
+            '.profile_menu,#thbao_section,#thtoan_section,#setting_section').hide();
         $('#tk_section').show();
     })
     $(document).ready(function() {
         $('.active,.tieude').click(function() {
-            $('#auction-section,#about-section,#blogs-section,#product-section,#thbao_section,#thtoan_section,#setting_section,#tk_section').hide();
+            $('#auction-section,#about-section,#blogs-section,#product-section,' +
+                '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
             $('#slider,#content,.Hocakoi,#footer').show();
 
         });
     });
 });
 
-// sự kiện của login
+
 $(document).ready(function () {
+    // Sự kiện khi nhấn nút login
     $('.login').click(function (event) {
         event.preventDefault();
-        $('#mau_nen').toggle();
-        $('#tk_login').toggle();
+        if ($('#tk_login').is(':visible')) {
+            $('#mau_nen').hide();
+            $('#tk_login').hide();
+        } else {
+            $('#mau_nen').show();
+            $('#tk_login').show();
+            $('#tk_register').hide();
+        }
+    });
+
+    // Sự kiện khi nhấn nút register
+    $('.register').click(function (event) {
+        event.preventDefault();
+
+        if ($('#tk_register').is(':visible')) {
+            $('#mau_nen').hide();
+            $('#tk_register').hide();
+        } else {
+            $('#mau_nen').show();
+            $('#tk_register').show();
+            $('#tk_login').hide();
+        }
     });
     $('#mau_nen').click(function () {
         $(this).hide();
         $('#tk_login').hide();
+        $('#tk_register').hide();
     });
 });
+
 // sự kiện click menu
 $(document).ready(function() {
     $('.menu_item').click(function() {
