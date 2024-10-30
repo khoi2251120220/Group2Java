@@ -143,11 +143,13 @@
             <!-- trang chủ trang thông báo-->
                 <div th:replace="interface/notification :: notification"></div>
             <!-- thiet kế login-->
-                <div th:replace="modal/login :: login">
+                <div th:replace="modal/login :: login"></div>
+            <!--  thiết kế register -->
+                <div th:replace="modal/register :: register"></div>
         </div>
             <!--  footer    -->
             <div th:replace="fragments/footer :: footer"></div>
-        </div>
     </div>
+
 </body>
 </html>
