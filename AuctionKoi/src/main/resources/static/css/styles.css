@@ -1,0 +1,328 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Space between each card */
+    justify-content: center;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto; /* Center the container on the page */
+}
+
+.card {
+    position: relative;
+    background: #e5e5e5;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: calc(25% - 30px); /* Each card takes 25% of the row minus 10px for the gap */
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slightly raises card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increases shadow on hover */
+}
+
+.card-header {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.card-image {
+    position: relative;
+    background-color: #0072CE; /* Blue background color */
+    padding: 10px;
+    border-radius: 12px 12px 0 0;
+}
+
+.rating {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Adjust width to control space on both sides */
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.card-image img {
+    width: 63%;
+    height: auto;
+    padding: 10px 10px 0 10px;
+}
+
+
+
+.card-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for a balanced layout */
+    gap: 15px;
+    padding: 15px;
+    background-color: #e5e5e5; /* Adjust background to match */
+}
+
+.card-details ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+.card-details ul li:first-child {
+    font-weight: bold;
+}
+
+.card-details ul li i {
+    color: #007BFF; /* Icon color to match the design */
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* Specific styling for the details text */
+.card-details ul li:last-child {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive icon spacing and alignment */
+.card-details ul li {
+    margin: 0;
+}
+
+/* Optional additional styling */
+.card-details ul {
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .card {
+        width: calc(50% - 10px); /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 100%; /* 1 card per row on small screens */
+    }
+}
+.Auction-menu {
+    margin: 20px;
+}
+
+.Auction-menu button{
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+}
+/* Container Header */
+.container-head {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+}
+
+.container-head a h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 0;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.container-head a h1:hover {
+    color: #007BFF; /* Primary color on hover */
+}
+
+.container-head p {
+    font-size: 0.9em;
+    color: #666;
+    padding: 10px;
+}
+
+/* Auction Menu */
+.Auction-menu {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    justify-content: flex-start;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.Auction-menu button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.Auction-menu button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.Auction-menu i {
+    color: #fff;
+}
+
+.auction-logo img{
+    width: 75px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+span {
+    font-size: 20px;
+    margin:0 10px 10px 10px;
+}
+
+.cardd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e5e5e5; /* Light background color */
+    padding: 10px 15px;
+    font-family: Arial, sans-serif;
+}
+
+.cardd h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+}
+
+.cardd p {
+    font-size: 16px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Styling for the "Ended!" label with an icon */
+.cardd p:first-of-type {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* Styling for the price with icon */
+.cardd p:last-of-type {
+    font-weight: bold;
+    color: #333333;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+}
+
+/* Icon styling */
+.cardd p i {
+    color: #333333;
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+
+/* account*/
+
+.container-account {
+    max-width: 600px;
+    margin: 70px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-account h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.container-account input[type="text"], input[type="email"], input[type="date"], input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.gender {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.gender label {
+    margin-right: 10px;
+    margin-left: 5px;
+    font-weight: normal;
+    margin-top: 8px;
+}
+
+.gender-form {
+    padding: 0 10px;
+    display: flex;
+}
+
+.dob {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dob select {
+    width: 32%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.profile-pic {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.profile-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.container-account button {
+    background-color: #FF4500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container-account button:hover {
+    background-color: #e03e00;
+}

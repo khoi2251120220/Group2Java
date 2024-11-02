@@ -6,7 +6,51 @@
 </head>
 <body>
 <div th:fragment="account" id="tk_section" style="display: none; background-color: #fff; ">
-    <h1 > thông tin tài khoản</h1>
+    <div class="container-account">
+        <h2>Hồ Sơ Của Tôi</h2>
+
+        <label for="account_username">Tên đăng nhập</label>
+        <input type="text" id="account_username" name="username" value="ABC" readonly>
+
+        <label for="name">Tên</label>
+        <input type="text" id="name" name="name" placeholder="Nhập tên của bạn">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="he*******@gmail.com" readonly>
+
+        <label for="phone">Số điện thoại</label>
+        <input type="text" id="phone" name="phone" placeholder="Thêm số điện thoại">
+
+        <div class="gender">
+            <fieldset style="width: 97%">
+                <legend>Giới tính:</legend>
+                <div class="gender-form">
+                    <input type="radio" id="male" name="geder">
+                    <label for="male">Nam</label>
+                    <input type="radio" id="female" name="geder">
+                    <label for="female">Nữ</label>
+                    <input type="radio" id="other" name="geder">
+                    <label for="other">Khác</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <label for="date">Ngày sinh:</label>
+            <input type="date" id="date">
+        </div>
+
+        <!--        <div class="profile-pic">-->
+        <!--            <img src="avatar.png" alt="Avatar">-->
+        <!--            <br>-->
+        <!--            <input type="file" id="profile-pic" name="profile-pic">-->
+        <!--        </div>-->
+
+        <button type="submit">Lưu</button>
+    </div>
 </div>
+
+
+
 </body>
 </html>
