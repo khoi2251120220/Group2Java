@@ -35,11 +35,6 @@ $(document).ready(function() {
             '.profile_menu,#thbao_section,#setting_section,#tk_section').hide();
         $('#thtoan_section').show();
     })
-    $('.thong_bao').click(function (event){
-        event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thtoan_section,#setting_section,#tk_section').hide();
-        $('#thbao_section').show();
-    })
     $('.setting').click(function (event){
         event.preventDefault();
         $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
@@ -109,7 +104,7 @@ $(document).ready(function (){
     $('.login_btn').on('click',function (event){
         event.preventDefault();
         $('.login,.register,.modal').hide();
-        $('.user').show();
+        $('.user,.bell').show();
     })
 })
 $(document).ready(function (){
@@ -122,14 +117,30 @@ $(document).ready(function (){
             $('.profile_menu').hide(500);
         }
     });
+    $('.tongquat').on('click',function (event){
+        event.preventDefault();
+        $('.profile_menu_bell').toggle(500);
+        $('#thbao_section').show();
+        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thtoan_section,#setting_section,#tk_section').hide();
+    })
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.profile_menu_bell, .bell').length) {
+            $('.profile_menu_bell').hide(500);
+        }
+    });
 })
 $(document).ready(function (){
-    $('.logout').click(function (event){
-        event.preventDefault()
-        window.location.reload();
-
-    })
+    $('.bell').on('click',function (event){
+        event.preventDefault();
+        $('.profile_menu_bell').toggle(500);
+    });
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.profile_menu, .bell').length) {
+            $('.profile_menu_bell').hide(500);
+        }
+    });
 })
+
 $(document).ready(function (){
     $('.p1').click(function (event){
         event.preventDefault()
@@ -156,6 +167,11 @@ $(document).ready(function (){
         $('.p5_5').toggle(1000);
         $('.p2_2,.p3_3,.p4_4,.p1_1').hide();
     })
+    $('.logout').click(function (event){
+        event.preventDefault()
+        window.location.reload();
+    })
 })
+
 
 

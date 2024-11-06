@@ -59,7 +59,7 @@ body {
     color: #fff;
     cursor: pointer;
 }
-.user{
+.user, .bell{
     display: none;
     font-size: 30px;
     background-color: #aaaaaa;
@@ -69,17 +69,22 @@ body {
     border-radius:12px;
     border: none;
 }
-.user:hover{
+.user:hover,.bell:hover{
     opacity: 0.6;
     cursor: pointer;
     position: relative;
 }
-.menu_dang_nhap{
+.bell{
+    margin-right: 20px;
+}
+.menu_dang_nhap,.menu_bell{
     position: relative;
 }
-.profile_menu{
+
+.profile_menu,.profile_menu_bell{
     display: none;
     right: 0;
+    top: 100%;
     position: absolute;
     background-color: #cccccc;
     list-style: none;
@@ -97,13 +102,25 @@ body {
     text-decoration: none;
     display: block
 }
-.profile_menu li a:hover{
+.menu_bell li a{
+    color: black;
+    padding: 5px 12px;
+    text-decoration: none;
+    display: inline-flex;
+}
+.profile_menu li a:hover,.profile_menu_bell li a:hover{
     background-color: #ddd;
     color: black;
     border-radius: 12px;
     cursor: pointer;
 }
-
+.tongquat{
+    all: unset;
+}
+.tongquat:hover{
+    text-decoration: underline;
+    background-color: #cccccc !important;
+}
 .koi-menu {
     display: none;
     position: absolute;
@@ -135,6 +152,7 @@ body {
 .auction:hover .koi-menu {
     display: block;
 }
+
 .taikhoan {
     display: flex;
     align-items: center;
