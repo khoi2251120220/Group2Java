@@ -1,6 +1,6 @@
 package uth.edu.auctionkoi.pojo;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "STAFFS")

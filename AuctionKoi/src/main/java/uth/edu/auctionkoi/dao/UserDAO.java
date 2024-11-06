@@ -3,18 +3,22 @@ package uth.edu.auctionkoi.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import uth.edu.auctionkoi.pojo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+@Repository
 public class UserDAO {
     private final SessionFactory sessionFactory;
     private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 
-    public UserDAO(String persistenceName) {
-        Configuration config = new Configuration().configure(persistenceName);
-        sessionFactory = config.buildSessionFactory();
+    @Autowired
+    public UserDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     public boolean addUser(User user) {
@@ -81,6 +85,21 @@ public class UserDAO {
             transaction.rollback();
             logger.error("Error deleting user", e);
             return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<User> getAllUsers() {
+        Session session = sessionFactory.openSession();
+        try {
+            Query<User> query = session.createQuery("from User", User.class);
+            List<User> users = query.list();
+            logger.info("All users retrieved successfully");
+            return users;
+        } catch (Exception e) {
+            logger.error("Error retrieving users", e);
+            return null;
         } finally {
             session.close();
         }
