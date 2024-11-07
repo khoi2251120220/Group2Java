@@ -172,6 +172,28 @@ $(document).ready(function (){
         window.location.reload();
     })
 })
+$(document).on("scroll", function() {
+    var $adviceSection = $(".advice-section");
+    var $footer = $("#footer");
 
+    // Vị trí của footer và advice section
+    var footerOffset = $footer.offset().top;
+    var adviceSectionHeight = $adviceSection.outerHeight();
+    var scrollTop = $(window).scrollTop();
+    var windowHeight = $(window).height();
+
+    // Kiểm tra nếu phần advice-section chạm tới footer
+    if (scrollTop + windowHeight > footerOffset) {
+        $adviceSection.css({
+            position: "absolute",
+            top: footerOffset - adviceSectionHeight + 65
+        });
+    } else {
+        $adviceSection.css({
+            position: "fixed",
+            top: "165px"
+        });
+    }
+});
 
 

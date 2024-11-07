@@ -1,0 +1,92 @@
+.form-notification{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+.tintuc{
+    margin-left: 23px;
+    margin-bottom: 22px;
+    margin-top: -8px;
+    background-color: #35342f;
+    padding: 17px;
+    width: 888px;
+    border-radius: 6px;
+    color: wheat;
+}
+
+.all {
+    width: 69%;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: -30px;
+
+}
+.advice-section {
+    background-color: #35342f;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    right: 0;
+    color: white;
+    margin-top: -85px;
+    margin-bottom: 600px;
+    width: 30%;
+    position: fixed;
+    margin-right: 15px;
+}
+.notification_picture{
+    width: 100%;
+    height: 250px;
+}
+.advice-section h3 {
+    font-size: 18px;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.advice-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advice-section ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.advice-section ul li strong {
+    color: #d9534f;
+}
+
+.notification_menu {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 5px solid #0078d7;
+    border-radius: 5px;
+    color: white;
+    background-color: #35342f;
+}
+
+.notification_menu h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #0078d7;
+}
+
+.notification_menu p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.notification_menu strong {
+    color: #d9534f;
+}
+
+.notification_menu:last-child {
+    margin-bottom: 0;
+}
