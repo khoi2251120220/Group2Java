@@ -326,3 +326,84 @@ span {
 .container-account button:hover {
     background-color: #e03e00;
 }
+/* Cài đặt người dùng */
+#setting_section {
+    background-color: #ffffff; /* Đổi nền thành trắng */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+#setting_section h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#setting_section p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.setting-group label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.setting-group input,
+.setting-group select {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff; /* Đổi nền của input và select thành trắng */
+    transition: border-color 0.3s ease;
+}
+
+.setting-group input:focus,
+.setting-group select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.setting-group button {
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.setting-group button:hover {
+    background-color: #45a049;
+}
+#user-username,
+#user-password {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+#user-username:focus,
+#user-password:focus {
+    outline: none;
+    border-color: #4CAF50;
+}

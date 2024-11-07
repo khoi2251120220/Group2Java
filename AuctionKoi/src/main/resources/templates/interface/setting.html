@@ -2,11 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Cài đặt người dùng</title>
+  <link rel="stylesheet" type="text/css" th:href="@{../css/styles.css}">
 </head>
 <body>
-<div th:fragment="setting" id="setting_section" style="display: none; background-color: #fff; ">
-  <h1 >Setting</h1>
+
+<div th:fragment="setting" id="setting_section" style="display: none; background-color: #fff; padding: 20px; border-radius: 8px;">
+  <h1>Cài đặt người dùng</h1>
+  <p>Cập nhật thông tin cá nhân và các tùy chọn cài đặt tài khoản của bạn.</p>
+
+  <!-- Start Setting Form -->
+  <form action="#" method="POST">
+    <div class="setting-group">
+      <label for="user-username">Tên người dùng:</label>
+      <input type="text" id="user-username" name="username" placeholder="Tên người dùng" required>
+    </div>
+
+    <div class="setting-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+    </div>
+
+    <div class="setting-group">
+      <label for="user-password">Mật khẩu mới:</label>
+      <input type="password" id="user-password" name="password" placeholder="Mật khẩu mới (nếu muốn thay đổi)">
+    </div>
+
+    <div class="setting-group">
+      <label for="role">Vai trò:</label>
+      <select id="role" name="role" required>
+        <option value="user">Người dùng</option>
+        <option value="admin">Quản trị viên</option>
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <button type="submit">Cập nhật cài đặt</button>
+    </div>
+  </form>
 </div>
+
 </body>
 </html>

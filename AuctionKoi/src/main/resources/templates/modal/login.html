@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 <div th:fragment="login" class="modal">
     <div id="mau_nen"></div>
     <div id="tk_login">
-        <h1>Well come back</h1><br>
-        <form id="loginForm">
+        <h1>Welcome back</h1><br>
+        <form id="loginForm" method="POST" action="/login">
             <label for="username">Account *</label><br><br>
-            <input type="text" id="username" name="username"><br><br><br>
+            <input type="text" id="username" name="username" required><br><br><br>
             <label for="password">Password *</label><br><br>
-            <input type="password" id="password" name="password"><br><br><br>
+            <input type="password" id="password" name="password" required><br><br><br>
             <button class="login_btn" type="submit">LOG IN</button><br><br><br>
             <div class="footer_login">
-                <span class="text_dk"style="font-size: 16px">Need an account?  </span>&nbsp
-                <button class="register dang_ky" type="submit">Register</button><br><br>
+                <span class="text_dk" style="font-size: 16px">Need an account?  </span>&nbsp
+                <a href="/register"><button class="register dang_ky" type="button">Register</button></a><br><br>
             </div>
         </form>
     </div>
