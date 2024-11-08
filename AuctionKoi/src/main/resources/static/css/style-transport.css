@@ -1,0 +1,258 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0px; /* Khoảng trống xung quanh khung */
+}
+
+.content{
+    margin-top: 25px;
+    width: 100%;
+}
+
+.tracking-container {
+    background-color: white;
+    padding: 40px; /* Tăng padding để nội dung thoáng hơn */
+    border-radius: 10px;
+    max-width: 100%; /* Mở rộng chiều rộng tối đa lên 80% của trang */
+    width: 100%; 
+    min-height: 70vh; /* Tăng chiều cao tối thiểu cho khung lớn hơn */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa các phần tử bên trong */
+}
+
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.order-info p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    height: 8px;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.4s ease;
+}
+
+.tracking-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+.circle svg {
+    width: 60%; /* Chiếm 60% kích thước của vòng tròn */
+    height: 60%; /* Chiếm 60% chiều cao của vòng tròn */
+    max-width: 100%; /* Đảm bảo biểu tượng không vượt quá kích thước vòng tròn */
+    max-height: 100%; /* Đảm bảo biểu tượng không vượt quá kích thước vòng tròn */
+}
+
+.circle svg g{
+    fill:#fff
+}
+
+.line {
+    height: 2px;
+    background-color: #ddd;
+    flex: 1;
+    position: relative;
+    top: 15px;
+}
+
+.line.completed {
+    background-color: #4CAF50; /* Màu cho đường khi hoàn thành */
+}
+
+.line.actived {
+    background-color: #FFA726; /* Màu cho đường khi đang hoạt động */
+}
+
+
+.step.completed .circle {
+    background-color: #fff;
+    border: 2px solid #4CAF50;
+}
+
+.step.completed .circle svg g{
+    fill: #4CAF50;
+}
+.step.completed p,
+.step.completed span{
+    color: #4CAF50;
+}
+
+.step.actived .circle {
+    
+    transform: scale(1.2);
+    background-color: #fff;
+    
+    border: 2px solid #FFA726;
+}
+
+.step.actived .circle svg g{
+    fill: #FFA726;
+}
+
+.step.actived p,
+.step.actived span {
+    color: #FFA726;
+}
+
+.details {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    display: none;
+}
+
+.step.completed .details, .step.actived .details {
+    display: block;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 3s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.search-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-container input {
+    padding: 8px;
+    width: 200px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Tracking Details Layout */
+.tracking-details {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: inherit;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px; /* Tạo khoảng cách giữa container và details */
+}
+
+.content-details{
+    display: flex;
+    flex-direction: row;
+}
+
+.label-details h2{
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Left Column - Recipient Info */
+.recipient-info {
+    flex: 1; /* Đặt độ rộng nhỏ hơn */
+    font-size: 14px;
+    color: #333;
+}
+
+/* Right Column - Tracking Steps */
+.tracking-steps {
+    flex: 2; /* Đặt độ rộng lớn hơn */
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each Tracking Step */
+.tracking-steps .step {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.tracking-steps .step:last-child {
+    border-bottom: none;
+}
+
+.tracking-steps .step strong {
+    color: #4CAF50;
+}
