@@ -56,7 +56,17 @@ $(document).ready(function() {
         });
     });
 });
+$(document).ready(function () {
+    $('.tb1, .tb2, .tb3, .tb4, .tb5').click(function () {
+        var target = $(this).data('target'); // Lấy giá trị từ data-target
+        $('#thbao_section').show();
+        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #auction-section, .profile_menu, #thtoan_section, #setting_section, #tk_section').hide();
 
+        $('html, body').animate({
+            scrollTop: $(target).offset().top - 50// Cuộn đến mục tiêu
+        });
+    });
+});
 
 $(document).ready(function () {
     // Sự kiện khi nhấn nút login
@@ -64,10 +74,10 @@ $(document).ready(function () {
         event.preventDefault();
         if ($('#tk_login').is(':visible')) {
             $('#mau_nen').hide();
-            $('#tk_login').hide();
+            $('#tk_login').hide(500);
         } else {
             $('#mau_nen').show();
-            $('#tk_login').show();
+            $('#tk_login').show(500);
             $('#tk_register').hide();
         }
     });
@@ -78,10 +88,10 @@ $(document).ready(function () {
 
         if ($('#tk_register').is(':visible')) {
             $('#mau_nen').hide();
-            $('#tk_register').hide();
+            $('#tk_register').hide(500);
         } else {
             $('#mau_nen').show();
-            $('#tk_register').show();
+            $('#tk_register').show(500);
             $('#tk_login').hide();
         }
     });
