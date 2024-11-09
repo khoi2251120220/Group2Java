@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo dõi vận chuyển</title>
+    <link rel="icon" th:href="@{../image/logo.webp}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../font_icon/themify-icons/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/stylesNotification.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
+    <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div th:fragment="product_auction" id="product-auction-section" style="display: none; background-color: #fff; ">
+    <div class="main-Form">
+        <h1>01 xe ô tô con nhãn hiệu KIA, dòng xe SPECTRA; Biển số đăng ký: 31A-6249</h1>
+        <div class="main-menu">
+            <a href="#">Trang chủ </a>
+            <p>/ Tài sản đấu giá</p>
+        </div>
+    </div>
+    <hr style="margin:10px 3%;">
+
+    <div class="form-auction">
+        <!-- Image Section -->
+        <div class="form-auction-left">
+            <div class="form-auction-left-border">
+                <img src="img/Goshiki-dau-gia.jpg" alt="Xe oto" style="width: 100%;">
+            </div>
+            <div class="img_information">
+
+            </div>
+
+        </div>
+        <!-- Auction Info Section -->
+        <div class="form-auction-right">
+            <p>Thời gian đếm ngược đấu giá</p>
+            <div class="timee">
+                <div class="time">
+                    <div class="time-date">
+                        <p>01</p>
+                        <p>58</p>
+                        <p>47</p>
+                    </div>
+                    <div class="time-datee">
+                        <p>GIỜ</p>
+                        <p>PHÚT</p>
+                        <p>GIÂY</p>
+                    </div>
+                </div>
+            </div>
+            <div class="auction-details">
+                <ul>
+                    <li><strong>Giá khởi điểm:</strong></li>
+                    <li class="auction-details-rigth">52.020.000 VNĐ</li>
+                </ul>
+                <ul>
+                    <li><strong>Phí đăng ký tham gia:</strong></li>
+                    <li class="auction-details-rigth">150.000 VNĐ</li>
+                </ul>
+                <ul>
+                    <li><strong>Bước giá:</strong></li>
+                    <li class="auction-details-rigth">Không giới hạn</li>
+                </ul>
+                <ul>
+                    <li><strong>Tiền đặt trước:</strong></li>
+                    <li class="auction-details-rigth">10.000.000 VNĐ</li>
+                </ul>
+                <ul>
+                    <li><strong>Phương thức đấu giá:</strong></li>
+                    <li class="auction-details-rigth">Trả giá liên tục</li>
+                </ul>
+                <ul>
+                    <li><strong>Nơi xem tài sản:</strong></li>
+                    <li class="auction-details-rigth">Số 4 Phạm Văn Đồng, Mai Dịch, Cầu Giấy, Hà Nội</li>
+                </ul>
+                <ul>
+                    <li><strong>Thời gian xem tài sản:</strong></li>
+                    <li class="auction-details-rigth">Từ 09/10/2024 đến 10/10/2024</li>
+                </ul>
+
+                <div class="auction-price">
+                    <!-- Mục tăng giá thủ công và tự động nằm ngang -->
+                    <h2>Tăng giá đấu</h2>
+                    <div class="inline-inputs">
+                        <div>
+                            <label for="manualBid">Nhập số tiền muốn tăng:</label>
+                            <input type="number" id="manualBid" name="manualBid" placeholder="Nhập số tiền (VNĐ)">
+                        </div>
+                        <div>
+                            <label for="autoBid">Chọn mức tăng giá:</label>
+                            <select id="autoBid" name="autoBid">
+                                <option value="500000">500,000 VNĐ</option>
+                                <option value="1000000">1,000,000 VNĐ</option>
+                                <option value="2000000">2,000,000 VNĐ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Nút xác nhận -->
+                    <button type="button" onclick="placeBid()">Đặt giá đấu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="information">
+        <div class="Product_Description">
+            <button>Mô tả sản phẩm </button>
+            <button>Thông tin đấu giá</button>
+        </div>
+
+        <div class="informationn">
+            abcgvadhadgha
+            djhbahda
+            djhbahda
+            <h1>adhjahj</h1>
+            <h2>djhbahda</h2>
+        </div>
+    </div>
+</body>
+</html>
