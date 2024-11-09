@@ -386,6 +386,7 @@ body {
 }
 /*footer*/
 #footer {
+    margin-top: 45px;
     background-color: #1a2b23;
     padding: 80px 20px 60px;
     text-align: center;
@@ -559,7 +560,7 @@ body {
     font-size: 14px;
 }
 
-.footer_login .text_dk {
+.text_dk {
     color: #777;
 }
 
