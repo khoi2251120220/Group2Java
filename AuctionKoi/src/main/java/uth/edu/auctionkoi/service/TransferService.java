@@ -1,0 +1,19 @@
+package uth.edu.auctionkoi.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import uth.edu.auctionkoi.pojo.Transfer;
+import uth.edu.auctionkoi.repository.ITransferRepository;
+
+import java.util.Optional;
+
+@Service
+public class TransferService implements ITransferService {
+    @Autowired
+    private ITransferRepository transferRepository;
+
+    @Override
+    public Optional<Transfer> findById(long id) {
+        return transferRepository.findById(id);
+    }
+}

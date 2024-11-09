@@ -1,8 +1,15 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+
+@Setter
+@Getter
 @Entity
 @Table(name = "TRANSFERS")
 public class Transfer {
@@ -11,41 +18,22 @@ public class Transfer {
     private long id;
 
     private BigDecimal transferAmount;
-    private LocalDateTime transferDate;
+    private LocalDateTime createDeliveryDate;
+    private LocalDateTime expectedDeliveryDate;
+    private double weight;
+    private String statusPayment;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "buyer_id")
+    private Buyer buyer;
 
-    public long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    // Getters và setters cho shippingDetails
+    // Thiết lập quan hệ OneToMany với ShippingDetail
+    @OneToMany(mappedBy = "transfer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShippingDetail> shippingDetails;
 
-    public BigDecimal getTransferAmount() {
-        return transferAmount;
-    }
-
-    public void setTransferAmount(BigDecimal transferAmount) {
-        this.transferAmount = transferAmount;
-    }
-
-    public LocalDateTime getTransferDate() {
-        return transferDate;
-    }
-
-    public void setTransferDate(LocalDateTime transferDate) {
-        this.transferDate = transferDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
