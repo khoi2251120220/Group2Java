@@ -124,8 +124,9 @@ $(document).ready(function () {
         if ($('#loginForm')[0].checkValidity()) {
             // Nếu hợp lệ, chuyển hướng đến file index.html
             // window.location.href = '/template/index.html';
-            $('#content, #slider, .Hocakoi').show();
-            $('#tk_login,#mau_nen').hide();
+            $('#content, #slider, .Hocakoi,.bell,.user').show();
+            $('#tk_login,#mau_nen,#login,.register').hide();
+
 
         } else {
             // Nếu không hợp lệ, hiển thị thông báo lỗi mặc định của trình duyệt
@@ -151,6 +152,7 @@ $(document).ready(function () {
             // Nếu hợp lệ, ẩn form đăng ký và hiển thị form đăng nhập
             $('#tk_register').hide();
             $('#tk_login').show(500); // Hiển thị form đăng nhập
+
         } else {
             // Nếu không hợp lệ, trigger thông báo lỗi mặc định của trình duyệt
             $('#register_Form')[0].reportValidity();
@@ -244,7 +246,7 @@ $(document).on("scroll", function() {
     if (scrollTop + windowHeight > footerOffset) {
         $adviceSection.css({
             position: "absolute",
-            top: footerOffset - adviceSectionHeight + 40
+            top: footerOffset - adviceSectionHeight + 65
         });
     } else {
         $adviceSection.css({
