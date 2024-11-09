@@ -407,3 +407,230 @@ span {
     outline: none;
     border-color: #4CAF50;
 }
+/*search*/
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-button {
+    padding: 10px 15px;
+    background-color: #FF3366;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+/*kết*/
+main {
+    padding: 0 50px;
+}
+.main-Form {
+    padding: 20px;
+    text-align: left;
+    margin-top: 100px;
+}
+.main-menu {
+    display: flex;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-auction {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.form-auction-left img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-auction-right {
+    width: 50%;
+    padding: 20px;
+}
+/* General Styling */
+* {
+    box-sizing: border-box; /* Áp dụng box-sizing cho toàn bộ trang */
+}
+
+.timee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); /* Giảm shadow */
+    background-color: white;
+    padding: 10px; /* Giảm padding */
+    border-radius: 8px; /* Tùy chọn: bo tròn góc */
+    width: auto; /* Đảm bảo kích thước hộp vừa với nội dung */
+    width: 100%; /* Đặt kích thước tối đa nếu cần */
+}
+
+.time-date {
+    margin: 0;
+    display: flex;
+    padding: 0;
+}
+
+.time-date p {
+    font-size: 24px;
+    margin: 0 5px; /* Giảm khoảng cách giữa các chữ số */
+}
+
+.time-datee {
+    margin: 0;
+    display: flex;
+    padding: 0;
+}
+
+.time-datee p {
+    font-size: 14px;
+    margin: 0 5px; /* Giảm khoảng cách giữa các nhãn GIỜ, PHÚT, GIÂY */
+}
+
+.form-auction-right p {
+    padding-bottom: 10px;
+}
+
+.auction-details {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.auction-details ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auction-details ul li {
+    margin: 10px 0;
+}
+
+.auction-details ul li strong {
+    color: #333;
+}
+
+.auction-price {
+    margin: 20px 0;
+}
+
+.auction-price h2 {
+    margin-bottom: 10px;
+}
+
+.auction-price label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.auction-price input,
+.auction-price select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.auction-price button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.auction-price button:hover {
+    background-color: #45a049;
+}
+
+/* Flexbox for two inputs inline */
+.inline-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline-inputs > div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.inline-inputs > div:last-child {
+    margin-right: 0;
+}
+
+input[type="number"], select {
+    width: 100%;
+}
+
+
+.Product_Description {
+    margin-top: 30px;
+    display: flex;
+    justify-content: left;
+}
+
+.Product_Description button {
+    color: #333;
+    font-size: 18px;
+    padding: 18px;
+    margin: 0 30px 0 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border: none;
+    /* Improved box-shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), /* subtle shadow */
+    0 2px 5px rgba(0, 0, 0, 0.2);   /* stronger shadow for depth */
+    transition: box-shadow 0.3s ease;
+}
+
+.Product_Description button:hover {
+    /* Darker shadow on hover for emphasis */
+    background-color: red;
+}
+
+.information {
+    padding: 20px;
+}
+.informationn {
+    width: 100%;
+    margin: 30px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), /* subtle shadow */
+    0 2px 5px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
