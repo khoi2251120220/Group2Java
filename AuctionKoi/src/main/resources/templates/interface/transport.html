@@ -23,7 +23,7 @@
 
                     <div class="order-info">
                         <p>Mã đơn hàng: <span th:text="${transfer.id}">#123456789</span></p>
-                        <p>Người nhận: <span th:text="${transfer.statusPayment}">Nguyễn Văn A</span></p>
+                        <p>Người nhận: <span th:text="${transfer.buyer.getUser().getFullName()}">Nguyễn Văn A</span></p>
                     </div>
 
                     <!-- Thanh tiến trình -->
@@ -343,89 +343,25 @@ l-54 0 0 39 c0 64 -56 111 -107 91z" />
 
                     <div class="content-details">
                         <div class="recipient-info">
-                            <p><strong>Người nhận:</strong> Nguyễn Hóa</p>
-                            <p><strong>SĐT:</strong> (+84) 987654321</p>
-                            <p>Địa chỉ: Xã Bà Điểm, Huyện Hóc Môn, TP. Hồ Chí
-                                Minh</p>
+                            <p><strong>Người nhận:</strong><span th:text="${transfer.buyer.getUser().getFullName()}">Nguyễn Hóa</span></p>
+                            <p><strong>SĐT:</strong><span th:text="${transfer.buyer.getUser().getPhoneNumber()}">0987654321</span></p>
+                            <p>Địa chỉ: <span th:text="${transfer.buyer.getUser().getAddress()}">Ho Chi Min</span></p>
                         </div>
 
-                        <div class="tracking-steps">
+                        <div th:if="${transfer.getShippingDetails() != null}" th:each="shipping : ${transfer.shippingDetails}" class="tracking-steps">
                             <div class="step">
-                                <p><strong>14:13 25-10-2024 - Đã giao</strong></p>
-                                <p>Giao hàng thành công</p>
-                                <p><strong>Người nhận hàng:</strong> Nguyễn Hóa.
-                                </p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>08:33 25-10-2024 - Đang vận
-                                    chuyển</strong></p>
-                                <p>Đơn hàng sẽ sớm được giao, vui lòng chú ý điện
-                                    thoại.</p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>05:36 25-10-2024 - Đã sắp xếp tài xế giao
-                                    hàng</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>02:22 25-10-2024 - Đơn hàng đã đến trạm
-                                    giao
-                                    hàng</strong></p>
-                                <p>Đơn hàng sẽ được giao trong vòng 24 giờ tiếp
-                                    theo.</p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>22:25 24-10-2024 - Đơn hàng đã rời kho
-                                    phân
-                                    loại</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>22:18 24-10-2024 - Đơn hàng đã đến kho
-                                    phân
-                                    loại</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>21:11 24-10-2024 - Đơn hàng đã rời bưu
-                                    cục</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>20:23 24-10-2024 - Đơn hàng đã đến bưu
-                                    cục</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>17:26 24-10-2024 - Đơn vị vận chuyển lấy
-                                    hàng
-                                    thành công</strong></p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>09:27 24-10-2024 - Đang được chuẩn
-                                    bị</strong></p>
-                                <p>Người gửi đang chuẩn bị hàng</p>
-                            </div>
-
-                            <div class="step">
-                                <p><strong>01:00 24-10-2024 - Đặt hàng thành
-                                    công</strong></p>
-                                <p>Đơn hàng đã được đặt</p>
+                                <p><strong class="date" th:text="${shipping.getDate()}">14:13 25-10-2024</strong> - Đã giao</p>
+                                <p th:text="${shipping.getStageName()}">Giao hàng thành công</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
+            <div th:if="${error}">
+                <div th:insert="fragments/error-message :: error-container"></div>
+            </div>
             <div th:insert="fragments/footer :: footer"></div>
-        </div>
-        <div th:if="${error}">
-            <p th:text="${error}"></p>
         </div>
         <script type="text/javascript" th:src="@{../js/script.js}"></script>
     </body>

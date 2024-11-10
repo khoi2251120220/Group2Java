@@ -1,0 +1,53 @@
+<!-- fragments/error-message.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Thông báo lỗi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8d7da;
+      color: #721c24;
+      text-align: center;
+      padding: 50px;
+    }
+    .error-container {
+      background-color: #f5c6cb;
+      border: 1px solid #f1b0b7;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .error-container h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    .error-container p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .error-container a {
+      padding: 10px 20px;
+      color: white;
+      background-color: #d9534f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+    .error-container a:hover {
+      background-color: #c9302c;
+    }
+  </style>
+</head>
+<body>
+<div class="error-container" th:if="${error}">
+  <h1>Đã xảy ra lỗi</h1>
+  <p>Bạn hãy quay lại trang chủ</p>
+  <a href="/" th:href="@{/}">Quay lại trang chủ</a>
+</div>
+</body>
+</html>

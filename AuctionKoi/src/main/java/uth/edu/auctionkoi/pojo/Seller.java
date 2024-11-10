@@ -10,8 +10,10 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     private String itemName;
     private String itemType;
+    @Column(columnDefinition = "NVARCHAR(500)")
     private String itemLocation;
 
     @OneToOne
