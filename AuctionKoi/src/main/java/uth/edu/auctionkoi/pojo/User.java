@@ -14,7 +14,6 @@ public class User {
     private String email;
     private String phoneNumber;
     private String address;
-    private String role;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Seller seller;
@@ -24,14 +23,6 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Staff staff;
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     // Getters and Setters
     public long getId() {
