@@ -9,6 +9,7 @@ public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(columnDefinition = "NVARCHAR(500)")
     private String position;
 
     @OneToOne

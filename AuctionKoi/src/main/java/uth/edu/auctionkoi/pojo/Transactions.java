@@ -1,8 +1,13 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+@Getter
+@Setter
 @Entity
 @Table(name = "TRANSACTIONS")
 public class Transactions {
@@ -21,51 +26,4 @@ public class Transactions {
     @JoinColumn(name = "buyer_id")
     private Buyer buyer;
 
-    public Buyer getBuyer() {
-        return buyer;
-    }
-
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
-    }
-
-    public Auction getAuction() {
-        return auction;
-    }
-
-    public void setAuction(Auction auction) {
-        this.auction = auction;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getBidTime() {
-        return bidTime;
-    }
-
-    public void setBidTime(LocalDateTime bidTime) {
-        this.bidTime = bidTime;
-    }
-
-    public BigDecimal getBidDecimal() {
-        return bidDecimal;
-    }
-
-    public void setBidDecimal(BigDecimal bidDecimal) {
-        this.bidDecimal = bidDecimal;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 }

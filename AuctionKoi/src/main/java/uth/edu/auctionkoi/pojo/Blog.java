@@ -1,9 +1,14 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "BLOGS")
 public class Blog {
@@ -11,8 +16,10 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String title;
     private String content;
     private LocalDateTime postDate;
+    private String statusEdit;
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -20,44 +27,4 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments;  // Sử dụng lớp Comment của bạn
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public LocalDateTime getPostDate() {
-        return postDate;
-    }
-
-    public void setPostDate(LocalDateTime postDate) {
-        this.postDate = postDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
 }

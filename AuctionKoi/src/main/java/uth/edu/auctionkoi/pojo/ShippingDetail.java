@@ -14,10 +14,9 @@ public class ShippingDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String deliveryPhone;
-    private String deliveryName;
-    private String deliveryInfo;
-    private String statusShipping;
+    private String stageName;
+    private LocalDateTime date;
+    private String status;
 
     // Getters và setters cho transfer
     // Thiết lập quan hệ ManyToOne với Transfer
