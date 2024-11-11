@@ -236,6 +236,11 @@ h1 {
     color: #333;
 }
 
+.recipient-info p, span {
+    font-size: 14px;
+    color: #333;
+}
+
 /* Right Column - Tracking Steps */
 .tracking-steps {
     flex: 2; /* Đặt độ rộng lớn hơn */
