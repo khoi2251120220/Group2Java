@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>abc</title>
+  <link rel="icon" th:href="@{../image/logo.webp}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../font_icon/themify-icons/themify-icons.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../css/styles.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../css/stylesNotification.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
+  <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
+  <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">
+  <link rel="stylesheet" type="text/css" th:if="${error}" th:href="@{../css/error.css}">
+</head>
+<body>
+
+<div  id="auction-section" style="display: flex; background-color: #fff; ">
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <div class="container-head">
+      <a th:href="@{#}"><h1> Auction #65</h1></a>
+      <p>DATE </p>
+    </div>
+    <div class="Auction-menu">
+      <button><i class="fa-solid fa-fish" style="padding: 0 10px"></i>Varieties</button>
+      <button><i class="fa-solid fa-mars" style="padding:0 10px"> </i>Sexes</button>
+      <button><i class="fa-solid fa-ruler" style="padding:0 10px">  </i>Sizes</button>
+      <button><i class="fa-solid fa-globe" style="padding:0 10px"></i> Breeders</button>
+    </div>
+
+    <div class="card-container">
+      <div th:each="koi : ${koiList}" class="card">
+        <div class="card-image">
+          <div class="auction-logo">
+            <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="ảnh cá">
+          </div>
+          <img th:src="${koi.koiImage}" alt="Golden Corn">
+          <div class="rating">
+            <span><i class="fa-solid fa-tag"></i> 910</span>
+            <span>★★★★★</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="cardd">
+            <h2>Goshiki</h2>
+            <p><i class="fa-solid fa-clock"></i> Ended!</p>
+            <p><i class="fa-solid fa-play"></i> $1,000</p>
+          </div>
+          <hr>
+          <div class="card-details">
+            <ul>
+              <li><i class="fa-solid fa-globe"></i> Breeder:</li>
+              <li th:text="${koi.koiType}"></td></li>
+            </ul>
+            <ul>
+              <li><i class="fa-solid fa-ruler"></i> Length:</li>
+              <li th:text="${koi.koiWeight}"></li>
+            </ul>
+            <ul>
+              <li><i class="fa-solid fa-venus-mars"></i> Color:</li>
+              <li th:text="${koi.koiColor}"></li>
+            </ul>
+            <ul>
+              <li><i class="fa-solid fa-birthday-cake"></i> Age:</li>
+              <li th:text="${koi.koiAge}"></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

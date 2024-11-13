@@ -18,11 +18,13 @@ public class Koi {
     private String koiColor;
     private int koiAge;
     private double koiWeight;
+    private String koiImage;
+    private String koiImageLogo;
+    private String koiName;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private Seller seller;
     @OneToOne(mappedBy = "koi")
     private Auction auction;
-
 }
