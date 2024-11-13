@@ -3,45 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}">Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
+    <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
+    <style>
+        h2 {
+            font-size: 1.5rem;
+        }
+        body {
+            background-color: #ffffff;
+        }
+        .sidebar {
+            height: 100vh;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar.collapsed {
+            width: 60px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: opacity 0.3s;
+        }
+        .sidebar.collapsed a {
+            opacity: 0; /* Ẩn chữ khi menu thu gọn */
+        }
+        .sidebar.collapsed a:hover {
+            opacity: 1;
+        }
+        .toggle-btn {
+            top: 10px;
+            right: -20px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .content {
+            margin-left: 180px;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+        .content.collapsed {
+            margin-left: 80px; /* Điều chỉnh theo chiều rộng menu thu gọn */
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1 th:text="${title}"></h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Users</div>
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${userCount}">0</h5>
-                    <p class="card-text">Total number of users.</p>
-                </div>
-            </div>
+
+<!-- Menu bên trái -->
+<div class="sidebar" id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <h2 class="text-white text-center">Menu</h2>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#revenueChart">Doanh thu</a>
+    <a href="#koiSoldChart">Số lượng Cá Koi</a>
+    <a href="#transactionFeesChart">Phí giao dịch</a>
+    <a href="#settings">Cài đặt</a>
+</div>
+
+<!-- Nội dung chính -->
+<div class="content" id="content">
+    <div th:replace="fragments/header :: header"></div>
+    <div style="height: 20px"></div>
+    <div class="container mt-5">
+        <h1 th:text="${title}">Koi Auction Dashboard</h1>
+
+        <!-- Biểu đồ Doanh thu -->
+        <div class="my-4">
+            <h3>Doanh thu theo tháng</h3>
+            <canvas id="revenueChart"></canvas>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-header">Posts</div>
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${postCount}">0</h5>
-                    <p class="card-text">Total number of posts.</p>
-                </div>
-            </div>
+
+        <!-- Biểu đồ Số lượng Cá Koi đã bán -->
+        <div class="my-4">
+            <h3>Số lượng cá Koi bán ra theo tháng</h3>
+            <canvas id="koiSoldChart"></canvas>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-danger mb-3">
-                <div class="card-header">Comments</div>
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${commentCount}">0</h5>
-                    <p class="card-text">Total number of comments.</p>
-                </div>
-            </div>
+
+        <!-- Biểu đồ Phí giao dịch -->
+        <div class="my-4">
+            <h3>Phí giao dịch theo tháng</h3>
+            <canvas id="transactionFeesChart"></canvas>
         </div>
     </div>
-
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('collapsed');
+    }
+
+    const months = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+
+    const revenueData = [5000, 8000, 7000, 10000, 12000, 15000, 13000, 14000, 16000, 20000, 22000, 25000];
+    const koiSoldData = [15, 18, 20, 22, 24, 30, 25, 28, 26, 34, 40, 45];
+    const transactionFeesData = [300, 450, 400, 500, 600, 700, 650, 670, 750, 800, 900, 1000];
+
+    const revenueChartCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revenueChartCtx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Doanh thu (USD)',
+                data: revenueData,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: { display: true, text: 'Doanh thu theo tháng' }
+            }
+        }
+    });
+
+    const koiSoldChartCtx = document.getElementById('koiSoldChart').getContext('2d');
+    new Chart(koiSoldChartCtx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Số lượng cá Koi bán ra',
+                data: koiSoldData,
+                backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                borderColor: 'rgb(153, 102, 255)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: { display: true, text: 'Số lượng cá Koi bán ra theo tháng' }
+            }
+        }
+    });
+
+    const transactionFeesChartCtx = document.getElementById('transactionFeesChart').getContext('2d');
+    new Chart(transactionFeesChartCtx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Phí giao dịch (USD)',
+                data: transactionFeesData,
+                borderColor: 'rgb(255, 159, 64)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: { display: true, text: 'Phí giao dịch theo tháng' }
+            }
+        }
+    });
+</script>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
