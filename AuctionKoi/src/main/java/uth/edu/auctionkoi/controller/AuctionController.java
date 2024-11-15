@@ -32,6 +32,6 @@ public class AuctionController {
         } else {
             model.addAttribute("error", "Koi not found");
         }
-        return "interface/auctionDemo";
+            return "interface/auctionDemo";
     }
 }
