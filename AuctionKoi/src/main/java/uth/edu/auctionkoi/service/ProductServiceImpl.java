@@ -1,4 +1,4 @@
-package uth.edu.auctionkoi.service.impl;
+package uth.edu.auctionkoi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
