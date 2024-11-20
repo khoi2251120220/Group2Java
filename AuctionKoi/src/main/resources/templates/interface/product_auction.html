@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theo dõi vận chuyển</title>
+    <title>prod</title>
     <link rel="icon" th:href="@{../image/logo.webp}">
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../font_icon/themify-icons/themify-icons.css}">
@@ -13,114 +13,90 @@
     <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
     <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">
+    <link rel="stylesheet" type="text/css" th:if="${error}" th:href="@{../css/error.css}">
+
+    <link th:href="@{/css/themify-icons.css}" rel="stylesheet" />
+    <link th:href="@{/css/stylesNotification.css}" rel="stylesheet" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/styles2.css}" rel="stylesheet" />
+<!--    <link th:href="@{/css/style-transport.css}" rel="stylesheet" />-->
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/javascript.js}"></script>
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
-<div th:fragment="product_auction" id="product-auction-section" style="display: none; background-color: #fff; ">
-    <div class="main-Form">
-        <h1>01 xe ô tô con nhãn hiệu KIA, dòng xe SPECTRA; Biển số đăng ký: 31A-6249</h1>
-        <div class="main-menu">
-            <a href="#">Trang chủ </a>
-            <p>/ Tài sản đấu giá</p>
-        </div>
-    </div>
-    <hr style="margin:10px 3%;">
-
-    <div class="form-auction">
-        <!-- Image Section -->
-        <div class="form-auction-left">
-            <div class="form-auction-left-border">
-                <img src="img/Goshiki-dau-gia.jpg" alt="Xe oto" style="width: 100%;">
-            </div>
-            <div class="img_information">
-
-            </div>
-
-        </div>
-        <!-- Auction Info Section -->
-        <div class="form-auction-right">
-            <p>Thời gian đếm ngược đấu giá</p>
-            <div class="timee">
-                <div class="time">
-                    <div class="time-date">
-                        <p>01</p>
-                        <p>58</p>
-                        <p>47</p>
-                    </div>
-                    <div class="time-datee">
-                        <p>GIỜ</p>
-                        <p>PHÚT</p>
-                        <p>GIÂY</p>
+<div th:fragment="product_auction" id="product-auction-section" >
+    <div class="product-auction-container">
+        <h1>Thông tin sản phẩm đấu giá</h1>
+        <div th:if="${product}">
+            <div class="product-container">
+                <div class="product-left">
+                    <!-- Khu vực hình ảnh -->
+                    <div class="product-image">
+                        <img src="/image/Goshiki-auction.png" alt="Hình ảnh sản phẩm" />
+<!--                        <img th:src="@{'/images/' + ${product.image}}" alt="Hình ảnh sản phẩm" style="width: 50%;">-->
                     </div>
                 </div>
-            </div>
-            <div class="auction-details">
-                <ul>
-                    <li><strong>Giá khởi điểm:</strong></li>
-                    <li class="auction-details-rigth">52.020.000 VNĐ</li>
-                </ul>
-                <ul>
-                    <li><strong>Phí đăng ký tham gia:</strong></li>
-                    <li class="auction-details-rigth">150.000 VNĐ</li>
-                </ul>
-                <ul>
-                    <li><strong>Bước giá:</strong></li>
-                    <li class="auction-details-rigth">Không giới hạn</li>
-                </ul>
-                <ul>
-                    <li><strong>Tiền đặt trước:</strong></li>
-                    <li class="auction-details-rigth">10.000.000 VNĐ</li>
-                </ul>
-                <ul>
-                    <li><strong>Phương thức đấu giá:</strong></li>
-                    <li class="auction-details-rigth">Trả giá liên tục</li>
-                </ul>
-                <ul>
-                    <li><strong>Nơi xem tài sản:</strong></li>
-                    <li class="auction-details-rigth">Số 4 Phạm Văn Đồng, Mai Dịch, Cầu Giấy, Hà Nội</li>
-                </ul>
-                <ul>
-                    <li><strong>Thời gian xem tài sản:</strong></li>
-                    <li class="auction-details-rigth">Từ 09/10/2024 đến 10/10/2024</li>
-                </ul>
+                <div class="product-right">
+                    <!-- Thông tin chi tiết sản phẩm -->
+                    <div class="product-details">
+                        <h2 th:text="${product.name}">Tên sản phẩm</h2>
+                        <p><strong>Giá khởi điểm:</strong> <span th:text="${product.startPrice} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Bước giá:</strong> <span th:text="${product.stepPrice} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Phí tham gia:</strong> <span th:text="${product.participationFee} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Tiền đặt trước:</strong> <span th:text="${product.deposit} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Phương thức đấu giá:</strong> <span th:text="${product.method}">Phương thức</span></p>
+                        <p><strong>Địa điểm:</strong> <span th:text="${product.location}">Địa điểm</span></p>
+                        <p><strong>Thời gian xem tài sản:</strong>
+                            <span th:text="${product.viewingTimeStart}">Ngày bắt đầu</span> -
+                            <span th:text="${product.viewingTimeEnd}">Ngày kết thúc</span>
+                        </p>
+                    </div>
 
-                <div class="auction-price">
-                    <!-- Mục tăng giá thủ công và tự động nằm ngang -->
-                    <h2>Tăng giá đấu</h2>
-                    <div class="inline-inputs">
-                        <div>
+
+
+                    <!-- Khu vực đấu giá -->
+                    <div class="auction-section">
+                        <h2>Tăng giá đấu</h2>
+                        <form th:action="@{/auction/placeBid}" method="post">
+                            <input type="hidden" name="productId" th:value="${product.id}">
                             <label for="manualBid">Nhập số tiền muốn tăng:</label>
-                            <input type="number" id="manualBid" name="manualBid" placeholder="Nhập số tiền (VNĐ)">
-                        </div>
-                        <div>
+                            <input type="number" id="manualBid" name="manualBid" placeholder="Nhập số tiền (VNĐ)" required>
                             <label for="autoBid">Chọn mức tăng giá:</label>
                             <select id="autoBid" name="autoBid">
                                 <option value="500000">500,000 VNĐ</option>
                                 <option value="1000000">1,000,000 VNĐ</option>
                                 <option value="2000000">2,000,000 VNĐ</option>
                             </select>
-                        </div>
-                    </div>
+                            <button type="submit">Đặt giá đấu</button>
+                        </form>
 
-                    <!-- Nút xác nhận -->
-                    <button type="button" onclick="placeBid()">Đặt giá đấu</button>
+                    </div>
                 </div>
             </div>
+
+
+        </div>
+
+        <!-- Hiển thị lỗi nếu không tìm thấy sản phẩm -->
+        <div th:if="${error}">
+            <p style="color: red;" th:text="${error}"></p>
         </div>
     </div>
     <div class="information">
         <div class="Product_Description">
-            <button>Mô tả sản phẩm </button>
-            <button>Thông tin đấu giá</button>
-        </div>
-
-        <div class="informationn">
-            abcgvadhadgha
-            djhbahda
-            djhbahda
-            <h1>adhjahj</h1>
-            <h2>djhbahda</h2>
+            <table>
+                <tr>
+                    <th>Mô tả sản phẩm</th>
+                    <th>Thông tin đấu giá</th>
+                </tr>
+                <tr>
+                    <td> 1234324</td>
+                    <td>38912738</td>
+                </tr>
+            </table>
         </div>
     </div>
+</div>
 </body>
 </html>
