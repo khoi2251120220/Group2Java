@@ -27,4 +27,9 @@ public class KoiService implements IKoiService {
     public List<Koi> findAll() {
         return koiRepository.findAll();  // Trả về danh sách tất cả Koi
     }
+
+    @Override
+    public Koi save(Koi koi) {
+        return koiRepository.save(koi);
+    }
 }

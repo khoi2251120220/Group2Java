@@ -16,7 +16,7 @@
       <li class="auction">
         <a th:href="@{#}" class=" menu_item">Auction</a>
         <ul class="koi-menu">
-          <li><a href="#">Koi Kohaku</a></li>
+          <li><a href="#" onclick="navigateToKohaku()">Koi Kohaku</a></li>
           <li><a href="#">Koi Ogon</a></li>
           <li><a href="#">Koi Showa</a></li>
           <li><a href="#">Koi Tancho</a></li>
@@ -60,6 +60,11 @@
 
 
     </ul>
+    <script>
+      function navigateToKohaku() {
+        window.location.href = 'auctionDemo/Koi';
+      }
+    </script>
   </div>
 </body>
 </html>

@@ -9,4 +9,6 @@ public interface IKoiService {
     Optional<Koi> findById(Long id);
 
     List<Koi> findAll();  // Thêm phương thức mới
+
+    Koi save(Koi koi);
 }

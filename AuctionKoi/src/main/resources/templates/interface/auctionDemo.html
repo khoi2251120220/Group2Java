@@ -12,12 +12,12 @@
   <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
   <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
   <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
-  <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">
+<!--  <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">-->
   <link rel="stylesheet" type="text/css" th:if="${error}" th:href="@{../css/error.css}">
 </head>
 <body>
 
-<div  id="auction-section" style="display: flex; background-color: #fff; ">
+<div  id="auction-section"  style="background-color: #fff; max-width: 100% ">
   <div th:insert="fragments/header :: header"></div>
   <div class="container">
     <div class="container-head">
@@ -32,10 +32,10 @@
     </div>
 
     <div class="card-container">
-      <div th:each="koi : ${koiList}" class="card">
+      <div th:each="koi : ${koiList}" th:if="${koi.koiType == 'Asagi'}"  class="card"  >
         <div class="card-image">
           <div class="auction-logo">
-            <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="ảnh cá">
+            <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="logo">
           </div>
           <img th:src="${koi.koiImage}" alt="Golden Corn">
           <div class="rating">
