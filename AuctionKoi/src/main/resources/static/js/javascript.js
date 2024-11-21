@@ -66,15 +66,15 @@ $(document).ready(function () {
     });
 
     // Sự kiện khi nhấn nút register trong form login
-    $('.register_btn_footer').click(function (e) {
+    $('.register_btn_footer').click(function (event) {
         event.preventDefault();
-        window.location.href = 'http://localhost:8080/register';
+        window.location.href = '/register';
     });
 
     // Sự kiện khi nhấn nút login trong form register
-    $('.login_btn_footer').click(function () {
+    $('.login_btn_footer').click(function (event) {
         event.preventDefault();
-        window.location.href = 'http://localhost:8080/register';
+        window.location.href = '/login';
     });
 });
 

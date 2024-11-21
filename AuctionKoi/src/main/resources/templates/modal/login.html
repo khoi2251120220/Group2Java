@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
 </head>
 <body>
+
 <div class="modal">
     <div id="mau_nen"></div>
     <div id="tk_login">
@@ -18,11 +19,11 @@
             <label for="password">Password *</label><br><br>
             <input type="password" id="password" name="password" required><br><br><br>
             
-            <button type="submit" class="login_btn">LOG IN</button><br><br><br>
+            <button type="submit" id="selenium_login" class="login_btn">LOG IN</button><br><br><br>
 
             <div class="footer_login">
                 <span class="text_dk" style="font-size: 16px">Need an account?  </span>&nbsp
-                <button class="register_btn_footer dang_ky" type="button">Register</button><br><br>
+                <a href="/register" class="register_btn_footer dang_ky" type="button" style="padding: 6px; text-decoration: none;" >Register</a>
             </div>
         </form>
     </div>
