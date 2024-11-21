@@ -32,9 +32,9 @@ public class LoginController {
                 session.setAttribute("currentUser", user);
                 return "redirect:http://localhost:8080";
             }
-            return "redirect:http://localhost:8080";
+            return "redirect:/login";
         } catch (Exception e) {
-            return "redirect:http://localhost:8080";
+            return "redirect:/login";
         }
     }
 
