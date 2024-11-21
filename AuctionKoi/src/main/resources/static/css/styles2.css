@@ -103,11 +103,12 @@ body {
     text-decoration: none;
     display: block
 }
-.menu_bell li a{
+.profile_menu_bell li a{
     color: black;
     padding: 5px 12px;
     text-decoration: none;
-    display: inline-flex;
+    display: inline-block;
+    width:94%;
 }
 .profile_menu li a:hover,.profile_menu_bell li a:hover{
     background-color: #ddd;

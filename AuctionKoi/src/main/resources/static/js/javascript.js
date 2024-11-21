@@ -71,27 +71,19 @@ $(document).ready(function () {
         event.preventDefault();
 
         // Chuyển hướng đến trang đăng nhập
-        window.location.href = 'http://localhost:8080/login';
+        window.location.href = '/login';
     });
 
 
     // Thêm sự kiện khi nhấn nút register
     $('.register').click(function (event) {
         event.preventDefault();
-        window.location.href = 'http://localhost:8080/register';
-    });
-
-    // Sự kiện khi nhấn nút register trong form login
-    $('.register_btn_footer').click(function (event) {
-        event.preventDefault();
         window.location.href = '/register';
     });
 
-    // Sự kiện khi nhấn nút login trong form register
-    $('.login_btn_footer').click(function (event) {
-        event.preventDefault();
-        window.location.href = '/login';
-    });
+
+
+
 });
 
 
