@@ -16,12 +16,28 @@ $(document).ready(function () {
         window.location.href = '/auction';
     });
     $('.contact').click(function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Ngừng hành động mặc định của liên kết
+
+        // Lưu vị trí cuộn
+        sessionStorage.setItem('scrollToContact', true);
+
+        // Điều hướng về trang index
         window.location.href = '/';
-        $('html, body').animate({
-            scrollTop: $('#contact-section').offset().top
-        });
     });
+    $(document).ready(function () {
+        // Kiểm tra nếu có giá trị 'scrollToContact' trong sessionStorage
+        if (sessionStorage.getItem('scrollToContact') === 'true') {
+            // Cuộn trang xuống #contact-section
+            $('html, body').animate({
+                scrollTop: $('#contact-section').offset().top
+            }, 1000); // 1000 là thời gian cuộn (1 giây)
+
+            // Xóa giá trị trong sessionStorage để không cuộn lại khi tải lại trang sau
+            sessionStorage.removeItem('scrollToContact');
+        }
+    });
+
+
     $('.thanh_toan').click(function (event) {
         event.preventDefault();
         window.location.href = '/thanh_toan';
