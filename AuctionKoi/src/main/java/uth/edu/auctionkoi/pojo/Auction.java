@@ -25,6 +25,10 @@ public class Auction {
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private Long startPrice; // Giá khởi điểm
+    private Long stepPrice; // Bước giá
+    private Long currentBid;
+    private Long participationFee;
 
     @Enumerated(EnumType.STRING)
     private Status status; // Trạng thái phiên đấu giá

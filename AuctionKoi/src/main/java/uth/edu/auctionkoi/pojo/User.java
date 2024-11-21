@@ -24,15 +24,10 @@ public class User {
     @Column(name = "address", columnDefinition = "NVARCHAR(500)")
     private String address;
     @Column(name = "role")
-    private String role;
+    private Role role;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Seller seller;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Buyer buyer;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Staff staff;
+    public enum Role {
+        GUEST, MEMBER, KOI_BREEDER, STAFF, MANAGER
+    }
 
 }
