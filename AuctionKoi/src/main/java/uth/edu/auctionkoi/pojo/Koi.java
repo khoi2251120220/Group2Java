@@ -39,9 +39,13 @@ public class Koi {
     private String koiPrice;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id", nullable = true)
-    private Seller seller;
+    @JoinColumn(name = "breeder_id")
+    private User breeder;
 
-    @OneToOne(mappedBy = "koi", cascade = CascadeType.ALL)
-    private Auction auction;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDING;
+
+    public enum Status {
+        PENDING, AUCTIONED, SOLD
+    }
 }
