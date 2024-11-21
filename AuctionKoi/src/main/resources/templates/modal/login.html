@@ -7,11 +7,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
 </head>
 <body>
-<div th:fragment="login" class="modal">
+<div class="modal">
     <div id="mau_nen"></div>
     <div id="tk_login">
         <h1>Welcome back</h1><br>
-        <form method="POST" action="/login">
+        <form method="POST" th:action="@{/login}">
             <label for="username">Account *</label><br><br>
             <input type="text" id="username" name="username" required><br><br><br>
 

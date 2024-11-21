@@ -23,8 +23,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, 
-                       @RequestParam String password, 
+    public String login(@RequestParam String username,
+                       @RequestParam String password,
                        HttpSession session) {
         try {
             User user = userRepository.findByUsername(username);

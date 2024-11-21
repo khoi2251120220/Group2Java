@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Cài đặt người dùng</title>
-  <link rel="stylesheet" type="text/css" th:href="@{../css/styles.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../../font_icon/themify-icons/themify-icons.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../../css/styles.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../../css/stylesNotification.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{../../css/styles2.css}">
+  <script type="text/javascript" th:src="@{../../js/jquery-3.7.1.min.js}"></script>
+  <script type="text/javascript" th:src="@{../../js/javascript.js}"></script>
 </head>
 <body>
+<div th:replace="fragments/header :: header"></div><br><br><br><br>
 
-<div th:fragment="setting" id="setting_section" style="display: none; background-color: #fff; padding: 20px; border-radius: 8px;">
+<div th:fragment="setting" id="setting_section" style=" background-color: #fff; padding: 20px; border-radius: 8px;">
   <h1>Cài đặt người dùng</h1>
   <p>Cập nhật thông tin cá nhân và các tùy chọn cài đặt tài khoản của bạn.</p>
 

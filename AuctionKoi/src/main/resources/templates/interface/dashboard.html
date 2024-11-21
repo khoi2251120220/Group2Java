@@ -5,9 +5,13 @@
     <title th:text="${title}">Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
-    <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../font_icon/themify-icons/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../css/stylesNotification.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../css/styles2.css}">
+    <script type="text/javascript" th:src="@{../../js/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../js/javascript.js}"></script>
     <style>
         h2 {
             font-size: 1.5rem;
@@ -66,6 +70,7 @@
     </style>
 </head>
 <body>
+<div th:replace="fragments/header :: header"></div>
 
 <!-- Menu bên trái -->
 <div class="sidebar" id="sidebar">
@@ -80,7 +85,7 @@
 
 <!-- Nội dung chính -->
 <div class="content" id="content">
-    <div th:replace="fragments/header :: header"></div>
+
     <div style="height: 20px"></div>
     <div class="container mt-5">
         <h1 th:text="${title}">Koi Auction Dashboard</h1>
