@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import uth.edu.auctionkoi.pojo.User;
 import uth.edu.auctionkoi.repository.UserRepository;
 import org.springframework.stereotype.Controller;
+import uth.edu.auctionkoi.service.PasswordEncoder;
 
 @Controller
 public class RegisterController {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterController(UserRepository userRepository) {
+    public RegisterController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/register")
@@ -32,7 +35,7 @@ public class RegisterController {
             user.setFullName(fullName);
             user.setPhoneNumber(phoneNumber);
             user.setEmail(email);
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
 
             userRepository.save(user);
             
