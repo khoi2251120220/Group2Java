@@ -61,7 +61,7 @@ body {
     cursor: pointer;
 }
 .user, .bell{
-    display: none;
+    display: block;
     font-size: 30px;
     background-color: #aaaaaa;
     padding: 3px;
@@ -661,4 +661,21 @@ body {
 .blog-section-list li {
     margin-bottom: 8px;
     color: #333;
+}
+
+/* Mặc định ẩn các menu khi chưa đăng nhập */
+.menu_bell, .menu_dang_nhap {
+    display: none;
+}
+
+/* Hiển thị menu khi đã đăng nhập */
+.logged-in .menu_bell,
+.logged-in .menu_dang_nhap {
+    display: block;
+}
+
+/* Ẩn nút login/register khi đã đăng nhập */
+.logged-in #login,
+.logged-in .register {
+    display: none;
 }

@@ -11,12 +11,15 @@
     <div id="mau_nen"></div>
     <div id="tk_login">
         <h1>Welcome back</h1><br>
-        <form id="loginForm" method="POST" action="/login">
+        <form method="POST" action="/login">
             <label for="username">Account *</label><br><br>
-            <input type="text" id="username" name="username" placeholder="username" required><br><br><br>
+            <input type="text" id="username" name="username" required><br><br><br>
+
             <label for="password">Password *</label><br><br>
-            <input type="password" id="password" name="password" placeholder="password" required><br><br><br>
-            <button class="login_btn" type="submit">LOG IN</button><br><br><br>
+            <input type="password" id="password" name="password" required><br><br><br>
+            
+            <button type="submit" class="login_btn">LOG IN</button><br><br><br>
+
             <div class="footer_login">
                 <span class="text_dk" style="font-size: 16px">Need an account?  </span>&nbsp
                 <button class="register_btn_footer dang_ky" type="button">Register</button><br><br>

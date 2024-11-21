@@ -6,4 +6,5 @@ import uth.edu.auctionkoi.pojo.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+    boolean existsByUsername(String username);
 }

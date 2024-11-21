@@ -612,3 +612,76 @@ input[type="number"], select {
     0 2px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
+
+.menu_bell, .menu_dang_nhap {
+    display: block !important;  /* Force display when user is logged in */
+}
+
+.bell, .user {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile_menu, .profile_menu_bell {
+    display: none;
+}
+
+.menu_bell:hover .profile_menu_bell,
+.menu_dang_nhap:hover .profile_menu {
+    display: block;
+}
+
+/* Style cho tất cả input trong form register */
+#tk_register input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(239, 239, 239);
+    color: black;
+    font-size: 16px;
+}
+
+/* Đảm bảo placeholder có màu xám nhạt */
+#tk_register input::placeholder {
+    color: #999;
+}
+
+/* Style cho label */
+#tk_register label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Style cho input group */
+#tk_register .input-group {
+    margin-bottom: 20px;
+}
+
+/* Style cho button */
+#tk_register .register_btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Style cho footer */
+#tk_register .footer_register {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style cho Log In button trong footer */
+#tk_register .log_in {
+    background: none;
+    border: none;
+    color: #17a2b8;
+    cursor: pointer;
+    font-size: 16px;
+}
