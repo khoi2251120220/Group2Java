@@ -1,27 +1,36 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@Table(name = "SHIPPING_DETAILS")
+@Data
 public class ShippingDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String stageName;
-    private LocalDateTime date;
-    private String status;
+    private Long detailId;
 
-    // Getters và setters cho transfer
-    // Thiết lập quan hệ ManyToOne với Transfer
     @ManyToOne
-    @JoinColumn(name = "transfer_id")
-    private Transfer transfer;
+    @JoinColumn(name = "shipping_id")
+    private Shipping shipping; // Liên kết với lô hàng chính
 
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String stage; // Mô tả giai đoạn (VD: "Đang vận chuyển đến công ty")
+    @Column(columnDefinition = "NVARCHAR(500)")
+    private String description; // Chi tiết bổ sung về giai đoạn
+
+    private LocalDateTime timestamp; // Thời gian cập nhật giai đoạn
+
+    @Enumerated(EnumType.STRING)
+    private Status status; // Trạng thái giai đoạn
+
+    public enum Status {
+        PENDING, IN_PROGRESS, COMPLETED
+    }
 }

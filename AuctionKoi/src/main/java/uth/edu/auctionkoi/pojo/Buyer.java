@@ -14,9 +14,6 @@ public class Buyer {
     @JoinColumn(name = "user_id")
     private User user;  // Đổi từ SecurityProperties.User thành User của bạn
 
-    @OneToMany(mappedBy = "buyer")
-    private List<Transactions> transactions;
-
     public long getId() {
         return id;
     }
@@ -31,13 +28,5 @@ public class Buyer {
 
     public void setUser(User user) {  // Đổi tham số thành User
         this.user = user;
-    }
-
-    public List<Transactions> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transactions> transactions) {
-        this.transactions = transactions;
     }
 }

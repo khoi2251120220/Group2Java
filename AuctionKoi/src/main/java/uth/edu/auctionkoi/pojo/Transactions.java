@@ -13,17 +13,26 @@ import java.time.LocalDateTime;
 public class Transactions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private BigDecimal bidDecimal;
-    private LocalDateTime bidTime;
-    private String status;
+    private Long transactionId;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne
     @JoinColumn(name = "auction_id")
     private Auction auction;
-    @ManyToOne
-    @JoinColumn(name = "buyer_id")
-    private Buyer buyer;
+
+    private Double amount; // Số tiền
+    private String paymentMethod; // Hình thức thanh toán (Bank Transfer, Cash, ...)
+
+    @Enumerated(EnumType.STRING)
+    private Status status; // Trạng thái giao dịch
+
+    private LocalDateTime transactionDate;
+
+    public enum Status {
+        PENDING, SUCCESS, FAILED
+    }
 
 }
