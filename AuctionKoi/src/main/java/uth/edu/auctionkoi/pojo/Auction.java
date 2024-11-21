@@ -1,32 +1,44 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "AUCTIONS")
+@Data
 public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private BigDecimal initialPrice;
-    private BigDecimal finalPrice;
-    private LocalDateTime auctionStartTime;
-    private LocalDateTime auctionEndTime;
-    private String status;
-
-    @Enumerated(EnumType.STRING)
-    private AuctionMethod method;
-
+    private Long auctionId;
     @OneToOne
     @JoinColumn(name = "koi_id")
     private Koi koi;
+
+    @Enumerated(EnumType.STRING)
+    private Method method; // Phương thức đấu giá
+
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+
+    @Enumerated(EnumType.STRING)
+    private Status status; // Trạng thái phiên đấu giá
+
+    @OneToOne
+    @JoinColumn(name = "winning_bid_id", nullable = true)
+    private Bid winningBid; // Giá thắng cuộc
+
+    public enum Method {
+        FIXEDPRICE, SINGLEBID, ASCENDINGBID, DESCENDINGBID
+    }
+
+    public enum Status {
+        OPEN, CLOSED, COMPLETED
+    }
 }
 
