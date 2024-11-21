@@ -28,8 +28,5 @@ public class Auction {
     @OneToOne
     @JoinColumn(name = "koi_id")
     private Koi koi;
-
-    @OneToMany(mappedBy = "auction")
-    private List<Transactions> transactions;
 }
 
