@@ -15,17 +15,12 @@
 <div th:replace="fragments/header :: header"></div><br><br><br><br>
 <div th:fragment="blog" id="blogs-section" class="blog-container" >
     <img th:src="@{../image/blog.jpg}" alt="anh blog">
-    <ul>
-        <li th:each="blog : ${blogs}">
-            <a th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a>
-            <p th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.content}"></p>
-        </li>
-    </ul>
+    <h1 th:text="${blog.title}"></h1>
+    <p th:text="${blog.content}"></p>
+    <p>Ngày đăng: <span th:text="${blog.postDate}"></span></p>
+    <a href="/blogs">Quay lại danh sách Blogs</a>
 
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
-
-
-

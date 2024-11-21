@@ -1,30 +1,52 @@
 package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-@Getter
-@Setter
 @Entity
-@Table(name = "BLOGS")
+@Table(name = "blog") // Bảng trong CSDL tên là 'blogs'
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;
+
+    @Column(columnDefinition = "TEXT") // Kiểu TEXT trong CSDL
     private String content;
-    private LocalDateTime postDate;
-    private String statusEdit;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private LocalDate postDate;
 
-    @OneToMany(mappedBy = "blog")
-    private List<Comment> comments;  // Sử dụng lớp Comment của bạn
+    // Getters và Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDate getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(LocalDate postDate) {
+        this.postDate = postDate;
+    }
 }

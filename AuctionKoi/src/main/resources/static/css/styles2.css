@@ -603,63 +603,6 @@ body {
     cursor: pointer;
 
 }
-.blog-container {
-    width: 100%;
-
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}
-
-.blog-title {
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-}
-
-
-.blog-post {
-    padding: 20px;
-}
-
-.blog-post-title {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.blog-post-intro {
-    font-size: 1.1em;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.blog-post-section {
-    margin-bottom: 20px;
-}
-
-.blog-section-title {
-    font-size: 1.4em;
-    color: #4CAF50;
-    margin-bottom: 10px;
-}
-
-.blog-section-content {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.blog-section-list {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.blog-section-list li {
-    margin-bottom: 8px;
-    color: #333;
-}
 
 /* Mặc định ẩn các menu khi chưa đăng nhập */
 .menu_bell, .menu_dang_nhap {
@@ -676,4 +619,87 @@ body {
 .logged-in #login,
 .logged-in .register {
     display: none;
+}
+
+/* Blog container */
+.blog-container {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 805px;
+}
+.blog-container img {
+    width: 100%; /* Ảnh sẽ chiếm toàn bộ chiều rộng của phần tử cha */
+    height: auto; /* Đảm bảo tỷ lệ khung hình của ảnh không bị méo */
+    object-fit: cover; /* Tùy chọn này giúp ảnh fill đầy không gian mà không bị méo */
+}
+
+/* Tiêu đề Blogs */
+.blog-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Danh sách Blogs */
+.blog-container ul {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    display: block;
+    margin: 0 auto; /* Canh giữa theo chiều ngang */
+    padding: 20px; /* Khoảng cách bên trong khối */
+    background: white; /* Màu nền tùy chọn */
+    border-radius: 8px; /* Bo góc nhẹ */
+    box-shadow: 0 4px 6px rgba(128, 128, 128, 0.2); /* Xám nhạt hơn */
+
+    text-align: center; /* Canh giữa nội dung văn bản (nếu cần) */
+
+}
+
+.blog-container ul li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #D3D3D3;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.blog-container ul li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.blog-container ul li a {
+    text-decoration: none;
+    color: #3498db;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.blog-container ul li a:hover {
+    color: #2c3e50;
+    font-weight: bold;
+
+}
+
+/* Khoảng cách dưới header */
+body > div:nth-child(2) {
+    margin-top: 80px; /* Giảm giá trị nếu header nhỏ */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 2rem;
+    }
+
+    .blog-container ul li {
+        font-size: 1rem;
+    }
 }
