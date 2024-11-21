@@ -612,3 +612,21 @@ input[type="number"], select {
     0 2px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
+
+.menu_bell, .menu_dang_nhap {
+    display: block !important;  /* Force display when user is logged in */
+}
+
+.bell, .user {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile_menu, .profile_menu_bell {
+    display: none;
+}
+
+.menu_bell:hover .profile_menu_bell,
+.menu_dang_nhap:hover .profile_menu {
+    display: block;
+}

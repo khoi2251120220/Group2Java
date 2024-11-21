@@ -1,41 +1,42 @@
 package uth.edu.auctionkoi.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
 import uth.edu.auctionkoi.pojo.User;
 import uth.edu.auctionkoi.repository.UserRepository;
 
 @Controller
 public class LoginController {
 
-    @GetMapping("/login")
-    public String showLoginPage(Model model) {
-        return "login";  // Điều hướng đến file login.html
-    }
-
-
     @Autowired
     private UserRepository userRepository;
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
-            model.addAttribute("error", "Account and password are required.");
-            return "login"; // Trả về trang login nếu có lỗi
-        }
-
-        User user = userRepository.findByUsername(username);
-
-        if (user != null && password.equals(user.getPassword())) {
-            // Đăng nhập thành công
+    public String login(@RequestParam String username, 
+                       @RequestParam String password, 
+                       HttpSession session) {
+        try {
+            User user = userRepository.findByUsernameAndPassword(username, password);
+            
+            if (user != null) {
+                session.setAttribute("currentUser", user);
+                return "redirect:/home";
+            }
+            
             return "redirect:/home";
-        } else {
-            model.addAttribute("error", "Invalid username or password.");
-            return "login";
+            
+        } catch (Exception e) {
+            return "redirect:/home";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("currentUser");
+        return "redirect:/home";
     }
 }

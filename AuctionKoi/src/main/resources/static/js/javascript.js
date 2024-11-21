@@ -81,17 +81,10 @@ $(document).ready(function () {
             $('#tk_register').hide(500);
         }
     });
-    // $(document).ready(function () {
-    //     $('.login').click(function () {
-    //         // Chuyển hướng đến file login.html
-    //         window.location.href = '/login';
-    //     });
-    // });
 
-    // Sự kiện khi nhấn nút register
+    // Thêm sự kiện khi nhấn nút register
     $('.register').click(function (event) {
         event.preventDefault();
-
         if ($('#tk_register').is(':visible')) {
             $('#mau_nen').hide();
             $('#tk_register').hide(500);
@@ -101,6 +94,19 @@ $(document).ready(function () {
             $('#tk_login').hide(500);
         }
     });
+
+    // Sự kiện khi nhấn nút register trong form login
+    $('.register_btn_footer').click(function() {
+        $('#tk_login').hide(500);
+        $('#tk_register').show(500);
+    });
+
+    // Sự kiện khi nhấn nút login trong form register
+    $('.login_btn_footer').click(function() {
+        $('#tk_register').hide(500);
+        $('#tk_login').show(500);
+    });
+
     $('#mau_nen').click(function () {
         $(this).hide();
         $('#tk_login').hide();
@@ -108,32 +114,43 @@ $(document).ready(function () {
     });
 });
 
-// sự kiện click menu
-$(document).ready(function() {
-    $('.menu_item').click(function() {
-        $('.menu_item').removeClass('active');
-        $(this).addClass('active');
-    });
-});
-// sự kiện click vào login_btn
+//sự kiện click menu
+// Thay thế đoạn xử lý login_btn hiện tại
 $(document).ready(function () {
-    $('.login_btn').on('click', function (event) {
+    $('#loginForm').on('submit', function (event) {
         event.preventDefault();
-
-        // Kiểm tra xem form login có hợp lệ không
-        if ($('#loginForm')[0].checkValidity()) {
-            // Nếu hợp lệ, chuyển hướng đến file index.html
-            // window.location.href = '/template/index.html';
-            $('#content, #slider, .Hocakoi,.bell,.user').show();
-            $('#tk_login,#mau_nen,#login,.register').hide();
-
-
-        } else {
-            // Nếu không hợp lệ, hiển thị thông báo lỗi mặc định của trình duyệt
-            $('#loginForm')[0].reportValidity();
-        }
+        
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: $(this).serialize(),
+            success: function() {
+                // Ẩn form login và overlay
+                $('#tk_login, #mau_nen').hide();
+                
+                // Ẩn nút login/register
+                $('#login, .register').hide();
+                
+                // Hiện menu user và thông báo
+                $('.menu_bell, .menu_dang_nhap').show();
+                $('.bell, .user').show();
+                
+                // Reload trang để cập nhật UI
+                window.location.reload();
+            },
+            error: function() {
+                alert('Invalid username or password');
+            }
+        });
     });
 
+    // Xử lý đăng xuất
+    $('.logout').click(function(e) {
+        e.preventDefault();
+        $.get('/logout', function() {
+            window.location.reload();
+        });
+    });
     // Chuyển sang form đăng ký khi nhấn nút "Register"
     $('.login_btn_footer').on('click', function () {
         $('#tk_login').show(500);
@@ -144,19 +161,31 @@ $(document).ready(function () {
 
 //sự kiện click vào register_btn
 $(document).ready(function () {
-    $('.register_btn').on('click', function (event) {
+    $('#register_Form').on('submit', function (event) {
         event.preventDefault();
-
-        // Kiểm tra xem form có hợp lệ không
-        if ($('#register_Form')[0].checkValidity()) {
-            // Nếu hợp lệ, ẩn form đăng ký và hiển thị form đăng nhập
-            $('#tk_register').hide();
-            $('#tk_login').show(500); // Hiển thị form đăng nhập
-
-        } else {
-            // Nếu không hợp lệ, trigger thông báo lỗi mặc định của trình duyệt
-            $('#register_Form')[0].reportValidity();
-        }
+        
+        const formData = {
+            firstName: $('#first-name').val(),
+            lastName: $('#last-name').val(),
+            phoneNumber: $('#phone-number').val(),
+            email: $('#email_register').val(),
+            password: $('#password').val()
+        };
+        
+        $.ajax({
+            type: 'POST',
+            url: '/register',
+            data: formData,
+            success: function(response) {
+                alert('Registration successful! Please login.');
+                // Chuyển sang form đăng nhập
+                $('#tk_register').hide();
+                $('#tk_login').show(500);
+            },
+            error: function(xhr) {
+                alert(xhr.responseText || 'Registration failed. Please try again.');
+            }
+        });
     });
 
     // Nút "Log In" trong footer để quay lại form đăng nhập
@@ -254,6 +283,35 @@ $(document).on("scroll", function() {
             top: "165px"
         });
     }
+});
+
+$(document).ready(function() {
+    // Xử lý form login
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: $(this).serialize(),
+            success: function(response) {
+                if(response.includes('error=true')) {
+                    // Hiển thị thông báo lỗi
+                    $('.error-message').show();
+                } else {
+                    // Ẩn form login và reload trang
+                    $('#tk_login').hide();
+                    $('#mau_nen').hide();
+                    window.location.reload();
+                }
+            }
+        });
+    });
+
+    // Ẩn thông báo lỗi khi mở form login
+    $('.login').click(function() {
+        $('.error-message').hide();
+    });
 });
 
 

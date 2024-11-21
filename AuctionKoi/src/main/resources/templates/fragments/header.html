@@ -34,7 +34,8 @@
       </li>
     </ul>
     <ul class="taikhoan">
-      <li class="menu_bell">
+      <li th:if="${session.currentUser != null}" th:text="${'Logged in as: ' + session.currentUser.username}" style="display:none;"></li>
+      <li class="menu_bell" th:if="${session.currentUser != null}">
         <i class="bell ti-bell"></i>
         <ul class="profile_menu_bell" style="min-width: 350px;right: 18px">
           <li class="tb1" data-target=".thbao1"><i class="ti-control-record"></i><a>Thông báo phiên đấu giá sắp tới</a></li>
@@ -45,8 +46,8 @@
           <li><a class="tongquat" style="padding-left: 265px;cursor: pointer">Chi tiết</a></li>
         </ul>
       </li>
-      <li class="menu_dang_nhap">
-        <i  class=" user ti-user"></i>
+      <li class="menu_dang_nhap" th:if="${session.currentUser != null}">
+        <i class="user ti-user"></i>
         <ul class="profile_menu">
           <li><a class="tt_tai_khoan">Tài khoản</a></li>
           <li><a class="setting">Setting</a></li>
@@ -55,10 +56,8 @@
           <li><a class="logout" >Đăng xuất</a></li>
         </ul>
       </li>
-      <li id="login" class="login menu_item">Log in</li>
-      <li class="register" >Register</li>
-
-
+      <li id="login" class="login menu_item" th:if="${session.currentUser == null}">Log in</li>
+      <li class="register" th:if="${session.currentUser == null}">Register</li>
     </ul>
     <script>
       function navigateToKohaku() {
