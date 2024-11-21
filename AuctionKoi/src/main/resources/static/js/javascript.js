@@ -125,7 +125,7 @@ $(document).ready(function () {
             url: '/login',
             data: $(this).serialize(),
             success: function() {
-                // Ẩn form login và overlay
+                // n form login và overlay
                 $('#tk_login, #mau_nen').hide();
                 
                 // Ẩn nút login/register
@@ -311,6 +311,72 @@ $(document).ready(function() {
     // Ẩn thông báo lỗi khi mở form login
     $('.login').click(function() {
         $('.error-message').hide();
+    });
+});
+
+$(document).ready(function() {
+    // Xử lý nút Register trên header
+    $('.Register, .register').click(function() {
+        $('#mau_nen').show();
+        $('#tk_register').show();
+        $('#tk_login').hide(); // Ẩn form login nếu đang mở
+    });
+
+    // Xử lý nút Login trên header
+    $('.Log.in, .login').click(function() {
+        $('#mau_nen').show();
+        $('#tk_login').show();
+        $('#tk_register').hide(); // Ẩn form register nếu đang mở
+    });
+
+    // Xử lý nút Log In trong form register
+    $('.login_btn_footer').click(function() {
+        $('#tk_register').hide();
+        $('#tk_login').show();
+    });
+
+    // Xử lý nút Register trong form login
+    $('.register_btn_footer').click(function() {
+        $('#tk_login').hide();
+        $('#tk_register').show();
+    });
+
+    // Xử lý form đăng ký
+    $('#registerForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            type: 'POST',
+            url: '/register',
+            data: $(this).serialize(),
+            success: function(response) {
+                // Ẩn form và nền
+                $('#tk_register').hide();
+                $('#mau_nen').hide();
+                
+                // Reset form
+                $('#registerForm')[0].reset();
+                
+                // Reload trang để cập nhật trạng thái đăng nhập
+                window.location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.log('Registration failed:', error);
+            }
+        });
+    });
+
+    // Xử lý form login
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        // ... code xử lý đăng nhập ...
+    });
+
+    // Xử lý click vào nền đen để đóng form
+    $('#mau_nen').click(function() {
+        $('#mau_nen').hide();
+        $('#tk_login').hide();
+        $('#tk_register').hide();
     });
 });
 

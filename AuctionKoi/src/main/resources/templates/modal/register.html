@@ -2,43 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
 </head>
 <body>
 <div th:fragment="register" class="modal">
     <div id="mau_nen"></div>
     <div id="tk_register" style="transform: translate(-50%, -45%);">
         <h1>Register</h1>
-        <form id="register_Form">
-            <div class="input-row">
-                <div class="input-group">
-                    <span></span><br>
-                    <label for="first-name">First Name *</label><br><br>
-                    <input type="text" id="first-name" name="firstName" placeholder="First Name" required>
-                </div>
-                <div class="input-group">
-                    <span></span><br>
-                    <label for="last-name">Last Name *</label><br><br>
-                    <input type="text" id="last-name" name="lastName" placeholder="Last Name" required>
-                </div>
-            </div>
+        <form id="registerForm" method="POST">
             <div class="input-group">
-                <label for="phone-number">Phone Number *</label><br><br>
-                <input type="tel" id="phone-number" name="phoneNumber" placeholder="Phone Number" required><br><br>
+                <label for="username">Username *</label><br><br>
+                <input type="text" id="username" name="username" required><br><br>
             </div>
+            
             <div class="input-group">
-                <label for="email_register">Email Address *</label><br><br>
-                <input type="email" id="email_register" name="email" placeholder="Email Address" required><br><br>
+                <label for="fullName">Full Name *</label><br><br>
+                <input type="text" id="fullName" name="fullName" required><br><br>
             </div>
+            
+            <div class="input-group">
+                <label for="phoneNumber">Phone Number *</label><br><br>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+            </div>
+            
+            <div class="input-group">
+                <label for="email">Email Address *</label><br><br>
+                <input type="email" id="email" name="email" required><br><br>
+            </div>
+            
             <div class="input-group">
                 <label for="password">Password *</label><br><br>
-                <input type="password" id="password" name="password" placeholder="Password" required><br><br>
-                <button type="button" class="show-password"></button>
+                <input type="password" id="password" name="password" required><br><br>
             </div>
+            
             <button type="submit" class="register_btn">Register</button><br><br>
+            
             <div class="footer_register" style="text-align: center">
                 <span class="text_dk" style="font-size: 16px">Already have an account?</span>
-                <button  class="login_btn_footer dang_ky" type="button">Log In</button>
+                <button class="login_btn_footer dang_ky" type="button">Log In</button>
             </div>
         </form>
     </div>

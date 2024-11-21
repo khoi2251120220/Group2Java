@@ -21,22 +21,19 @@ public class LoginController {
                        HttpSession session) {
         try {
             User user = userRepository.findByUsernameAndPassword(username, password);
-            
             if (user != null) {
                 session.setAttribute("currentUser", user);
-                return "redirect:/home";
+                return "redirect:http://localhost:8080";
             }
-            
-            return "redirect:/home";
-            
+            return "redirect:http://localhost:8080";
         } catch (Exception e) {
-            return "redirect:/home";
+            return "redirect:http://localhost:8080";
         }
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("currentUser");
-        return "redirect:/home";
+        return "redirect:http://localhost:8080";
     }
 }
