@@ -1,66 +1,46 @@
 // sự kiện click vào các thẻ trên thanh menu và thông tin tài khoản
-$(document).ready(function() {
-    $('.about').click( function(event) {
+$(document).ready(function () {
+    $('.about').click(function (event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #blogs-section, #auction-section, #product-section,' +
-            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
-        $('#about-section,#footer').show();
+        window.location.href = '/about';
+
     });
 
-    $('.blogs').click( function(event) {
+    $('.blogs').click(function (event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #about-section, #auction-section, #product-section,' +
-            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
-        $('#blogs-section').show();
+        window.location.href = '/blog';
     });
 
-    $('.auction').click( function(event) {
+    $('.auction').click(function (event) {
         event.preventDefault();
-        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #product-section,' +
-            '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
-        $('#auction-section').show();
+        window.location.href = '/auction';
     });
-    $('.contact').click( function(event) {
+    $('.contact').click(function (event) {
         event.preventDefault();
-        $('#product-section,#about-section, #blogs-section,#auction-section,#thbao_section,' +
-            '#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
-        $('#content,#slider,.Hocakoi,#footer,#contact-section').show();
+        window.location.href = '/';
         $('html, body').animate({
             scrollTop: $('#contact-section').offset().top
         });
     });
-    $('.thanh_toan').click(function (event){
+    $('.thanh_toan').click(function (event) {
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
-            '.profile_menu,#thbao_section,#setting_section,#tk_section').hide();
-        $('#thtoan_section').show();
+        window.location.href = '/thanh_toan';
     })
-    $('.setting').click(function (event){
+    $('.setting').click(function (event) {
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
-            '.profile_menu,#thbao_section,#tk_section,#thtoan_section').hide();
-        $('#setting_section').show();
+        window.location.href = '/setting';
     })
-    $('.tt_tai_khoan').click(function (event){
+    $('.tt_tai_khoan').click(function (event) {
         event.preventDefault();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,' +
-            '.profile_menu,#thbao_section,#thtoan_section,#setting_section').hide();
-        $('#tk_section').show();
-    })
-    $(document).ready(function() {
-        $('.active,.tieude').click(function() {
-            $('#auction-section,#about-section,#blogs-section,#product-section,' +
-                '#thbao_section,#thtoan_section,#setting_section,#tk_section,#tk_login,#mau_nen,#tk_register').hide();
-            $('#slider,#content,.Hocakoi,#footer').show();
+        window.location.href = '/account';
 
-        });
-    });
+    })
+
 });
 $(document).ready(function () {
     $('.tb1, .tb2, .tb3, .tb4, .tb5').click(function () {
         var target = $(this).data('target'); // Lấy giá trị từ data-target
-        $('#thbao_section').show();
-        $('#content, #slider, .Hocakoi, #about-section, #blogs-section, #auction-section, .profile_menu, #thtoan_section, #setting_section, #tk_section').hide();
+
 
         $('html, body').animate({
             scrollTop: $(target).offset().top - 50// Cuộn đến mục tiêu
@@ -69,135 +49,121 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    //Sự kiện khi nhấn nút login
+    // Sự kiện khi nhấn nút login
     $('.login').click(function (event) {
+        // Ngăn chặn hành vi mặc định nếu đây là thẻ <a> hoặc <button>
         event.preventDefault();
-        if ($('#tk_login').is(':visible')) {
-            $('#mau_nen').hide();
-            $('#tk_login').hide(500);
-        } else {
-            $('#mau_nen').show();
-            $('#tk_login').show(500);
-            $('#tk_register').hide(500);
-        }
+
+        // Chuyển hướng đến trang đăng nhập
+        window.location.href = 'http://localhost:8080/login';
     });
+
 
     // Thêm sự kiện khi nhấn nút register
     $('.register').click(function (event) {
         event.preventDefault();
-        if ($('#tk_register').is(':visible')) {
-            $('#mau_nen').hide();
-            $('#tk_register').hide(500);
-        } else {
-            $('#mau_nen').show();
-            $('#tk_register').show(500);
-            $('#tk_login').hide(500);
-        }
+        window.location.href = 'http://localhost:8080/register';
     });
 
     // Sự kiện khi nhấn nút register trong form login
-    $('.register_btn_footer').click(function() {
-        $('#tk_login').hide(500);
-        $('#tk_register').show(500);
+    $('.register_btn_footer').click(function (e) {
+        event.preventDefault();
+        window.location.href = 'http://localhost:8080/register';
     });
 
     // Sự kiện khi nhấn nút login trong form register
-    $('.login_btn_footer').click(function() {
-        $('#tk_register').hide(500);
-        $('#tk_login').show(500);
-    });
-
-    $('#mau_nen').click(function () {
-        $(this).hide();
-        $('#tk_login').hide();
-        $('#tk_register').hide();
+    $('.login_btn_footer').click(function () {
+        event.preventDefault();
+        window.location.href = 'http://localhost:8080/register';
     });
 });
 
+
 //sự kiện click menu
+
+
+
+    $(document).ready(function () {
+    // Khi click vào bất kỳ mục nào trên thanh header
+    $(' .menu_item').on('click', function () {
+        // Xóa lớp 'active' khỏi tất cả các nút
+        $('.menu_item').removeClass('active');
+
+        // Thêm lớp 'active' vào nút vừa được click
+        $(this).addClass('active');
+    });
+});
+
+
 // Thay thế đoạn xử lý login_btn hiện tại
 $(document).ready(function () {
     $('#loginForm').on('submit', function (event) {
         event.preventDefault();
-        
+
         $.ajax({
             type: 'POST',
             url: '/login',
             data: $(this).serialize(),
-            success: function() {
-                // n form login và overlay
-                $('#tk_login, #mau_nen').hide();
-                
+            success: function () {
+
                 // Ẩn nút login/register
                 $('#login, .register').hide();
-                
+
                 // Hiện menu user và thông báo
                 $('.menu_bell, .menu_dang_nhap').show();
                 $('.bell, .user').show();
-                
+
                 // Reload trang để cập nhật UI
-                window.location.reload();
+                window.location.href = '/';
             },
-            error: function() {
+            error: function () {
                 alert('Invalid username or password');
             }
         });
     });
 
     // Xử lý đăng xuất
-    $('.logout').click(function(e) {
+    $('.logout').click(function (e) {
         e.preventDefault();
-        $.get('/logout', function() {
+        $.get('/logout', function () {
             window.location.reload();
         });
     });
     // Chuyển sang form đăng ký khi nhấn nút "Register"
-    $('.login_btn_footer').on('click', function () {
-        $('#tk_login').show(500);
-        $('#tk_register').hide(500);
-    });
 
 });
 
 //sự kiện click vào register_btn
 $(document).ready(function () {
-    $('#register_Form').on('submit', function (event) {
+    $('#registerForm').on('submit', function (event) {
         event.preventDefault();
-        
+
         const formData = {
-            firstName: $('#first-name').val(),
-            lastName: $('#last-name').val(),
-            phoneNumber: $('#phone-number').val(),
-            email: $('#email_register').val(),
+            username: $('#username').val(),
+            fullName: $('#fullName').val(),
+            phoneNumber: $('#phoneNumber').val(),
+            email: $('#email').val(),
             password: $('#password').val()
         };
-        
+
         $.ajax({
             type: 'POST',
             url: '/register',
             data: formData,
-            success: function(response) {
-                alert('Registration successful! Please login.');
-                // Chuyển sang form đăng nhập
-                $('#tk_register').hide();
-                $('#tk_login').show(500);
+            success: function () {
+                // Hiển thị phản hồi từ server, ví dụ: "Registration successful!"
+                window.location.href = '/login'; // Chuyển hướng sang trang đăng nhập
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 alert(xhr.responseText || 'Registration failed. Please try again.');
             }
         });
     });
 
-    // Nút "Log In" trong footer để quay lại form đăng nhập
-    $('.register_btn_footer').on('click', function () {
-        $('#tk_login').hide(500);
-        $('#tk_register').show(500); // Hiển thị form đăng ký
-    });
 });
 
-
-$(document).ready(function (){
-    $('.user').on('click',function (event){
+$(document).ready(function () {
+    $('.user').on('click', function (event) {
         event.preventDefault();
         $('.profile_menu').toggle(500);
     });
@@ -206,11 +172,11 @@ $(document).ready(function (){
             $('.profile_menu').hide(500);
         }
     });
-    $('.tongquat').on('click',function (event){
+    $('.tongquat').on('click', function (event) {
         event.preventDefault();
         $('.profile_menu_bell').toggle(500);
-        $('#thbao_section').show();
-        $('#content, #slider,.Hocakoi, #about-section, #blogs-section,#auction-section,.profile_menu,#thtoan_section,#setting_section,#tk_section').hide();
+        window.location.href = '/notification';
+
     })
     $(document).on('click', function (event) {
         if (!$(event.target).closest('.profile_menu_bell, .bell').length) {
@@ -218,8 +184,8 @@ $(document).ready(function (){
         }
     });
 })
-$(document).ready(function (){
-    $('.bell').on('click',function (event){
+$(document).ready(function () {
+    $('.bell').on('click', function (event) {
         event.preventDefault();
         $('.profile_menu_bell').toggle(500);
     });
@@ -230,38 +196,38 @@ $(document).ready(function (){
     });
 })
 
-$(document).ready(function (){
-    $('.p1').click(function (event){
+$(document).ready(function () {
+    $('.p1').click(function (event) {
         event.preventDefault()
         $('.p1_1').toggle(1000);
         $('.p2_2,.p3_3,.p4_4,.p5_5').hide();
     })
-    $('.p2').click(function (event){
+    $('.p2').click(function (event) {
         event.preventDefault()
         $('.p2_2').toggle(1000);
         $('.p1_1,.p3_3,.p4_4,.p5_5').hide();
     })
-    $('.p3').click(function (event){
+    $('.p3').click(function (event) {
         event.preventDefault()
         $('.p3_3').toggle(1000);
         $('.p2_2,.p1_1,.p4_4,.p5_5').hide();
     })
-    $('.p4').click(function (event){
+    $('.p4').click(function (event) {
         event.preventDefault()
         $('.p4_4').toggle(1000);
         $('.p2_2,.p3_3,.p1_1,.p5_5').hide();
     })
-    $('.p5').click(function (event){
+    $('.p5').click(function (event) {
         event.preventDefault()
         $('.p5_5').toggle(1000);
         $('.p2_2,.p3_3,.p4_4,.p1_1').hide();
     })
-    $('.logout').click(function (event){
+    $('.logout').click(function (event) {
         event.preventDefault()
         window.location.reload();
     })
 })
-$(document).on("scroll", function() {
+$(document).on("scroll", function () {
     var $adviceSection = $(".advice-section");
     var $footer = $("#footer");
 
@@ -285,23 +251,20 @@ $(document).on("scroll", function() {
     }
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Xử lý form login
-    $('#loginForm').submit(function(e) {
+    $('#loginForm').submit(function (e) {
         e.preventDefault();
-        
+
         $.ajax({
             type: 'POST',
             url: '/login',
             data: $(this).serialize(),
-            success: function(response) {
-                if(response.includes('error=true')) {
+            success: function (response) {
+                if (response.includes('error=true')) {
                     // Hiển thị thông báo lỗi
                     $('.error-message').show();
                 } else {
-                    // Ẩn form login và reload trang
-                    $('#tk_login').hide();
-                    $('#mau_nen').hide();
                     window.location.reload();
                 }
             }
@@ -309,75 +272,73 @@ $(document).ready(function() {
     });
 
     // Ẩn thông báo lỗi khi mở form login
-    $('.login').click(function() {
+    $('.login').click(function () {
         $('.error-message').hide();
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Xử lý nút Register trên header
-    $('.Register, .register').click(function() {
+    $('.Register, .register').click(function () {
         $('#mau_nen').show();
         $('#tk_register').show();
         $('#tk_login').hide(); // Ẩn form login nếu đang mở
     });
 
     // Xử lý nút Login trên header
-    $('.Log.in, .login').click(function() {
+    $('.Log.in, .login').click(function () {
         $('#mau_nen').show();
         $('#tk_login').show();
         $('#tk_register').hide(); // Ẩn form register nếu đang mở
     });
 
     // Xử lý nút Log In trong form register
-    $('.login_btn_footer').click(function() {
+    $('.login_btn_footer').click(function () {
         $('#tk_register').hide();
         $('#tk_login').show();
     });
 
     // Xử lý nút Register trong form login
-    $('.register_btn_footer').click(function() {
+    $('.register_btn_footer').click(function () {
         $('#tk_login').hide();
         $('#tk_register').show();
     });
 
     // Xử lý form đăng ký
-    $('#registerForm').on('submit', function(e) {
+    $('#registerForm').on('submit', function (e) {
         e.preventDefault();
-        
+
         $.ajax({
             type: 'POST',
             url: '/register',
             data: $(this).serialize(),
-            success: function(response) {
+            success: function (response) {
                 // Ẩn form và nền
                 $('#tk_register').hide();
                 $('#mau_nen').hide();
-                
+
                 // Reset form
                 $('#registerForm')[0].reset();
-                
+
                 // Reload trang để cập nhật trạng thái đăng nhập
                 window.location.reload();
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.log('Registration failed:', error);
             }
         });
     });
 
     // Xử lý form login
-    $('#loginForm').on('submit', function(e) {
+    $('#loginForm').on('submit', function (e) {
         e.preventDefault();
         // ... code xử lý đăng nhập ...
     });
 
     // Xử lý click vào nền đen để đóng form
-    $('#mau_nen').click(function() {
+    $('#mau_nen').click(function () {
         $('#mau_nen').hide();
         $('#tk_login').hide();
         $('#tk_register').hide();
     });
 });
-
-

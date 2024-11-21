@@ -10,8 +10,8 @@
       <a href="#">AUCTIONKOI</a>
     </div>
     <ul class="nav">
-      <li><a th:href="@{#}" class="Home menu_item active"> Home</a></li>
-      <li><a th:href="@{#}" class="blogs menu_item"> Blogs</a></li>
+      <li><a th:href="@{/}" class="Home menu_item active"> Home</a></li>
+      <li><a th:href="@{/blog}" class="blogs menu_item"> Blogs</a></li>
       <li><a th:href="@{#}" class="contact menu_item"> Contact</a></li>
       <li class="auction">
         <a th:href="@{#}" class=" menu_item">Auction</a>
@@ -25,7 +25,7 @@
           <li><a href="#">Koi Ginrin</a></li>
         </ul>
       </li>
-      <li><a href="#" class="about menu_item"> About</a></li>
+      <li><a th:href="@{/about}" class="about menu_item"> About</a></li>
     </ul>
     <ul class="search">
       <li class="search-container">
@@ -34,7 +34,6 @@
       </li>
     </ul>
     <ul class="taikhoan">
-      <li th:if="${session.currentUser != null}" th:text="${'Logged in as: ' + session.currentUser.username}" style="display:none;"></li>
       <li class="menu_bell" th:if="${session.currentUser != null}">
         <i class="bell ti-bell"></i>
         <ul class="profile_menu_bell" style="min-width: 350px;right: 18px">
@@ -47,7 +46,9 @@
         </ul>
       </li>
       <li class="menu_dang_nhap" th:if="${session.currentUser != null}">
-        <i class="user ti-user"></i>
+      <li th:if="${session.currentUser != null}" th:text="${ session.currentUser.username}" style="color: white;margin-right:5px;margin-left:20px"></li>
+
+      <i class="user ti-user" th:if="${session.currentUser != null}"></i>
         <ul class="profile_menu">
           <li><a class="tt_tai_khoan">Tài khoản</a></li>
           <li><a class="setting">Setting</a></li>
@@ -63,6 +64,19 @@
       function navigateToKohaku() {
         window.location.href = 'auctionDemo/Koi';
       }
+
+
+        $(document).ready(function () {
+        // Khi click vào bất kỳ mục nào trên thanh header
+        $('.nav .menu_item').on('click', function () {
+          // Xóa lớp 'active' khỏi tất cả các nút
+          $('.nav .menu_item').removeClass('active');
+
+          // Thêm lớp 'active' vào nút vừa được click
+          $(this).addClass('active');
+        });
+      });
+
     </script>
   </div>
 </body>
