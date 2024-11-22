@@ -2,6 +2,8 @@ package uth.edu.auctionkoi.pojo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,7 +21,7 @@ public class Bid {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Double bidAmount; // Giá người mua đặt
+    private BigDecimal bidAmount; // Giá người mua đặt
     private LocalDateTime bidTime; // Thời điểm đặt giá
 }
 
