@@ -30,7 +30,7 @@ public class PaymentController {
             model.addAttribute("error", "Bạn cần đăng nhập để truy cập chức năng này.");
             return "redirect:/login";
         }
-        
+
         model.addAttribute("auctions", auctionService.getAuctionsWonByUser(currentUser.getId()));
         return "interface/payment";
     }
