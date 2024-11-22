@@ -24,8 +24,7 @@ public class ShippingServiceImpl implements ShippingService {
     }
 
     public Shipping getShippingById(Long id) {
-        return shippingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Shipping not found"));
+        return shippingRepository.findById(id).orElse(null);
     }
 
     public Shipping createShipping(Shipping shipping) {
