@@ -60,7 +60,7 @@ body {
     color: #fff;
     cursor: pointer;
 }
-.user, .bell{
+.user, .bell,.shopping{
     display: block;
     font-size: 30px;
     background-color: #aaaaaa;
@@ -70,14 +70,14 @@ body {
     border-radius:12px;
     border: none;
 }
-.user:hover,.bell:hover{
+.user:hover,.bell:hover,.shopping:hover{
     opacity: 0.6;
     cursor: pointer;
     position: relative;
 }
-.bell{
-    margin-right: 20px;
-}
+/*.bell{*/
+/*    margin-right: 20px;*/
+/*}*/
 .menu_dang_nhap,.menu_bell{
     position: relative;
 }
