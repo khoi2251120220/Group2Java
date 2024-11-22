@@ -29,5 +29,4 @@ public class User {
     public enum Role {
         GUEST, MEMBER, KOI_BREEDER, STAFF, MANAGER
     }
-
 }
