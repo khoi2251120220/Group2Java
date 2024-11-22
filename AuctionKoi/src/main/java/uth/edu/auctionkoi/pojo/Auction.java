@@ -15,7 +15,8 @@ import java.time.LocalDateTime;
 public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long auctionId;
+    @Column(name = "id")
+    private Long id;
     @OneToOne
     @JoinColumn(name = "koi_id")
     private Koi koi;

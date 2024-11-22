@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <header class="bg-dark text-white p-3">
+        <div class="container-fluid">
+            <h1>Admin Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="container-fluid flex-grow-1">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 bg-light sidebar py-5">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#users">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#koi">Koi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#auctions">Auctions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blogs">Blogs</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h2>Dashboard</h2>
+                </div>
+                
+                <!-- Dashboard Cards -->
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Users</h5>
+                                <p class="card-text display-4" th:text="${userCount}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Koi</h5>
+                                <p class="card-text display-4" th:text="${koiCount}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Active Auctions</h5>
+                                <p class="card-text display-4" th:text="${activeAuctionsCount}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Blogs</h5>
+                                <p class="card-text display-4" th:text="${blogCount}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <h2 id="users" class="mt-4">Người dùng</h2>
+                <a href="/admin/users/new" class="btn btn-primary mb-3">Thêm Người dùng Mới</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Vai trò</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.id}"></td>
+                            <td th:text="${user.username}"></td>
+                            <td th:text="${user.fullName}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.role}"></td>
+                            <td>
+                                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Koi Table -->
+                <h2 id="koi" class="mt-4">Cá Koi</h2>
+                <a href="/admin/koi/new" class="btn btn-primary mb-3">Thêm Cá Koi Mới</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Loại</th>
+                            <th>Kích thước</th>
+                            <th>Giá</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="koi : ${kois}">
+                            <td th:text="${koi.id}"></td>
+                            <td th:text="${koi.name}"></td>
+                            <td th:text="${koi.type}"></td>
+                            <td th:text="${koi.size}"></td>
+                            <td th:text="${koi.price}"></td>
+                            <td>
+                                <a th:href="@{/admin/koi/edit/{id}(id=${koi.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/koi/delete/{id}(id=${koi.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Auctions Table -->
+                <h2 id="auctions" class="mt-4">Đấu giá</h2>
+                <a href="/admin/auctions/new" class="btn btn-primary mb-3">Thêm Đấu giá Mới</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cá Koi</th>
+                            <th>Giá khởi điểm</th>
+                            <th>Giá hiện tại</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="auction : ${auctions}">
+                            <td th:text="${auction.id}"></td>
+                            <td th:text="${auction.koi.name}"></td>
+                            <td th:text="${auction.startPrice}"></td>
+                            <td th:text="${auction.currentPrice}"></td>
+                            <td>
+                                <a th:href="@{/admin/auctions/edit/{id}(id=${auction.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/auctions/delete/{id}(id=${auction.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Blogs Table -->
+                <h2 id="blogs" class="mt-4">Blog</h2>
+                <a href="/admin/blogs/new" class="btn btn-primary mb-3">Thêm Blog Mới</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tiêu đề</th>
+                            <th>Thể loại</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="blog : ${blogs}">
+                            <td th:text="${blog.id}"></td>
+                            <td th:text="${blog.title}"></td>
+                            <td th:text="${blog.category}"></td>
+                            <td>
+                                <a th:href="@{/admin/blogs/edit/{id}(id=${blog.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/blogs/delete/{id}(id=${blog.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p>&copy; 2024 Nhóm 2 JAVA</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

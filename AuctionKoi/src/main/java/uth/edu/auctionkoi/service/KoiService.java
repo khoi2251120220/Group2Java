@@ -32,4 +32,12 @@ public class KoiService implements IKoiService {
     public Koi save(Koi koi) {
         return koiRepository.save(koi);
     }
+
+    public int getKoiCount() {
+        return koiRepository.findAll().size();
+    }
+
+    public List<Koi> getAllKoi() {
+        return koiRepository.findAll();
+    }
 }

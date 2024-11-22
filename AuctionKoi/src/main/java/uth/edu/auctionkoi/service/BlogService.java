@@ -20,4 +20,8 @@ public class BlogService {
     public Optional<Blog> getBlogById(Long id) {
         return blogRepository.findById(id);
     }
+
+    public int getBlogCount() {
+        return blogRepository.findAll().size();
+    }
 }

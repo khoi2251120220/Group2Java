@@ -17,4 +17,8 @@ public class UserService implements IUserService {
     public List<User> getAllUsers() {
         return iUserRepository.findAll();
     }
+
+    public int getUserCount() {
+        return iUserRepository.findAll().size();
+    }
 }
