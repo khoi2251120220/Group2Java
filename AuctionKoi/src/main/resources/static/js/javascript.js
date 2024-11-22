@@ -16,12 +16,28 @@ $(document).ready(function () {
         window.location.href = '/auction';
     });
     $('.contact').click(function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Ngừng hành động mặc định của liên kết
+
+        // Lưu vị trí cuộn
+        sessionStorage.setItem('scrollToContact', true);
+
+        // Điều hướng về trang index
         window.location.href = '/';
-        $('html, body').animate({
-            scrollTop: $('#contact-section').offset().top
-        });
     });
+    $(document).ready(function () {
+        // Kiểm tra nếu có giá trị 'scrollToContact' trong sessionStorage
+        if (sessionStorage.getItem('scrollToContact') === 'true') {
+            // Cuộn trang xuống #contact-section
+            $('html, body').animate({
+                scrollTop: $('#contact-section').offset().top
+            }, 1000); // 1000 là thời gian cuộn (1 giây)
+
+            // Xóa giá trị trong sessionStorage để không cuộn lại khi tải lại trang sau
+            sessionStorage.removeItem('scrollToContact');
+        }
+    });
+
+
     $('.thanh_toan').click(function (event) {
         event.preventDefault();
         window.location.href = '/thanh_toan';
@@ -55,27 +71,19 @@ $(document).ready(function () {
         event.preventDefault();
 
         // Chuyển hướng đến trang đăng nhập
-        window.location.href = 'http://localhost:8080/login';
+        window.location.href = '/login';
     });
 
 
     // Thêm sự kiện khi nhấn nút register
     $('.register').click(function (event) {
         event.preventDefault();
-        window.location.href = 'http://localhost:8080/register';
-    });
-
-    // Sự kiện khi nhấn nút register trong form login
-    $('.register_btn_footer').click(function (event) {
-        event.preventDefault();
         window.location.href = '/register';
     });
 
-    // Sự kiện khi nhấn nút login trong form register
-    $('.login_btn_footer').click(function (event) {
-        event.preventDefault();
-        window.location.href = '/login';
-    });
+
+
+
 });
 
 
