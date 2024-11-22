@@ -6,7 +6,6 @@ import uth.edu.auctionkoi.pojo.Product;
 import uth.edu.auctionkoi.repository.ProductRepository;
 import uth.edu.auctionkoi.service.ProductService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,10 +25,5 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void saveProduct(Product product) {
         productRepository.save(product);
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
     }
 }

@@ -1,6 +1,5 @@
 package uth.edu.auctionkoi.service;
 
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uth.edu.auctionkoi.pojo.Auction;
@@ -36,12 +35,4 @@ public class AuctionService {
                 .filter(auction -> auction.getStatus() == Auction.Status.OPEN)
                 .count();
     }
-=======
-import uth.edu.auctionkoi.pojo.Auction;
-
-import java.util.List;
-
-public interface AuctionService {
-    public List<Auction> getAuctionsWonByUser(Long userId);
->>>>>>> 386c01ae18a85d0ae7a4959c7cfdcfe0694262c7
 }

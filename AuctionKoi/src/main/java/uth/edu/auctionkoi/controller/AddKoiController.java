@@ -1,23 +1,22 @@
 package uth.edu.auctionkoi.controller;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import uth.edu.auctionkoi.pojo.Koi;
-import uth.edu.auctionkoi.service.CloudinaryService;
 import uth.edu.auctionkoi.service.IKoiService;
-
-import java.util.Map;
 
 @Controller
 @RequestMapping("/addkoi")
-@RequiredArgsConstructor
 public class AddKoiController {
-
+    @Autowired
     private final IKoiService koiService;
-    private final CloudinaryService cloudinaryService;
+
+    public AddKoiController(IKoiService koiService) {
+        this.koiService = koiService;
+    }
 
     @GetMapping("/koi")
     public String addKoiPage() {
@@ -30,23 +29,25 @@ public class AddKoiController {
             @RequestParam("koiImageFile") MultipartFile koiImageFile,
             Model model) {
         try {
-            // Upload image to Cloudinary
+            // Handle image file upload
             if (!koiImageFile.isEmpty()) {
-                Map uploadResult = cloudinaryService.upload(koiImageFile);
-                String imageUrl = (String) uploadResult.get("url"); // Get the uploaded image URL
-                koi.setKoiImage(imageUrl); // Save the URL in the Koi object
+                String fileName = koiImageFile.getOriginalFilename();
+                koi.setKoiImage(fileName); // Set the image filename in the Koi object
+                // TODO: Save the file to the server if necessary
             }
 
-            // Save the Koi object to the database
-            koiService.save(koi);
-
-            model.addAttribute("save", true);
-            model.addAttribute("message", "Koi added successfully!");
+            koiService.save(koi); // Save the koi object to the database
+            model.addAttribute("save", true); // Add success flag to the model
             model.addAttribute("koi", new Koi()); // Reset the form
+
+            // Add a success message
+            model.addAttribute("message", "Koi added successfully!");
+
         } catch (Exception e) {
-            model.addAttribute("save", false);
+            model.addAttribute("save", false); // Add failure flag to the model
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
         }
-        return "interface/addkoi";
+        return "interface/addkoi"; // Return the view template
     }
+
 }

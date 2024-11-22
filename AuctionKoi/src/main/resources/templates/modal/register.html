@@ -16,22 +16,22 @@
             <div class="input-row">
                 <div class="input-group">
                     <label for="username">Username *</label><br><br>
-                    <input type="text" id="username" name="username" th:value="${username}" required><br><br>
+                    <input type="text" id="username" name="username" required><br><br>
                 </div>
                 <div class="input-group">
                     <label for="fullName">Full Name *</label><br><br>
-                    <input type="text" id="fullName" name="fullName" th:value="${fullName}" required><br><br>
+                    <input type="text" id="fullName" name="fullName" required><br><br>
                 </div>
             </div>
 
             <div class="input-group">
                 <label for="phoneNumber">Phone Number *</label><br><br>
-                <input type="tel" id="phoneNumber" name="phoneNumber" th:value="${phoneNumber}" required><br><br>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
             </div>
 
             <div class="input-group">
                 <label for="email">Email Address *</label><br><br>
-                <input type="email" id="email" name="email" th:value="${email}" required><br><br>
+                <input type="email" id="email" name="email" required><br><br>
             </div>
 
             <div class="input-group">
@@ -47,11 +47,6 @@
             </div>
         </form>
     </div>
-
-
-    <script th:if="${error}" th:inline="javascript">
-        alert([[${error}]]);
-    </script>
-
+</div>
 </body>
 </html>

@@ -32,15 +32,12 @@
     </div>
 
     <div class="card-container">
-      <div th:each="product : ${products}"
-           th:if="${product.koi != null and product.koi.koiType == '22'}"
-           class="card">
-      <a th:href="@{'/product_auction/auction/product/id=' + ${product.id}}">
-      <div class="card-image">
+      <div th:each="koi : ${koiList}" th:if="${koi.koiType == 'Asagi'}"  class="card"  >
+        <div class="card-image">
           <div class="auction-logo">
             <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="logo">
           </div>
-          <img th:src="@{'/image/' + ${product.koi.koiImage}}" alt="Golden Corn">
+          <img th:src="${koi.koiImage}" alt="Golden Corn">
           <div class="rating">
             <span><i class="fa-solid fa-tag"></i> 910</span>
             <span>★★★★★</span>
@@ -56,27 +53,25 @@
           <div class="card-details">
             <ul>
               <li><i class="fa-solid fa-globe"></i> Breeder:</li>
-              <li th:text="${product.koi.koiType}"></td></li>
+              <li th:text="${koi.koiType}"></td></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-ruler"></i> Length:</li>
-              <li th:text="${product.koi.koiWeight}"></li>
+              <li th:text="${koi.koiWeight}"></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-venus-mars"></i> Color:</li>
-              <li th:text="${product.koi.koiColor}"></li>
+              <li th:text="${koi.koiColor}"></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-birthday-cake"></i> Age:</li>
-              <li th:text="${product.koi.koiAge}"></li>
+              <li th:text="${koi.koiAge}"></li>
             </ul>
           </div>
 
         </div>
       </div>
-      </a>
     </div>
-
 
   </div>
 </div>

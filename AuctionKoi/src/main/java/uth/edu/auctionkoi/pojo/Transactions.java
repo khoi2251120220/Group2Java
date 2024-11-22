@@ -23,7 +23,7 @@ public class Transactions {
     @JoinColumn(name = "auction_id")
     private Auction auction;
 
-    private BigDecimal amount; // Số tiền
+    private Double amount; // Số tiền
     private String paymentMethod; // Hình thức thanh toán (Bank Transfer, Cash, ...)
 
     @Enumerated(EnumType.STRING)

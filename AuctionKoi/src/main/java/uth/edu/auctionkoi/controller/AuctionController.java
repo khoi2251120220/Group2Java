@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uth.edu.auctionkoi.pojo.Koi;
-import uth.edu.auctionkoi.pojo.Product;
 import uth.edu.auctionkoi.service.IKoiService;
-import uth.edu.auctionkoi.service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,21 +16,19 @@ import java.util.Optional;
 @RequestMapping("/auctionDemo")
 public class AuctionController {
 
-    @Autowired
-    private final ProductService productService;
+    private final IKoiService koiService;
 
     @Autowired
-    public AuctionController(ProductService productService) {
-        this.productService = productService;
+    public AuctionController(IKoiService koiService) {
+        this.koiService = koiService;
     }
 
     @GetMapping("/Koi")
     public String getKoiDetails( Model model) {
-        List<Product>  products = productService.findAll();
-        products.get(0).getKoi().getKoiType();
-        if (!products.isEmpty()) {
-            System.out.println(products); // Thêm dòng này để kiểm tra
-            model.addAttribute("products", products);
+        List<Koi>  koiOpt = koiService.findAll();
+        if (!koiOpt.isEmpty()) {
+            System.out.println(koiOpt); // Thêm dòng này để kiểm tra
+            model.addAttribute("koiList", koiOpt);
         } else {
             model.addAttribute("error", "Koi not found");
         }

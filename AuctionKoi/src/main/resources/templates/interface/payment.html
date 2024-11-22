@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{../css/stylesNotification.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../css/styles2.css}">
     <!-- Required stylesheets -->
-    <link type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="text/css" th:href="@{../css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
     <link type="text/css" th:href="@{../css/style-payment.css}" rel="stylesheet"/>
@@ -38,22 +38,41 @@
   
         <!-- courses -->
         <div class="col-12 col-md-6">
-          <div th:each="auction : ${auctions}" class="card mt-4">
+          <div class="card mt-4">
             <div class="card-body row">
               <!-- image -->
               <div class="col-12 col-md-5">
                 <a href="#">
-                  <img th:src="@{'/image/' + ${auction.getKoi().getKoiImage()}}" alt="..." />
-                  class="rounded img-fluid" />
+                  <img src="https://cdn.easyfrontend.com/pictures/ecommerce/mac.jpg" alt="..."
+                    class="rounded img-fluid" />
                 </a>
               </div>
               <!-- details -->
               <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
                 <!-- title -->
                 <a href="#">
-                  <h5 th:text="${auction.getKoi().getKoiName()}" class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
+                  <h5 class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
                 </a>
-                <p th:text="@{'$' + ${auction.getWinningBid().getBidAmount()}}" class="ezy__eporder2-price mb-0">$ 15.00</p>
+                <p class="ezy__eporder2-price mb-0">$ 15.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-body row">
+              <!-- image -->
+              <div class="col-12 col-md-5">
+                <a href="#">
+                  <img src="https://cdn.easyfrontend.com/pictures/ecommerce/tab.jpg" alt="..."
+                    class="rounded img-fluid" />
+                </a>
+              </div>
+              <!-- details -->
+              <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
+                <!-- title -->
+                <a href="#">
+                  <h5 class="ezy__eporder2-title">How to Improve Your Personal Skills (PDF)</h5>
+                </a>
+                <p class="ezy__eporder2-price mb-0">$ 15.00</p>
               </div>
             </div>
           </div>
