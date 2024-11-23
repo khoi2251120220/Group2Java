@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('.auction').click(function (event) {
         event.preventDefault();
         window.location.href = '/auction';
+
     });
     $('.contact').click(function (event) {
         event.preventDefault(); // Ngừng hành động mặc định của liên kết
@@ -45,6 +46,10 @@ $(document).ready(function () {
     $('.setting').click(function (event) {
         event.preventDefault();
         window.location.href = '/setting';
+    })
+    $('.shopping').click(function (event) {
+        event.preventDefault();
+        window.location.href = '/auctionwin';
     })
     $('.tt_tai_khoan').click(function (event) {
         event.preventDefault();

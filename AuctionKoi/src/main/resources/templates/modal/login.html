@@ -15,20 +15,28 @@
         <form method="POST" th:action="@{/login}">
             <label for="username">Account *</label><br>
             <div th:if="${error1}" class="alert alert-danger" th:text="${error1}"></div>
-            <input type="text" id="username" name="username" style="margin-top:  10px;margin-bottom: 10px " required>
-
-
-
+            <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    th:value="${username}"
+                    style="margin-top: 10px; margin-bottom: 10px;"
+                    required>
 
             <label for="password">Password *</label>
-            <div th:if="${error2}" class="alert alert-danger" th:text="${error2}" ></div>
-            <input type="password" id="password" name="password" style="margin-top: 10px" required><br><br><br>
+            <div th:if="${error2}" class="alert alert-danger" th:text="${error2}"></div>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    style="margin-top: 10px;"
+                    required><br><br><br>
 
             <button type="submit" id="selenium_login" class="login_btn">LOG IN</button><br><br><br>
 
             <div class="footer_login">
-                <span class="text_dk" style="font-size: 16px">Need an account?  </span>&nbsp
-                <a href="/register" class="register_btn_footer dang_ky" type="button" style="padding: 6px; text-decoration: none;" >Register</a>
+                <span class="text_dk" style="font-size: 16px">Need an account? </span>&nbsp;
+                <a href="/register" class="register_btn_footer dang_ky" type="button" style="padding: 6px; text-decoration: none;">Register</a>
             </div>
         </form>
     </div>
