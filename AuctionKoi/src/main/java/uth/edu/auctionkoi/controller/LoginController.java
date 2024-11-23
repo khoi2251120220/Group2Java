@@ -50,7 +50,12 @@ public class LoginController {
                 redirectAttributes.addFlashAttribute("error2", "Mật khẩu không đúng."); // Lỗi cho mật khẩu sai
             } else {
                 // Đăng nhập thành công
-                session.setAttribute("currentUser", user);
+                User userSession = new User();
+                userSession.setUsername(username);
+                userSession.setFullName(user.getFullName());
+                userSession.setId(user.getId());
+                userSession.setRole(user.getRole());
+                session.setAttribute("currentUser", userSession);
                 logger.info("Login successful for username: {}", username);
                 return "redirect:/";
             }

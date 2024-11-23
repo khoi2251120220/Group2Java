@@ -57,7 +57,7 @@
                     <div class="auction-section">
                         <h2>Tăng giá đấu</h2>
                         <form th:action="@{/auction/bid}" method="post">
-                            <input type="hidden" name="auctionId" th:value="${auction.getAuctionId()}">
+                            <input type="hidden" name="auctionId" th:value="${auction.getId()}">
                             <label for="manualBid">Nhập số tiền đặt giá:</label>
                             <input type="number" id="manualBid" name="manualBid" placeholder="Nhập số tiền (VNĐ)" required>
                             <label for="autoBid">Chọn mức tăng giá:</label>
