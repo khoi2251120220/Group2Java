@@ -8,7 +8,7 @@
 <body>
 <div th:fragment="error-container" id="error-page" th:if="${error}" class="error-container">
   <div class="error-icon">⚠️</div>
-  <h1>Đã xảy ra lỗi</h1>
+  <h1 th:text="${error}">Đã xảy ra lỗi</h1>
   <p>Xin lỗi vì sự bất tiện này. Vui lòng quay lại trang chủ và thử lại.</p>
   <a href="/" th:href="@{/}">Quay lại trang chủ</a>
 </div>

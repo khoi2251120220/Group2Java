@@ -38,41 +38,22 @@
   
         <!-- courses -->
         <div class="col-12 col-md-6">
-          <div class="card mt-4">
+          <div th:each="auction : ${auctions}" class="card mt-4">
             <div class="card-body row">
               <!-- image -->
               <div class="col-12 col-md-5">
                 <a href="#">
-                  <img src="https://cdn.easyfrontend.com/pictures/ecommerce/mac.jpg" alt="..."
-                    class="rounded img-fluid" />
+                  <img th:src="@{'/image/' + ${auction.getKoi().getKoiImage()}}" alt="..." />
+                  class="rounded img-fluid" />
                 </a>
               </div>
               <!-- details -->
               <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
                 <!-- title -->
                 <a href="#">
-                  <h5 class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
+                  <h5 th:text="${auction.getKoi().getKoiName()}" class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
                 </a>
-                <p class="ezy__eporder2-price mb-0">$ 15.00</p>
-              </div>
-            </div>
-          </div>
-          <div class="card mt-4">
-            <div class="card-body row">
-              <!-- image -->
-              <div class="col-12 col-md-5">
-                <a href="#">
-                  <img src="https://cdn.easyfrontend.com/pictures/ecommerce/tab.jpg" alt="..."
-                    class="rounded img-fluid" />
-                </a>
-              </div>
-              <!-- details -->
-              <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
-                <!-- title -->
-                <a href="#">
-                  <h5 class="ezy__eporder2-title">How to Improve Your Personal Skills (PDF)</h5>
-                </a>
-                <p class="ezy__eporder2-price mb-0">$ 15.00</p>
+                <p th:text="@{'$' + ${auction.getWinningBid().getBidAmount()}}" class="ezy__eporder2-price mb-0">$ 15.00</p>
               </div>
             </div>
           </div>
@@ -303,7 +284,7 @@
     <script th:src="@{../js/popper.min.js}" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 	<script th:src="@{../js/bootstrap.min.js}" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	<script th:src="@{../js/jquery.min.js}" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js}" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script th:src="@{../js/all.min.js}" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

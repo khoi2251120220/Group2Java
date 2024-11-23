@@ -60,7 +60,7 @@ body {
     color: #fff;
     cursor: pointer;
 }
-.user, .bell{
+.user, .bell,.shopping{
     display: block;
     font-size: 30px;
     background-color: #aaaaaa;
@@ -462,6 +462,7 @@ body {
     margin: -3px;
     line-height: 24px;
     padding: 10px;
+
     width: 100%;
     border: 1px solid #ccc;
     font-size: 15px;
@@ -696,4 +697,26 @@ body > div:nth-child(2) {
     .blog-container ul li {
         font-size: 1rem;
     }
+}
+.alert {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Thông báo lỗi (error) */
+.alert-danger {
+    color: #a94442; /* Màu chữ đỏ */
+}
+
+/* Hiển thị dạng mờ dần (nếu cần) */
+
+
+/* Thêm nút đóng (tuỳ chọn) */
+.alert .close {
+    position: absolute;
+    right: 15px;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
 }

@@ -16,9 +16,8 @@
   <link rel="stylesheet" type="text/css" th:if="${error}" th:href="@{../css/error.css}">
 </head>
 <body>
-
+<div th:replace="fragments/header :: header"></div>
 <div  id="auction-section"  style="background-color: #fff; max-width: 100% ">
-  <div th:insert="fragments/header :: header"></div>
   <div class="container">
     <div class="container-head">
       <a th:href="@{#}"><h1> Auction #65</h1></a>
@@ -32,17 +31,20 @@
     </div>
 
     <div class="card-container">
-      <div th:each="koi : ${koiList}" th:if="${koi.koiType == 'Asagi'}"  class="card"  >
-        <div class="card-image">
+      <div th:each="auction : ${auctions}"
+           th:if="${auction.getKoi() != null}"
+           class="card">
+      <a th:href="@{'/auction/id=' + ${auction.getAuctionId()}}">
+      <div class="card-image">
           <div class="auction-logo">
             <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="logo">
           </div>
-          <img th:src="${koi.koiImage}" alt="Golden Corn">
+          <img th:src="@{${auction.getKoi().getKoiImage()}}" alt="Golden Corn">
           <div class="rating">
             <span><i class="fa-solid fa-tag"></i> 910</span>
             <span>★★★★★</span>
           </div>
-        </div>
+      </div>
         <div class="card-body">
           <div class="cardd">
             <h2>Goshiki</h2>
@@ -53,26 +55,25 @@
           <div class="card-details">
             <ul>
               <li><i class="fa-solid fa-globe"></i> Breeder:</li>
-              <li th:text="${koi.koiType}"></td></li>
+              <li th:text="${auction.getKoi().getKoiType()}"></td></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-ruler"></i> Length:</li>
-              <li th:text="${koi.koiWeight}"></li>
+              <li th:text="${auction.getKoi().getKoiWeight()}"></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-venus-mars"></i> Color:</li>
-              <li th:text="${koi.koiColor}"></li>
+              <li th:text="${auction.getKoi().getKoiColor()}"></li>
             </ul>
             <ul>
               <li><i class="fa-solid fa-birthday-cake"></i> Age:</li>
-              <li th:text="${koi.koiAge}"></li>
+              <li th:text="${auction.getKoi().getKoiAge()}"></li>
             </ul>
           </div>
-
         </div>
+      </a>
       </div>
     </div>
-
   </div>
 </div>
 </body>

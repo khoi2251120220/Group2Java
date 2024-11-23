@@ -41,10 +41,10 @@ public class HomeController {
         return "interface/addkoi";
     }
 
-    @GetMapping("/auction")
-    public String auction(Model model) {
-        return "interface/auction";
-    }
+//    @GetMapping("/auction")
+//    public String auction(Model model) {
+//        return "interface/auction";
+//    }
 
     @GetMapping("/auctionDemo")
     public String auctionDemo(Model model) {

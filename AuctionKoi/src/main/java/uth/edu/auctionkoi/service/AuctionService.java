@@ -1,13 +1,11 @@
 package uth.edu.auctionkoi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import uth.edu.auctionkoi.pojo.Auction;
-import uth.edu.auctionkoi.repository.AuctionRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+<<<<<<< HEAD
 @Service
 public class AuctionService {
 
@@ -35,7 +33,17 @@ public class AuctionService {
                 .filter(auction -> auction.getStatus() == Auction.Status.OPEN)
                 .count();
     }
+<<<<<<< HEAD
 
     public void deleteAuctionById(Long id) {
     }
+=======
+public interface AuctionService {
+    public List<Auction> getAuctionsWonByUser(Long userId);
+    public List<Auction> findAll();
+    public Optional<Auction> findById(Long id);
+    public Auction save(Auction auction);
+>>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
+=======
+>>>>>>> parent of 2b58706 (up thêm xóa Koi)
 }

@@ -28,28 +28,26 @@
 <div th:fragment="product_auction" id="product-auction-section" >
     <div class="product-auction-container">
         <h1>Thông tin sản phẩm đấu giá</h1>
-        <div th:if="${product}">
+        <div th:if="${auction}">
             <div class="product-container">
                 <div class="product-left">
                     <!-- Khu vực hình ảnh -->
                     <div class="product-image">
-                        <img src="/image/Goshiki-auction.png" alt="Hình ảnh sản phẩm" />
-<!--                        <img th:src="@{'/images/' + ${product.image}}" alt="Hình ảnh sản phẩm" style="width: 50%;">-->
+                        <img th:src="@{${auction.getKoi().getKoiImage()}}" alt="Hình ảnh sản phẩm" />
                     </div>
                 </div>
                 <div class="product-right">
                     <!-- Thông tin chi tiết sản phẩm -->
                     <div class="product-details">
-                        <h2 th:text="${product.name}">Tên sản phẩm</h2>
-                        <p><strong>Giá khởi điểm:</strong> <span th:text="${product.startPrice} + ' VNĐ'">0 VNĐ</span></p>
-                        <p><strong>Bước giá:</strong> <span th:text="${product.stepPrice} + ' VNĐ'">0 VNĐ</span></p>
-                        <p><strong>Phí tham gia:</strong> <span th:text="${product.participationFee} + ' VNĐ'">0 VNĐ</span></p>
-                        <p><strong>Tiền đặt trước:</strong> <span th:text="${product.deposit} + ' VNĐ'">0 VNĐ</span></p>
-                        <p><strong>Phương thức đấu giá:</strong> <span th:text="${product.method}">Phương thức</span></p>
-                        <p><strong>Địa điểm:</strong> <span th:text="${product.location}">Địa điểm</span></p>
-                        <p><strong>Thời gian xem tài sản:</strong>
-                            <span th:text="${product.viewingTimeStart}">Ngày bắt đầu</span> -
-                            <span th:text="${product.viewingTimeEnd}">Ngày kết thúc</span>
+                        <h2 th:text="${auction.getKoi().getKoiName()}">Tên sản phẩm</h2>
+                        <p><strong>Giá khởi điểm:</strong> <span th:text="${auction.getStartPrice()} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Bước giá:</strong> <span th:text="${auction.getStepPrice()} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Phí tham gia:</strong> <span th:text="${auction.getParticipationFee()} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Giá hiện tại:</strong> <span th:text="${auction.getCurrentPrice()} + ' VNĐ'">0 VNĐ</span></p>
+                        <p><strong>Phương thức đấu giá:</strong> <span th:text="${auction.getMethod()}">Phương thức</span></p>
+                        <p><strong>Thời gian đấu giá:</strong>
+                            <span th:text="${auction.getStartTime()}">Thời gian bắt đầu</span> -
+                            <span th:text="${auction.getEndTime()}">Thời gian kết thúc</span>
                         </p>
                     </div>
 
@@ -58,9 +56,9 @@
                     <!-- Khu vực đấu giá -->
                     <div class="auction-section">
                         <h2>Tăng giá đấu</h2>
-                        <form th:action="@{/auction/placeBid}" method="post">
-                            <input type="hidden" name="productId" th:value="${product.id}">
-                            <label for="manualBid">Nhập số tiền muốn tăng:</label>
+                        <form th:action="@{/auction/bid}" method="post">
+                            <input type="hidden" name="auctionId" th:value="${auction.getAuctionId()}">
+                            <label for="manualBid">Nhập số tiền đặt giá:</label>
                             <input type="number" id="manualBid" name="manualBid" placeholder="Nhập số tiền (VNĐ)" required>
                             <label for="autoBid">Chọn mức tăng giá:</label>
                             <select id="autoBid" name="autoBid">

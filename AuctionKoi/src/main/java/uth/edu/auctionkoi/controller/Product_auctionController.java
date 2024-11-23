@@ -24,7 +24,7 @@ public class Product_auctionController {
         this.productService = productService;
     }
 
-    @GetMapping("/auction/product/{id}")
+    @GetMapping("/auction/product/id={id}")
     public String getProductAuction(@PathVariable Long id, Model model) {
         Optional<Product> productOpt = productService.findById(id);
         if (productOpt.isPresent()) {

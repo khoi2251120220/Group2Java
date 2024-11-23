@@ -77,15 +77,17 @@
                 </div>
 
                 <!-- Users Table -->
-                <h2 id="users" class="mt-4">Users</h2>
+                <h2 id="users" class="mt-4">Người dùng</h2>
+                <a href="/admin/users/new" class="btn btn-primary mb-3">Thêm Người dùng Mới</a>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Username</th>
-                            <th>Full Name</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Họ và tên</th>
                             <th>Email</th>
-                            <th>Role</th>
+                            <th>Vai trò</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,91 +97,91 @@
                             <td th:text="${user.fullName}"></td>
                             <td th:text="${user.email}"></td>
                             <td th:text="${user.role}"></td>
+                            <td>
+                                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <!-- Koi Table -->
-                <h2 id="koi" class="mt-4">Koi</h2>
-                <div class="mb-3">
-                    <a href="http://localhost:8080/addkoi/koi" class="btn btn-primary">Add Koi</a>
-                </div>
+                <h2 id="koi" class="mt-4">Cá Koi</h2>
+                <a href="/admin/koi/new" class="btn btn-primary mb-3">Thêm Cá Koi Mới</a>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Price</th>
-                            <th>Actions</th>
+                            <th>Tên</th>
+                            <th>Loại</th>
+                            <th>Kích thước</th>
+                            <th>Giá</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="koi : ${kois}">
                             <td th:text="${koi.id}"></td>
-                            <td th:text="${koi.koiName}"></td>
-                            <td th:text="${koi.koiType}"></td>
-                            <td th:text="${koi.koiPrice}"></td>
+                            <td th:text="${koi.name}"></td>
+                            <td th:text="${koi.type}"></td>
+                            <td th:text="${koi.size}"></td>
+                            <td th:text="${koi.price}"></td>
                             <td>
-                                <a th:href="@{/addkoi/delete/{id}(id=${koi.id})}" class="btn btn-danger btn-sm" 
-                                   onclick="return confirm('Are you sure you want to delete this Koi?');">Delete</a>
+                                <a th:href="@{/admin/koi/edit/{id}(id=${koi.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/koi/delete/{id}(id=${koi.id})}" class="btn btn-danger btn-sm">Xóa</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <!-- Auctions Table -->
-                <h2 id="auctions" class="mt-4">Auctions</h2>
+                <h2 id="auctions" class="mt-4">Đấu giá</h2>
+                <a href="/admin/auctions/new" class="btn btn-primary mb-3">Thêm Đấu giá Mới</a>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Koi Name</th>
-                            <th>Method</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Start Price</th>
-                            <th>Step Price</th>
-                            <th>Current Bid</th>
-                            <th>Participation Fee</th>
-                            <th>Status</th>
-                            <th>Winning Bid</th>
+                            <th>Cá Koi</th>
+                            <th>Giá khởi điểm</th>
+                            <th>Giá hiện tại</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="auction : ${auctions}">
                             <td th:text="${auction.id}"></td>
-                            <td th:text="${auction.koi.koiName}"></td>
-                            <td th:text="${auction.method}"></td>
-                            <td th:text="${auction.startTime}"></td>
-                            <td th:text="${auction.endTime}"></td>
+                            <td th:text="${auction.koi.name}"></td>
                             <td th:text="${auction.startPrice}"></td>
-                            <td th:text="${auction.stepPrice}"></td>
-                            <td th:text="${auction.currentBid}"></td>
-                            <td th:text="${auction.participationFee}"></td>
-                            <td th:text="${auction.status}"></td>
-                            <td th:text="${auction.winningBid != null ? auction.winningBid.amount : 'N/A'}"></td>
+                            <td th:text="${auction.currentPrice}"></td>
+                            <td>
+                                <a th:href="@{/admin/auctions/edit/{id}(id=${auction.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/auctions/delete/{id}(id=${auction.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <!-- Blogs Table -->
-                <h2 id="blogs" class="mt-4">Blogs</h2>
+                <h2 id="blogs" class="mt-4">Blog</h2>
+                <a href="/admin/blogs/new" class="btn btn-primary mb-3">Thêm Blog Mới</a>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Post Date</th>
+                            <th>Tiêu đề</th>
+                            <th>Thể loại</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="blog : ${blogs}">
                             <td th:text="${blog.id}"></td>
                             <td th:text="${blog.title}"></td>
-                            <td th:text="${blog.content}"></td>
-                            <td th:text="${blog.postDate}"></td>
+                            <td th:text="${blog.category}"></td>
+                            <td>
+                                <a th:href="@{/admin/blogs/edit/{id}(id=${blog.id})}" class="btn btn-warning btn-sm">Chỉnh sửa</a>
+                                <a th:href="@{/admin/blogs/delete/{id}(id=${blog.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

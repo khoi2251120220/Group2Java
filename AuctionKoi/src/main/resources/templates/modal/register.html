@@ -9,44 +9,50 @@
 
 </head>
 <body>
-    <div id="tk_register" style="transform: translate(-50%, -45%);">
-        <h1>Register</h1>
-        <form id="registerForm" method="POST">
-            <!-- Username và Full Name trong cùng một dòng -->
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="username">Username *</label><br><br>
-                    <input type="text" id="username" name="username" required><br><br>
-                </div>
-                <div class="input-group">
-                    <label for="fullName">Full Name *</label><br><br>
-                    <input type="text" id="fullName" name="fullName" required><br><br>
-                </div>
-            </div>
-
+<div id="tk_register" style="transform: translate(-50%, -45%);">
+    <h1>Register</h1>
+    <form id="registerForm" method="POST">
+        <!-- Username và Full Name trong cùng một dòng -->
+        <div class="input-row">
             <div class="input-group">
-                <label for="phoneNumber">Phone Number *</label><br><br>
-                <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+                <label for="username">Username *</label><br><br>
+                <input type="text" id="username" name="username" th:value="${username}" required><br><br>
             </div>
-
             <div class="input-group">
-                <label for="email">Email Address *</label><br><br>
-                <input type="email" id="email" name="email" required><br><br>
+                <label for="fullName">Full Name *</label><br><br>
+                <input type="text" id="fullName" name="fullName" th:value="${fullName}" required><br><br>
             </div>
+        </div>
 
-            <div class="input-group">
-                <label for="password">Password *</label><br><br>
-                <input type="password" id="password" name="password" required><br><br>
-            </div>
+        <div class="input-group">
+            <label for="phoneNumber">Phone Number *</label><br><br>
+            <input type="tel" id="phoneNumber" name="phoneNumber" th:value="${phoneNumber}" required><br><br>
+        </div>
 
-            <button type="submit" class="register_btn">Register</button><br><br>
+        <div class="input-group">
+            <label for="email">Email Address *</label><br><br>
+            <input type="email" id="email" name="email" th:value="${email}" required><br><br>
+        </div>
 
-            <div class="footer_register" style="text-align: center">
-                <span class="text_dk" style="font-size: 16px">Already have an account?</span>
-                <a href="/login" class="login_btn_footer dang_ky" type="button" style="padding: 6px; text-decoration: none;" >Log In</a>
-            </div>
-        </form>
-    </div>
+        <div class="input-group">
+            <label for="password">Password *</label><br><br>
+            <input type="password" id="password" name="password" required><br><br>
+        </div>
+
+        <button type="submit" class="register_btn">Register</button><br><br>
+
+        <div class="footer_register" style="text-align: center">
+            <span class="text_dk" style="font-size: 16px">Already have an account?</span>
+            <a href="/login" class="login_btn_footer dang_ky" type="button" style="padding: 6px; text-decoration: none;" >Log In</a>
+        </div>
+    </form>
 </div>
+</div>
+
+
+<script th:if="${error}" th:inline="javascript">
+    alert([[${error}]]);
+</script>
+
 </body>
 </html>

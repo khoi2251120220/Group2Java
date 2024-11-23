@@ -17,11 +17,17 @@ public class UserService implements IUserService {
     public List<User> getAllUsers() {
         return iUserRepository.findAll();
     }
+<<<<<<< HEAD
 
     public int getUserCount() {
         return iUserRepository.findAll().size();
     }
+<<<<<<< HEAD
 
     public void deleteUserById(Long id) {
     }
+=======
+>>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
+=======
+>>>>>>> parent of 2b58706 (up thêm xóa Koi)
 }

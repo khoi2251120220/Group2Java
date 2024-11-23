@@ -33,10 +33,15 @@
         <button class="search-button">🔍</button>
       </li>
     </ul>
-    <ul class="taikhoan">
-      <li class="menu_bell " th:if="${session.currentUser != null}">
-      <li th:if="${session.currentUser != null}" ></li>
-        <i class="bell ti-bell"></i>
+
+    <ul class="taikhoan  " >
+      <i class="ti-shopping-cart shopping" th:if="${session.currentUser != null}" style="margin-right: 10px"></i>
+      <li class="menu_bell " >
+
+
+        <i class="bell ti-bell" th:if="${session.currentUser != null}" ></i>
+
+      <li th:if="${session.currentUser != null}" >
         <ul class="profile_menu_bell" style="min-width: 350px;right: 170px">
           <li class="tb1" data-target=".thbao1"><i class="ti-control-record"></i><a>Thông báo phiên đấu giá sắp tới</a></li>
           <li class="tb2" data-target=".thbao2"><i class="ti-control-record"></i><a>Kết quả đấu giá tuần trước</a></li>

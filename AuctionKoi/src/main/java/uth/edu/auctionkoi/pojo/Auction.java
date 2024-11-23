@@ -15,9 +15,18 @@ import java.time.LocalDateTime;
 public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
     @Column(name = "id")
     private Long id;
+<<<<<<< HEAD
     @OneToOne(cascade = CascadeType.REMOVE)
+=======
+    private Long auctionId;
+    @OneToOne
+>>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
+=======
+    @OneToOne
+>>>>>>> parent of 2b58706 (up thêm xóa Koi)
     @JoinColumn(name = "koi_id")
     private Koi koi;
 
@@ -28,7 +37,7 @@ public class Auction {
     private LocalDateTime endTime;
     private Long startPrice; // Giá khởi điểm
     private Long stepPrice; // Bước giá
-    private Long currentBid;
+    private Long currentPrice;
     private Long participationFee;
 
     @Enumerated(EnumType.STRING)

@@ -44,11 +44,6 @@ public class Koi {
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
-    private Boolean isDeleted;
-
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
 
     public enum Status {
         PENDING, AUCTIONED, SOLD

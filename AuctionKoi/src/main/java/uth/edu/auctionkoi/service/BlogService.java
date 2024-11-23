@@ -20,11 +20,17 @@ public class BlogService {
     public Optional<Blog> getBlogById(Long id) {
         return blogRepository.findById(id);
     }
+<<<<<<< HEAD
 
     public int getBlogCount() {
         return blogRepository.findAll().size();
     }
+<<<<<<< HEAD
 
     public void deleteBlogById(Long id) {
     }
+=======
+>>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
+=======
+>>>>>>> parent of 2b58706 (up thêm xóa Koi)
 }
