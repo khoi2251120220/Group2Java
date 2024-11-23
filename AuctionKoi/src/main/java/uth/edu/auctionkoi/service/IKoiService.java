@@ -13,4 +13,6 @@ public interface IKoiService {
     Koi save(Koi koi);
 
     void deleteKoi(Long id);
+
+    void deleteKoiById(Long id);
 }
