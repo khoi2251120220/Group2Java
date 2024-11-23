@@ -26,4 +26,8 @@ public class UserService implements IUserService {
     public void deleteUserById(Long id) {
         iUserRepository.deleteById(id);
     }
+
+    public void saveUser(User user) {
+        iUserRepository.save(user);
+    }
 }

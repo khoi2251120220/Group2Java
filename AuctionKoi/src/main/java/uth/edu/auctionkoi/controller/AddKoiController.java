@@ -49,4 +49,15 @@ public class AddKoiController {
         }
         return "interface/addkoi";
     }
+
+    @DeleteMapping("/koi/{id}")
+    public String deleteKoi(@PathVariable Long id, Model model) {
+        try {
+            koiService.deleteKoiById(id);
+            model.addAttribute("message", "Koi deleted successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Error: " + e.getMessage());
+        }
+        return "redirect:/addkoi/koi"; // Redirect to the koi list page
+    }
 }

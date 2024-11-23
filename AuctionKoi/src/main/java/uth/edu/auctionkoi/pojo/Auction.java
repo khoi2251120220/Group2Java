@@ -40,6 +40,8 @@ public class Auction {
     @JoinColumn(name = "winning_bid_id", nullable = true)
     private Bid winningBid; // Giá thắng cuộc
 
+    private BigDecimal currentBid; // or the appropriate type
+
     public enum Method {
         FIXEDPRICE, SINGLEBID, ASCENDINGBID, DESCENDINGBID
     }
@@ -58,6 +60,10 @@ public class Auction {
 
     public void setBidAmount(BigDecimal bidAmount) {
         // Logic để thiết lập bid amount
+    }
+
+    public BigDecimal getCurrentBid() {
+        return currentBid;
     }
 }
 
