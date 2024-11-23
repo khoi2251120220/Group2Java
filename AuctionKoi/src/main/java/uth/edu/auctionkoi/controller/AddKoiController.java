@@ -6,13 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import uth.edu.auctionkoi.pojo.Koi;
+import uth.edu.auctionkoi.service.CloudinaryService;
 import uth.edu.auctionkoi.service.IKoiService;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/addkoi")
@@ -20,10 +17,10 @@ import java.nio.file.Paths;
 public class AddKoiController {
 
     private final IKoiService koiService;
+    private final CloudinaryService cloudinaryService;
 
     @GetMapping("/koi")
-    public String addKoiPage(Model model) {
-        model.addAttribute("koi", new Koi());
+    public String addKoiPage() {
         return "interface/addkoi";
     }
 
@@ -33,38 +30,23 @@ public class AddKoiController {
             @RequestParam("koiImageFile") MultipartFile koiImageFile,
             Model model) {
         try {
+            // Upload image to Cloudinary
             if (!koiImageFile.isEmpty()) {
-                String fileName = koiImageFile.getOriginalFilename();
-                koi.setKoiImage(fileName);
-
-                // Save the file to the server
-                Path path = Paths.get("uploads/" + fileName);
-                Files.createDirectories(path.getParent());
-                koiImageFile.transferTo(path.toFile());
+                Map uploadResult = cloudinaryService.upload(koiImageFile);
+                String imageUrl = (String) uploadResult.get("url"); // Get the uploaded image URL
+                koi.setKoiImage(imageUrl); // Save the URL in the Koi object
             }
 
+            // Save the Koi object to the database
             koiService.save(koi);
+
             model.addAttribute("save", true);
             model.addAttribute("message", "Koi added successfully!");
-            model.addAttribute("koi", new Koi());
-        } catch (IOException e) {
-            model.addAttribute("save", false);
-            model.addAttribute("errorMessage", "Error saving file: " + e.getMessage());
+            model.addAttribute("koi", new Koi()); // Reset the form
         } catch (Exception e) {
             model.addAttribute("save", false);
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
         }
         return "interface/addkoi";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteKoi(@PathVariable Long id, Model model) {
-        try {
-            koiService.deleteKoi(id);
-            model.addAttribute("message", "Koi deleted successfully!");
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error: " + e.getMessage());
-        }
-        return "redirect:/admin/dashboard";
     }
 }

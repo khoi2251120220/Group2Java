@@ -13,22 +13,20 @@
   <script type="text/javascript" th:src="@{../js/jquery-3.7.1.min.js}"></script>
   <script type="text/javascript" th:src="@{../js/javascript.js}"></script>
 <!--  <link rel="stylesheet" type="text/css" th:href="@{../css/style-transport.css}">-->
-  <link rel="stylesheet" type="text/css" th:if="${error}" th:href="@{../css/error.css}">
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div  id="auction-section"  style="background-color: #fff; max-width: 100% ">
   <div class="container">
     <div class="container-head">
-      <a th:href="@{#}"><h1> Auction #65</h1></a>
-      <p>DATE </p>
+     <h1>Auction</h1>
     </div>
-    <div class="Auction-menu">
-      <button><i class="fa-solid fa-fish" style="padding: 0 10px"></i>Varieties</button>
-      <button><i class="fa-solid fa-mars" style="padding:0 10px"> </i>Sexes</button>
-      <button><i class="fa-solid fa-ruler" style="padding:0 10px">  </i>Sizes</button>
-      <button><i class="fa-solid fa-globe" style="padding:0 10px"></i> Breeders</button>
-    </div>
+<!--    <div class="Auction-menu">-->
+<!--      <button><i class="fa-solid fa-fish" style="padding: 0 10px"></i>Varieties</button>-->
+<!--      <button><i class="fa-solid fa-mars" style="padding:0 10px"> </i>Sexes</button>-->
+<!--      <button><i class="fa-solid fa-ruler" style="padding:0 10px">  </i>Sizes</button>-->
+<!--      <button><i class="fa-solid fa-globe" style="padding:0 10px"></i> Breeders</button>-->
+<!--    </div>-->
 
     <div class="card-container">
       <div th:each="auction : ${auctions}"
@@ -41,7 +39,7 @@
           </div>
           <img th:src="@{${auction.getKoi().getKoiImage()}}" alt="Golden Corn">
           <div class="rating">
-            <span><i class="fa-solid fa-tag"></i> 910</span>
+            <span><i class="fa-solid fa-tag"></i> <span th:text="${auction.getId()}"></span></span>
             <span>★★★★★</span>
           </div>
       </div>
@@ -49,9 +47,10 @@
           <div class="cardd">
             <h2>Goshiki</h2>
             <p><i class="fa-solid fa-clock"></i> Ended!</p>
-            <p><i class="fa-solid fa-play"></i> $1,000</p>
+            <p><i class="fa-solid fa-play"></i><span th:text="${auction.getCurrentPrice()}"></span></p>
           </div>
           <hr>
+
           <div class="card-details">
             <ul>
               <li><i class="fa-solid fa-globe"></i> Breeder:</li>
