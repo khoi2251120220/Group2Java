@@ -32,7 +32,7 @@
       <div th:each="auction : ${auctions}"
            th:if="${auction.getKoi() != null}"
            class="card">
-      <a th:href="@{'/auction/id=' + ${auction.getAuctionId()}}">
+      <a th:href="@{'/auction/id=' + ${auction.getId()}}">
       <div class="card-image">
           <div class="auction-logo">
             <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="logo">
