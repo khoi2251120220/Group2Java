@@ -13,11 +13,9 @@ public class AuctionServiceImpl implements AuctionService {
     @Autowired
     private AuctionRepository auctionRepository;
 
-    public List<Auction> getAuctionsWonByUser(Long userId) {
-        return auctionRepository.findAuctionsWonByUser(userId);
-    }
-    public List<Auction> findAll() {
-        return auctionRepository.findAll();
+    @Override
+    public void save(Auction auction) {
+        auctionRepository.save(auction);
     }
 
     @Override
@@ -25,7 +23,25 @@ public class AuctionServiceImpl implements AuctionService {
         return auctionRepository.findById(id);
     }
 
-    public Auction save(Auction auction) {
-        return auctionRepository.save(auction);
+    @Override
+    public List<Auction> getAllAuctions() {
+        return auctionRepository.findAll();
+    }
+
+    @Override
+    public int getActiveAuctionsCount() {
+        return (int) auctionRepository.findAll().stream()
+                .filter(auction -> auction.getStatus() == Auction.Status.OPEN)
+                .count();
+    }
+
+    @Override
+    public void deleteAuctionById(Long id) {
+        auctionRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Auction> getAuctionsWonByUser(Long userId) {
+        return auctionRepository.findAuctionsWonByUser(userId);
     }
 }

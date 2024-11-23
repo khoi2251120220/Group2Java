@@ -25,14 +25,18 @@ public class KoiService implements IKoiService {
 
     @Override
     public List<Koi> findAll() {
-        return koiRepository.findAll();  // Trả về danh sách tất cả Koi
+        return koiRepository.findAll();
     }
 
     @Override
     public Koi save(Koi koi) {
         return koiRepository.save(koi);
     }
-<<<<<<< HEAD
+
+    @Override
+    public void deleteKoi(Long id) {
+
+    }
 
     public int getKoiCount() {
         return koiRepository.findAll().size();
@@ -41,16 +45,12 @@ public class KoiService implements IKoiService {
     public List<Koi> getAllKoi() {
         return koiRepository.findAll();
     }
-<<<<<<< HEAD
 
     public void deleteKoiById(Long id) {
+        koiRepository.deleteById(id);
     }
 
     public List<Koi> getAllActiveKois() {
         return koiRepository.findAllActiveKois();
     }
-=======
->>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
-=======
->>>>>>> parent of 2b58706 (up thêm xóa Koi)
 }

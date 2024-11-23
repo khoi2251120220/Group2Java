@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,18 +16,10 @@ import java.time.LocalDateTime;
 public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
     @Column(name = "id")
     private Long id;
-<<<<<<< HEAD
-    @OneToOne(cascade = CascadeType.REMOVE)
-=======
-    private Long auctionId;
+
     @OneToOne
->>>>>>> 0605bca279d0ee4d7f139209a7b803da3da12303
-=======
-    @OneToOne
->>>>>>> parent of 2b58706 (up thêm xóa Koi)
     @JoinColumn(name = "koi_id")
     private Koi koi;
 
@@ -53,6 +46,18 @@ public class Auction {
 
     public enum Status {
         OPEN, CLOSED, COMPLETED
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
+
+    public void setCurrentPrice(Long currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public void setBidAmount(BigDecimal bidAmount) {
+        // Logic để thiết lập bid amount
     }
 }
 

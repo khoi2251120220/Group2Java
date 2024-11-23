@@ -13,4 +13,6 @@ import java.util.Optional;
 public interface AuctionRepository extends JpaRepository<Auction, Long> {
     @Query("SELECT a FROM Auction a WHERE a.winningBid.user.id = :userId")
     List<Auction> findAuctionsWonByUser(@Param("userId") Long userId);
+
+    Optional<Auction> findById(Long id);
 }

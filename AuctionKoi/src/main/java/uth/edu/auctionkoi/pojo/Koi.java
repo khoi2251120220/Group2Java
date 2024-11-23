@@ -48,4 +48,16 @@ public class Koi {
     public enum Status {
         PENDING, AUCTIONED, SOLD
     }
+
+    public String getKoiImage() {
+        return this.koiImage;
+    }
+
+    public void setKoiImage(String koiImage) {
+        this.koiImage = koiImage;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
 }

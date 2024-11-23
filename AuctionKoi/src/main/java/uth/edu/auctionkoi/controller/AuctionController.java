@@ -34,7 +34,7 @@ public class AuctionController {
 
     @GetMapping
     public String getAuctionPage( Model model) {
-        List<Auction>  auctionList = auctionService.findAll();
+        List<Auction>  auctionList = auctionService.getAllAuctions();
         if (!auctionList.isEmpty()) {
             model.addAttribute("auctions", auctionList);
         } else {

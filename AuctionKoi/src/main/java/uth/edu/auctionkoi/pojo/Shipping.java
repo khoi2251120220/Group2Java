@@ -41,7 +41,27 @@ public class Shipping {
     @OneToMany(mappedBy = "shipping", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShippingDetail> details; // Danh sách chi tiết vận chuyển
 
+    private String stage;
+    private String description;
+    private LocalDateTime timestamp;
+
     public enum Status {
         PENDING, IN_TRANSIT, DELIVERED
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

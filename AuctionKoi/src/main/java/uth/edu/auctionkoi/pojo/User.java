@@ -29,4 +29,16 @@ public class User {
     public enum Role {
         GUEST, MEMBER, KOI_BREEDER, STAFF, MANAGER
     }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 }

@@ -11,4 +11,6 @@ public interface IKoiService {
     List<Koi> findAll();  // Thêm phương thức mới
 
     Koi save(Koi koi);
+
+    void deleteKoi(Long id);
 }
