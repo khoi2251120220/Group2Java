@@ -24,7 +24,7 @@
 <body>
   <div th:insert="fragments/header :: header"></div>
   <!-- START: Body Content -->
-  <section style="margin-top: 80px" class="ezy__eporder2">
+  <section style="margin-top: 80px" class="ezy__eporder2" th:if="${transaction.status == ''}">
     <div class="container py-5">
       <div class="row justify-content-between">
         <!-- progress bar -->
@@ -38,12 +38,12 @@
   
         <!-- courses -->
         <div class="col-12 col-md-6">
-          <div th:each="auction : ${auctions}" class="card mt-4">
+          <div class="card mt-4">
             <div class="card-body row">
               <!-- image -->
               <div class="col-12 col-md-5">
                 <a href="#">
-                  <img th:src="@{'/image/' + ${auction.getKoi().getKoiImage()}}" alt="..." />
+                  <img th:src="@{${transaction.getAuction().getKoi().getKoiImage()}}" alt="..." />
                   class="rounded img-fluid" />
                 </a>
               </div>
@@ -51,9 +51,9 @@
               <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
                 <!-- title -->
                 <a href="#">
-                  <h5 th:text="${auction.getKoi().getKoiName()}" class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
+                  <h5 th:text="${transaction.getAuction().getKoi().getKoiName()}" class="ezy__eporder2-title">Certificate in British Sign Language (BSL) Level 1 & 2</h5>
                 </a>
-                <p th:text="@{'$' + ${auction.getWinningBid().getBidAmount()}}" class="ezy__eporder2-price mb-0">$ 15.00</p>
+                <p th:text="@{'$' + ${transaction.getAuction().getWinningBid().getBidAmount()}}" class="ezy__eporder2-price mb-0">$ 15.00</p>
               </div>
             </div>
           </div>
@@ -74,38 +74,20 @@
               <hr class="my-4" />
   
               <div class="col-8">
-                <h6 class="mb-0">Certificate in British Sign Language (BSL) Level 1 & 2</h6>
+                <h6 class="mb-0" th:text="${transaction.getAuction().getKoi().getKoiName()}">Certificate in British Sign Language (BSL) Level 1 & 2</h6>
               </div>
               <div class="col-4">
-                <p class="mb-0">£15.00</p>
+                <p class="mb-0" th:text="@{${transaction.getAuction().getCurrentPrice()} + 'VND'}">£15.00</p>
+              </div>
+  
+              <div class="col-8">
+                <h6 class="mb-0">Thành tiền</h6>
+              </div>
+              <div class="col-4">
+                <p class="mb-0" th:text="@{${transaction.getAuction().getCurrentPrice()} + 'VND'}">£35.00</p>
               </div>
   
               <hr class="my-4" />
-  
-              <div class="col-8">
-                <h6 class="mb-0">How to Improve Your Personal Skills (PDF)</h6>
-              </div>
-              <div class="col-4">
-                <p class="mb-0">£20.00</p>
-              </div>
-  
-              <hr class="my-4" />
-  
-              <div class="col-8">
-                <h6 class="mb-0">Tổng cộng</h6>
-              </div>
-              <div class="col-4">
-                <p class="mb-0">£35.00</p>
-              </div>
-  
-              <hr class="my-4" />
-  
-              <div class="col-8">
-                <h6>Thành tiền</h6>
-              </div>
-              <div class="col-4">
-                <p>£35.00</p>
-              </div>
   
               <form action="" class="mt-5">
                 <div class="input-group">
@@ -122,7 +104,7 @@
       </div>
     </div>
   </section>
-  <section class="ezy__eporder3 light">
+  <section class="ezy__eporder3 light" th:if="${transaction.status == 'PENDING'}">
   <div class="container py-5">
     <div class="row justify-content-center">
       <!-- progress bar -->
@@ -246,7 +228,7 @@
 </section>
 
  <!-- START: Body Content -->
- <section class="ezy__eporder4 light">
+ <section class="ezy__eporder4 light" th:if="${transaction.status == 'SUCCESS'}" >
   <div class="container py-5">
     <div class="row justify-content-center">
       <!-- progress bar -->

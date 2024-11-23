@@ -9,7 +9,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "KOIS")
 public class Koi {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
