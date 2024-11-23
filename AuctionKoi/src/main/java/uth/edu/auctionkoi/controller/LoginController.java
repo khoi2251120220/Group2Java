@@ -33,21 +33,17 @@ public class LoginController {
                         RedirectAttributes redirectAttributes) {
         logger.info("Login attempt with username: {}", username);
 
-        // Kiểm tra nếu username hoặc password bị rỗng
-        if (username == null || username.trim().isEmpty() || password == null || password.trim().isEmpty()) {
-            redirectAttributes.addFlashAttribute("error", "Username và mật khẩu không được để trống.");
-            return "redirect:/login";
-        }
-
         try {
             // Tìm kiếm người dùng dựa trên username
             User user = userRepository.findByUsername(username);
             if (user == null) {
                 logger.warn("User not found: {}", username);
                 redirectAttributes.addFlashAttribute("error1", "Tài khoản không tồn tại."); // Lỗi cho tài khoản không đúng
+                redirectAttributes.addFlashAttribute("username", username); // Lưu lại username
             } else if (!passwordEncoder.matches(password, user.getPassword())) {
                 logger.warn("Invalid password for username: {}", username);
                 redirectAttributes.addFlashAttribute("error2", "Mật khẩu không đúng."); // Lỗi cho mật khẩu sai
+                redirectAttributes.addFlashAttribute("username", username); // Lưu lại username
             } else {
                 // Đăng nhập thành công
                 User userSession = new User();
@@ -62,6 +58,7 @@ public class LoginController {
         } catch (Exception e) {
             logger.error("An error occurred during login for username: {}", username, e);
             redirectAttributes.addFlashAttribute("error", "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
+            redirectAttributes.addFlashAttribute("username", username); // Lưu lại username trong trường hợp lỗi
         }
 
         return "redirect:/login"; // Quay lại trang đăng nhập

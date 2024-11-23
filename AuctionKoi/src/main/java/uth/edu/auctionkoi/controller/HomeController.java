@@ -41,6 +41,11 @@ public class HomeController {
         return "interface/addkoi";
     }
 
+    @GetMapping("/auctionwin")
+    public String auctionwin(Model model) {
+        return "interface/auctionwin";
+    }
+
 //    @GetMapping("/auction")
 //    public String auction(Model model) {
 //        return "interface/auction";
