@@ -34,9 +34,6 @@
            class="card">
       <a th:href="@{'/auction/id=' + ${auction.getId()}}">
       <div class="card-image">
-          <div class="auction-logo">
-            <img th:src="@{https://auctionkoi.com/images/kanno-logo.png}" alt="logo">
-          </div>
           <img th:src="@{${auction.getKoi().getKoiImage()}}" alt="Golden Corn">
           <div class="rating">
             <span><i class="fa-solid fa-tag"></i> <span th:text="${auction.getId()}"></span></span>

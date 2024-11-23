@@ -10,6 +10,10 @@ import java.util.List;
 
 @Repository
 public interface IKoiRepository extends JpaRepository<Koi, Long> {
+    static List<Koi> findByStatus(Status status) {
+        return findByStatus(status);
+    }
+
     @Query("SELECT k FROM Koi k WHERE k.status = uth.edu.auctionkoi.pojo.Koi$Status.PENDING")
     List<Koi> findAllActiveKois();
 }
