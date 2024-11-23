@@ -35,4 +35,7 @@ public class AuctionService {
                 .filter(auction -> auction.getStatus() == Auction.Status.OPEN)
                 .count();
     }
+
+    public void deleteAuctionById(Long id) {
+    }
 }

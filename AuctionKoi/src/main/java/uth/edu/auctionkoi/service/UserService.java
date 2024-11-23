@@ -21,4 +21,7 @@ public class UserService implements IUserService {
     public int getUserCount() {
         return iUserRepository.findAll().size();
     }
+
+    public void deleteUserById(Long id) {
+    }
 }

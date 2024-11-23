@@ -3,7 +3,7 @@ package uth.edu.auctionkoi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uth.edu.auctionkoi.pojo.Koi;
-import uth.edu.auctionkoi.repository.IKoiRepository;
+import uth.edu.auctionkoi.repository.IAddKoiRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 public class KoiService implements IKoiService {
 
-    private final IKoiRepository koiRepository;
+    private final IAddKoiRepository koiRepository;
 
     @Autowired
-    public KoiService(IKoiRepository koiRepository) {
+    public KoiService(IAddKoiRepository koiRepository) {
         this.koiRepository = koiRepository;
     }
 
@@ -39,5 +39,12 @@ public class KoiService implements IKoiService {
 
     public List<Koi> getAllKoi() {
         return koiRepository.findAll();
+    }
+
+    public void deleteKoiById(Long id) {
+    }
+
+    public List<Koi> getAllActiveKois() {
+        return koiRepository.findAllActiveKois();
     }
 }

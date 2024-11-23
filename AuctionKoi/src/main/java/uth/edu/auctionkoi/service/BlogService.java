@@ -24,4 +24,7 @@ public class BlogService {
     public int getBlogCount() {
         return blogRepository.findAll().size();
     }
+
+    public void deleteBlogById(Long id) {
+    }
 }

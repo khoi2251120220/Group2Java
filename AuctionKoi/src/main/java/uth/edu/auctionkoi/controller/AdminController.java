@@ -4,10 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import uth.edu.auctionkoi.service.UserService;
 import uth.edu.auctionkoi.service.KoiService;
 import uth.edu.auctionkoi.service.AuctionService;
 import uth.edu.auctionkoi.service.BlogService;
+import uth.edu.auctionkoi.service.IKoiService;
+import uth.edu.auctionkoi.service.AddKoiService;
 
 @Controller
 public class AdminController {
@@ -23,6 +28,9 @@ public class AdminController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private AddKoiService addKoiService;
 
     @GetMapping("/admin")
     public String dashboard(Model model) {
@@ -41,6 +49,42 @@ public class AdminController {
         model.addAttribute("auctions", auctionService.getAllAuctions());
         model.addAttribute("blogs", blogService.getAllBlogs());
 
+        return "dashboard";
+    }
+
+    @PostMapping("/admin/users/delete")
+    @ResponseBody
+    public String deleteUser(@RequestParam("id") Long id) {
+        userService.deleteUserById(id);
+        return "success";
+    }
+
+    @PostMapping("/admin/koi/delete")
+    @ResponseBody
+    public String deleteKoi(@RequestParam("id") Long id) {
+        koiService.deleteKoiById(id);
+        return "success";
+    }
+
+    @PostMapping("/admin/auctions/delete")
+    @ResponseBody
+    public String deleteAuction(@RequestParam("id") Long id) {
+        auctionService.deleteAuctionById(id);
+        return "success";
+    }
+
+    @PostMapping("/admin/blogs/delete")
+    @ResponseBody
+    public String deleteBlog(@RequestParam("id") Long id) {
+        blogService.deleteBlogById(id);
+        return "success";
+    }
+
+    @GetMapping("/admin/dashboard")
+    public String showDashboard(Model model) {
+        model.addAttribute("kois", addKoiService.getAllActiveKois());
+        model.addAttribute("auctions", auctionService.getAllAuctions());
+        // Add other attributes as needed
         return "dashboard";
     }
 }

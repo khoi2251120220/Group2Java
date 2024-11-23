@@ -6,20 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import uth.edu.auctionkoi.pojo.Koi;
-import uth.edu.auctionkoi.service.IKoiService;
+import uth.edu.auctionkoi.service.AddKoiService;
 
 @Controller
 @RequestMapping("/addkoi")
 public class AddKoiController {
     @Autowired
-    private final IKoiService koiService;
+    private final AddKoiService koiService;
 
-    public AddKoiController(IKoiService koiService) {
+    public AddKoiController(AddKoiService koiService) {
         this.koiService = koiService;
     }
 
     @GetMapping("/koi")
-    public String addKoiPage() {
+    public String addKoiPage(Model model) {
+        model.addAttribute("koi", new Koi());
         return "interface/addkoi";
     }
 
@@ -29,25 +30,56 @@ public class AddKoiController {
             @RequestParam("koiImageFile") MultipartFile koiImageFile,
             Model model) {
         try {
-            // Handle image file upload
             if (!koiImageFile.isEmpty()) {
                 String fileName = koiImageFile.getOriginalFilename();
-                koi.setKoiImage(fileName); // Set the image filename in the Koi object
+                koi.setKoiImage(fileName);
                 // TODO: Save the file to the server if necessary
             }
 
-            koiService.save(koi); // Save the koi object to the database
-            model.addAttribute("save", true); // Add success flag to the model
-            model.addAttribute("koi", new Koi()); // Reset the form
-
-            // Add a success message
+            koiService.saveKoi(koi);
             model.addAttribute("message", "Koi added successfully!");
-
         } catch (Exception e) {
-            model.addAttribute("save", false); // Add failure flag to the model
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
         }
-        return "interface/addkoi"; // Return the view template
+        return "interface/addkoi";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editKoiPage(@PathVariable Long id, Model model) {
+        Koi koi = koiService.getKoiById(id);
+        model.addAttribute("koi", koi);
+        return "interface/addkoi";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateKoi(
+            @PathVariable Long id,
+            @ModelAttribute Koi koi,
+            @RequestParam("koiImageFile") MultipartFile koiImageFile,
+            Model model) {
+        try {
+            if (!koiImageFile.isEmpty()) {
+                String fileName = koiImageFile.getOriginalFilename();
+                koi.setKoiImage(fileName);
+                // TODO: Save the file to the server if necessary
+            }
+
+            koiService.saveKoi(koi);
+            model.addAttribute("message", "Koi updated successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Error: " + e.getMessage());
+        }
+        return "interface/addkoi";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteKoi(@PathVariable Long id, Model model) {
+        try {
+            koiService.deleteKoi(id);
+            model.addAttribute("message", "Koi deleted successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Error: " + e.getMessage());
+        }
+        return "redirect:/admin/dashboard";
+    }
 }
